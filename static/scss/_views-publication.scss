@@ -1,0 +1,41 @@
+// Publication lists:
+.publication-list {
+  display: block;
+  margin-bottom: 20px;
+
+  &:empty {
+    display: none;
+  }
+
+  .publication-list-item {
+    margin-bottom: 4px;
+  }
+
+  .publication-excerpt {
+    display: none;
+  }
+}
+
+.publication-excerpt-list {
+  @include unstyled-list();
+
+  .publication-list-item {
+    margin-bottom: 20px;
+  }
+
+  .publication-title {
+    @extend .h3;
+    color: $link-color;
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 15px;
+  }
+
+  .publication-excerpt {
+    margin-top: 8px;
+
+    &:empty {
+      display: none;
+    }
+  }
+}

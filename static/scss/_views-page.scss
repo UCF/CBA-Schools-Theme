@@ -1,0 +1,15 @@
+.page .article-content-wrap {
+  &.subpage {
+    .page-title {
+      margin-top: 20px;
+    }
+  }
+
+  .page-breadcrumb {
+    a {
+      color: #000;
+      font-size: 16px;
+      text-decoration: underline;
+    }
+  }
+}

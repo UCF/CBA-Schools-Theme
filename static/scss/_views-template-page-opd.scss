@@ -1,0 +1,63 @@
+#article-opd .article-content-wrap {
+  .page-title {
+    @include clearfix();
+    color: $ucf-gold;
+    font-size: 70px;
+    font-style: italic;
+    font-weight: 400;
+    margin-bottom: 0;
+
+    @media (max-width: $screen-xs-max) {
+      font-size: $font-size-h1-xs;
+    }
+
+    .alt {
+      color: $text-color;
+      display: inline-block;
+      font-size: 24px;
+      letter-spacing: -.025em;
+      vertical-align: bottom;
+      width: 170px;
+
+      @media (max-width: $screen-xs-max) {
+        display: block;
+        font-size: 18px;
+        margin-top: 5px;
+        width: auto;
+      }
+
+      strong {
+        font-style: normal;
+      }
+    }
+  }
+
+  h2,
+  .h2,
+  h3,
+  .h3 {
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .lead {
+    margin-top: $grid-gutter-width;
+  }
+
+  .right-col {
+    ul {
+      @include unstyled-list();
+
+      li {
+        margin-bottom: 5px;
+      }
+
+      a {
+        color: $text-color;
+        text-decoration: underline;
+      }
+    }
+  }
+
+
+}

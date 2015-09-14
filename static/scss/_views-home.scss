@@ -1,0 +1,335 @@
+#body-home {
+  background-image: none;
+
+  main {
+    background: transparent;
+    background-image: none;
+    margin-bottom: $md-header-menu-height * -1;
+    padding-top: 0;
+    top: $md-header-menu-height * -1;
+
+    @media (max-width: $screen-sm-max) {
+      margin-bottom: 0;
+      top: 0;
+    }
+  }
+}
+
+
+.feature-photos {
+  @include center-block();
+  max-width: $non-grid-max-width;
+  overflow: hidden;
+  position: relative;
+}
+
+.feature-photo {
+  display: none;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+
+  &.active {
+    display: block;
+    z-index: 2;
+  }
+
+  &.js-feature-photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.feature-photo-img {
+  @include center-block();
+  @include img-responsive();
+}
+
+.feature-photo-cta {
+  background-color: rgba(255, 255, 255, .85);
+  color: $text-color;
+  display: block;
+  font-family: $font-family-cta;
+  max-width: 390px;
+  padding: 10px 20px;
+  position: absolute;
+  right: 10%;
+  text-align: left;
+  top: 20%;
+  z-index: 3;
+
+  @include body-prefix('.ie8') {
+    background-color: #fff;
+  }
+
+  @media (max-width: $screen-sm-max) {
+    max-width: 390px;
+    top: 8%;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    max-width: $screen-xs-max;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    position: static;
+    right: auto;
+    text-align: center;
+    top: auto;
+  }
+
+  &:before {
+    @extend .fa;
+    @extend .fa-arrow-circle-o-right:before;
+    color: $coba-pink;
+    font-size: 45px;
+    line-height: 1.1; // match .feature-photo-cta-title (h2) line-height
+    position: absolute;
+    right: 15px;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+.feature-photo-cta-title {
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-right: 50px;
+
+  @media (max-width: $screen-xs-max) {
+    font-size: 36px;
+  }
+}
+
+.feature-photo-cta-subtitle {
+  font-size: 18px;
+
+  @media (max-width: $screen-xs-max) {
+    font-size: 14px;
+    padding-right: 50px;
+  }
+}
+
+.feature-photo-cta-content {
+  color: #444;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: left;
+
+  @media (max-width: $screen-xs-max) {
+    font-size: 12px;
+  }
+}
+
+.home-alt-cta {
+  bottom: 0;
+  height: auto;
+  max-width: 600px; // don't allow huge cta's
+  position: absolute;
+  right: 10%;
+  z-index: 3;
+
+  @media (max-width: $screen-xs-max) {
+    display: none;
+  }
+}
+
+
+.feature-blocks {
+  margin-top: $grid-gutter-width;
+  position: relative;
+
+  &:after {
+    @include gradient-horizontal(rgba(255, 255, 255, .1), #fff, 0, 90%);
+    bottom: 0;
+    content: '';
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    margin-top: $grid-gutter-width / 2;
+
+    &:after {
+      display: block;
+    }
+  }
+
+  // Eliminate grid gutters/styles @ mobile
+  .container {
+    @media (max-width: $screen-xs-max) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .spotlight-list {
+    @extend .row;
+    @include unstyled-list();
+
+    @media (max-width: $screen-xs-max) {
+      margin-left: 0;
+      margin-right: 0;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
+    }
+
+    li {
+      @extend .col-md-2;
+      @extend .col-sm-4;
+      margin-bottom: $grid-gutter-width;
+
+      @media (max-width: $screen-xs-max) {
+        display: inline-block;
+        float: none;
+        height: auto;
+        margin-bottom: 0;
+        padding: $grid-gutter-width / 4 $grid-gutter-width / 2 $grid-gutter-width 0;
+        vertical-align: top;
+        width: 130px;
+
+        &:first-child {
+          margin-left: $grid-gutter-width;
+        }
+
+        &:last-child {
+          margin-right: $grid-gutter-width;
+        }
+      }
+    }
+
+    img {
+      @include material-block();
+      height: auto;
+      width: 100%;
+    }
+  }
+}
+
+
+.feature-news {
+  margin-top: 15px;
+
+  @media (max-width: $screen-xs-max) {
+    margin-top: $grid-gutter-width / 2;
+  }
+
+  .feature-news-heading {
+    color: $coba-green-dark;
+    font-family: $font-family-slab-serif;
+    font-size: 42px;
+    font-weight: normal;
+
+    @media (max-width: $screen-xs-max) {
+      font-size: 36px;
+      margin-top: 0;
+    }
+
+    .alt {
+      font-family: $font-family-sans-serif-alt;
+      font-size: 18px;
+      text-transform: uppercase;
+
+      @media (max-width: $screen-xs-max) {
+        font-size: 15px;
+      }
+    }
+  }
+
+  .news-photo-list {
+    @include unstyled-list();
+
+    .news-story {
+      @include color-block($coba-offwhite, 2px, 2px, 0, 0, darken($coba-offwhite, 5%));
+      display: inline-block;
+      font-family: $font-family-sans-serif-alt;
+      font-size: 16px;
+      font-weight: normal;
+      height: 90px;
+      line-height: 1.2;
+      margin-bottom: $grid-gutter-width / 2;
+      margin-top: $grid-gutter-width / 2;
+      overflow: hidden;
+      padding: 10px;
+      position: relative;
+
+      &:after {
+        border-color: transparent transparent $coba-green-dark;
+        border-style: solid;
+        border-width: 0 0 12px 12px;
+        bottom: -2px;
+        content: '';
+        display: block;
+        height: 12px;
+        position: absolute;
+        right: 0;
+        width: 12px;
+
+        @include body-prefix('.ie8') {
+          bottom: 0;
+          right: ($grid-gutter-width / 2);
+        }
+      }
+
+      &:hover:after,
+      &:focus:after,
+      &:active:after {
+        @include transition(all .15s ease-in-out);
+        bottom: 0;
+        right: 0;
+      }
+
+      @media (max-width: $screen-xs-max) {
+        // Only display the first 4 news items @ mobile size
+        &:nth-child(n+5) {
+          display: none;
+        }
+      }
+    }
+
+    .news-title {
+      display: inline;
+      font-size: 12px;
+      font-style: normal;
+      margin-left: 0;
+      overflow: hidden;
+      text-decoration: none;
+      width: 100%;
+
+      @include body-prefix('.ie8') {
+        border-bottom: 2px solid darken($coba-offwhite, 5%);
+        border-right: 2px solid darken($coba-offwhite, 5%);
+      }
+
+      @media (max-width: $screen-xs-max) {
+        font-size: 13px;
+      }
+    }
+
+    a {
+      color: $text-color;
+      display: block;
+      height: 100%;
+      width: 100%;
+
+      &:hover,
+      &:active,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+  }
+}

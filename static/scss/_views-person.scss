@@ -1,0 +1,300 @@
+// Single Person template:
+
+
+// Common
+
+.person-subheading {
+  margin-bottom: 5px;
+  margin-top: 35px;
+}
+
+.person-subheading-link {
+  color: $text-color;
+  font-style: italic;
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+
+a.person-subheading-link {
+  text-decoration: underline;
+}
+
+
+// Title and biography
+
+.person-title {
+  font-style: italic;
+  font-weight: normal;
+
+  @media (max-width: $screen-xs-max) {
+    margin-top: 15px;
+  }
+}
+
+.person-job-title {
+  font-weight: normal;
+  margin-top: 10px;
+
+  @media (max-width: $screen-xs-max) {
+    font-size: 16px;
+  }
+}
+
+.person-content {
+  font-size: 16px;
+
+  a {
+    color: $text-color;
+    text-decoration: underline;
+  }
+}
+
+
+// Photo and contact column
+
+.person-contact-container {
+  margin-bottom: 15px;
+  padding-left: 45px;
+
+  @media (max-width: $screen-xs-max) {
+    margin-bottom: 0;
+    padding-left: $grid-gutter-width / 2;
+  }
+
+  a {
+    color: $coba-green-dark;
+    text-decoration: underline;
+  }
+
+  .person-contact-heading {
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  .person-contact {
+    display: table;
+    font-size: 16px;
+    line-height: 24px;
+
+    > li {
+      display: table-row;
+      line-height: 1.7;
+    }
+
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+      display: block;
+      font-size: 14px;
+
+      > li {
+        display: block;
+      }
+    }
+
+  }
+
+  .person-contact-heading-aligned,
+  .person-contact-content-aligned {
+    display: table-cell;
+
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+      display: block;
+    }
+  }
+
+  .person-contact-content-aligned {
+    padding-left: 10px;
+
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+      margin-bottom: 5px;
+      padding-left: 0;
+    }
+  }
+
+  .person-photo {
+    margin-bottom: 20px;
+
+    @media (max-width: $screen-xs-max) {
+      margin-top: 20px;
+    }
+  }
+
+  ul {
+    font-size: 14px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .person-department-list {
+    font-size: 16px;
+
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    li {
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+  }
+
+  .office-hours-heading,
+  .course-schedule-heading {
+    margin-bottom: 12px;
+    margin-top: 30px;
+  }
+
+  .office-hours {
+    background-color: #fff;
+    border: 0 solid transparent;
+    border-radius: 0;
+    padding: 0;
+
+    @media (max-width: $screen-xs-max) {
+      font-size: 14px;
+    }
+
+    tbody > tr > th,
+    tbody > tr > td {
+      border-top: 1px solid $gray-lighter;
+      padding: 4px 0;
+    }
+
+    tbody > tr:first-child > th,
+    tbody > tr:first-child > td {
+      border-top: 0 solid transparent;
+    }
+
+    tbody > tr > th {
+      font-weight: normal;
+      text-transform: none;
+    }
+
+    tbody > tr > td {
+      text-align: right;
+    }
+  }
+
+  .course-schedule {
+    margin-bottom: 10px;
+  }
+
+  .course-schedule-title {
+    font-weight: bold;
+  }
+}
+
+
+// News, Research
+
+.person-news,
+.person-research {
+
+  .publication-excerpt-list .publication-title {
+    color: $text-color;
+    font-style: italic;
+    font-weight: normal;
+  }
+
+  .publication-excerpt-list a.publication-title {
+    text-decoration: underline;
+  }
+
+}
+
+
+// Media
+
+.person-media {
+  @media (max-width: $screen-sm-max) {
+    margin-top: 50px;
+  }
+
+  .person-subheading {
+    margin-bottom: 18px;
+  }
+
+  .person-media-embed {
+    margin-top: 28px;
+  }
+
+  .person-media-title {
+    margin: 15px 0 0 15px;
+  }
+
+  .person-media-content {
+    margin-left: 15px;
+  }
+
+}
+
+
+
+// Person picture lists:
+
+.org-group-title {
+  color: $ucf-gold;
+  font-family: $font-family-sans-serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.org-group-desc {
+  font-size: 16px;
+}
+
+
+.person-picture-list {
+  @extend .row;
+  @include unstyled-list();
+}
+
+.person-picture-wrap {
+  @extend .col-sm-3;
+  @extend .col-xs-6;
+  @include col-inline-block();
+  line-height: 1;
+  margin-bottom: 10px;
+  margin-top: 25px;
+
+  // Five-column "rows", since .col-md-2 is too small
+  // and .col-md-3 is too big
+  @media (min-width: $screen-md-min) {
+    width: 20%;
+  }
+
+  .left-col & {
+    @media (min-width: $screen-md-min) {
+      width: 25%;
+    }
+  }
+
+  // Picture lists likely won't ever end up in .right-col's,
+  // but just in case...
+  .right-col & {
+    @media (min-width: $screen-md-min) {
+      width: 33.333%;
+    }
+  }
+
+  a {
+    color: $text-color;
+  }
+
+  .photo {
+    width: 100%;
+  }
+
+  .name {
+    display: block;
+    font-size: 18px;
+    margin-top: 8px;
+  }
+
+  .title {
+    display: block;
+    margin-top: 4px;
+  }
+}
+

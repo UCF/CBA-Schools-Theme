@@ -1,0 +1,68 @@
+table {
+  @extend .table;
+  @extend .table-condensed;
+
+  background-color: #eaf2f9;
+  border: 1px solid #b5edf2;
+  border-collapse: unset;
+  border-radius: 5px;
+  padding: 8px 15px;
+
+  @media (max-width: $screen-xs-max) {
+    font-size: 12px;
+  }
+
+  thead,
+  tbody,
+  tfoot {
+    > tr > th,
+    > tr > td {
+      border-color: $text-color;
+      padding: 3px 15px;
+    }
+  }
+
+  thead,
+  &.table thead {
+    > tr > th {
+      border-bottom-width: 1px;
+    }
+  }
+
+  tbody {
+    > tr:first-child > td {
+      border-top: 0 solid transparent;
+    }
+  }
+
+  tfoot {
+    font-size: 11px;
+
+    > tr > td {
+      border-color: transparent;
+      padding: 3px 0;
+    }
+
+    @media (max-width: $screen-xs-max) {
+      font-size: 10px;
+    }
+  }
+
+  th,
+  thead > tr > th,
+  tbody > tr > th {
+    border-top: 0 solid transparent;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+
+  &.table {
+    border: 1px solid #b5edf2;
+
+    > thead > tr > th,
+    > tbody > tr > td {
+      border-color: $text-color;
+    }
+  }
+}

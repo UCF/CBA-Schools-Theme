@@ -1,0 +1,171 @@
+// Prepends body<selector> to a selector. Useful when defining IE and page-specific overrides.
+// Cannot be used on direct body selectors or their children.
+@mixin body-prefix($selector) {
+  body#{$selector} & {
+    @content;
+  }
+}
+
+// Disable IE10+ "x" button on input field
+@mixin ie-no-ms-clear() {
+  &::-ms-clear {
+    display: none;
+  }
+}
+
+// Generates styling for an unstyled unordered list (unsets
+// padding-left; removes bullets.)
+@mixin unstyled-list() {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+// Generates a horizontal unordered list.  Can be combined with
+// unstyled-list() to create generic nav menus.
+@mixin horizontal-list($gutter: 10px) {
+  > li {
+    display: inline-block;
+    margin-right: $gutter;
+
+    &:last-child,
+    &.last-child,
+    &.last {
+      margin-right: 0;
+    }
+  }
+}
+
+// A box that extends outward on hover
+@mixin material-block() {
+  @include transition(all .15s ease-in-out);
+
+  &:hover,
+  &:active,
+  &:focus,
+  &.active {
+    box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, .5);
+    @include translate(-2px, -2px);
+  }
+}
+
+// Generates a flat, block-style element with colored shadows.
+// Assumes the modified element is already block-level (to prevent
+// accidental override of block/inline-block.)
+@mixin color-block($bgcolor, $hlength: 3px, $vlength: 3px, $blurradius: 0, $spread: 0, $shadowcolor: darken($bgcolor, 12%)) {
+  @include material-block();
+  background-color: $bgcolor;
+  box-shadow: $hlength $vlength 0 0 $shadowcolor;
+
+  &:hover,
+  &:active,
+  &:focus,
+  &.active {
+    box-shadow: $hlength $vlength 0 0 $shadowcolor, 3px 3px 5px 0 rgba(0, 0, 0, .5); // overwrite %material-block;
+  }
+}
+
+// Generates a flat, block-style element with flat colored shadows and
+// dark blurred shadows.
+// Assumes the modified element is already block-level (to prevent
+// accidental override of block/inline-block.)
+@mixin color-block-blur($bgcolor, $hlength: 3px, $vlength: 3px, $blurradius: 0, $spread: 0, $shadowcolor: darken($bgcolor, 12%)) {
+  background-color: $bgcolor;
+  box-shadow: $hlength $vlength 0 0 $shadowcolor, 0 0 8px 0 rgba(0, 0, 0, .8);
+
+  &:hover,
+  &:active,
+  &:focus,
+  &.active {
+    box-shadow: $hlength $vlength 0 0 $shadowcolor, 0 0 8px 2px #000;
+  }
+}
+
+// Extend that adds box-shadow styling
+@mixin box-shadow-blur() {
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, .8);
+}
+
+// Adds font smoothing to an element
+@mixin font-smoothing() {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+// Removes font smoothing from an element
+@mixin no-font-smoothing() {
+  -moz-osx-font-smoothing: auto;
+  -webkit-font-smoothing: auto;
+}
+
+// Adds necessary CSS for a spritesheet-based element.
+// Extended elements should provide a fixed width, height, and
+// background-position.
+@mixin sprite() {
+  background-image: url('../img/spritesheet.png');
+  background-repeat: no-repeat;
+  display: block;
+  overflow: hidden;
+  text-indent: 150%;
+  white-space: nowrap;
+
+  @media screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: url('../img/spritesheet-r.png');
+    background-size: 231px 263px;
+  }
+}
+
+// Unsets affixing styles to an element.
+// Optionally pass a new 'position' value.
+@mixin unset-affix-xs($position: static) {
+  &.affix,
+  &.affix-top,
+  &.affix-bottom {
+    @media (max-width: $screen-xs-max) {
+      position: $position !important;
+    }
+  }
+}
+
+// Updates an element to use display:inline-block with hacked
+// gap fixing.
+@mixin col-inline-block() {
+  display: inline-block;
+  float: none !important;
+  margin-right: -4px;
+  vertical-align: top;
+}
+
+// Set a background image on the body.  Accounts for the top title/nav heights.
+@mixin body-bg-img($url: '../img/background-page.jpg') {
+  background-image: url($url);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='$url', sizingMethod='scale')";
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='$url', sizingMethod='scale');
+
+  @media (max-width: $screen-sm-max) {
+    background-position: 0 $sm-site-title-height + $sm-header-menu-height;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    background: none;
+  }
+}
+
+// Creates a gradient background overlay on an element.  Intended for use
+// on the <main> element.
+@mixin main-gradient-overlay() {
+  $main-gradient-vals: rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .4) 7%, rgba(255, 255, 255, .6) 12%, rgba(255, 255, 255, .8) 20%, rgba(255, 255, 255, .98) 27%, #fff 32%, #fff;
+  background: url('../img/background-gradient-fade.png'); // IE8,9
+  background: -webkit-linear-gradient(top, $main-gradient-vals);
+  background: -o-linear-gradient(top, $main-gradient-vals);
+  background: linear-gradient(to bottom, $main-gradient-vals);
+
+  background-repeat: repeat-x;
+  background-size: 100% 600px;
+
+  @media (max-width: $screen-md-max) {
+    background-size: 100% 500px;
+  }
+}
