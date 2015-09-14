@@ -1,6 +1,6 @@
-# College of Business Administration WordPress Theme - [University of Central Florida Business Degrees, Graduate MBA and PhD in Business Administration](http://business.ucf.edu)  
+# DeVos Sports Management WordPress Theme - [University of Central Florida Sports Management Degrees](http://business.ucf.edu)  
 
-WordPress theme for UCF COBA, written off of Generic Theme.
+WordPress theme for UCF DeVos Sports Management, written off of CBA-Theme.
 
 
 ## Installation Requirements:
