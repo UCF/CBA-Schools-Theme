@@ -22,6 +22,8 @@ function __init__(){
 	register_nav_menu('header-menu', __('Header Menu'));
 	register_nav_menu('footer-menu-1', __('Footer Menu 1'));
 	register_nav_menu('footer-menu-2', __('Footer Menu 2'));
+	register_nav_menu('footer-menu-3', __('Footer Menu 3'));
+	register_nav_menu('footer-menu-4', __('Footer Menu 4'));
 
 	// Custom Sidebars
 	register_sidebar(array(
@@ -220,17 +222,29 @@ Config::$theme_settings = array(
 	),
 	'Contact Information' => array(
 		new TextField(array(
+			'name'        => 'Organization Name',
+			'id'          => THEME_OPTIONS_NAME.'[organization_name]',
+			'description' => 'Your organization\'s name',
+			'value'       => $theme_options['organization_name'],
+			'default'     => 'College of Business Administration',
+		)),
+		new TextField(array(
 			'name'        => 'Contact Email',
 			'id'          => THEME_OPTIONS_NAME.'[site_contact]',
 			'description' => 'Contact email address that visitors to your site can use to contact you.',
 			'value'       => $theme_options['site_contact'],
 		)),
 		new TextField(array(
-			'name'        => 'Organization Name',
-			'id'          => THEME_OPTIONS_NAME.'[organization_name]',
-			'description' => 'Your organization\'s name',
-			'value'       => $theme_options['organization_name'],
-			'default'     => 'College of Business Administration',
+			'name'        => 'Contact Phone',
+			'id'          => THEME_OPTIONS_NAME.'[site_phone]',
+			'description' => 'Contact phone that visitors to your site can use to contact you.',
+			'value'       => $theme_options['site_phone'],
+		)),
+		new TextField(array(
+			'name'        => 'Fax',
+			'id'          => THEME_OPTIONS_NAME.'[site_fax]',
+			'description' => 'Fax number that visitors to your site can use to fax you.',
+			'value'       => $theme_options['site_fax'],
 		)),
 		new TextareaField(array(
 			'name'        => 'Organization Address',
@@ -242,6 +256,18 @@ College of Business Administration
 4000 Central Florida Blvd.
 P.O. Box 161991
 Orlando, FL 32816-1991',
+		)),
+		new TextField(array(
+			'name'        => 'Office Room Number',
+			'id'          => THEME_OPTIONS_NAME.'[office]',
+			'description' => 'Office room number.',
+			'value'       => $theme_options['office'],
+		)),
+		new TextField(array(
+			'name'        => 'Office Hours',
+			'id'          => THEME_OPTIONS_NAME.'[office_hours]',
+			'description' => 'Office hours.',
+			'value'       => $theme_options['office_hours'],
 		)),
 	),
 	'Social' => array(

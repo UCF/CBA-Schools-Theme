@@ -91,7 +91,7 @@ function display_site_social($alt=false, $classes=null) {
 
 
 /**
- * Display COBA address information (from theme options)
+ * Display address information (from theme options)
  **/
 function display_contact_address() {
 	$address = get_theme_option( 'organization_address' );
@@ -101,6 +101,58 @@ function display_contact_address() {
 	<address>
 		<?php echo nl2br( $address ); ?>
 	</address>
+	<?php
+		return ob_get_clean();
+	}
+	return;
+}
+
+
+/**
+ * Display office hours (from theme options)
+ **/
+function display_office_hours() {
+	$hours = get_theme_option( 'office_hours' );
+	if ( !empty( $hours ) ) {
+		ob_start();
+	?>
+	<address>
+		<?php echo nl2br( $hours ); ?>
+	</address>
+	<?php
+		return ob_get_clean();
+	}
+	return;
+}
+
+
+/**
+ * Display phone information (from theme options)
+ **/
+function display_phone($option) {
+	$phone = get_theme_option( $option );
+	if ( !empty( $phone ) ) {
+		ob_start();
+	?>
+	<a href="tel:<?php echo preg_replace("/[^0-9,.]/", "", $phone); ?>">
+		<?php echo $phone; ?></a>
+	<?php
+		return ob_get_clean();
+	}
+	return;
+}
+
+
+/**
+ * Display email (from theme options)
+ **/
+function display_email($option) {
+	$email = get_theme_option( $option );
+	if ( !empty( $email ) ) {
+		ob_start();
+	?>
+	<a href="mailto:<?php echo $email; ?>">
+		<?php echo $email; ?></a>
 	<?php
 		return ob_get_clean();
 	}

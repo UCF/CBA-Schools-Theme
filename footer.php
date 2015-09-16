@@ -2,7 +2,8 @@
 		<footer class="primary-footer">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-3 col-sm-3">
+					<div class="col-sm-2 col-line-right">
+						<h3>Program Overview</h3>
 						<?php
 						wp_nav_menu(
 							array(
@@ -17,8 +18,7 @@
 							)
 						);
 						?>
-					</div>
-					<div class="col-md-3 col-sm-3">
+						<h3>Academic &amp; Admission Information</h3>
 						<?php
 						wp_nav_menu(
 							array(
@@ -34,45 +34,62 @@
 						);
 						?>
 					</div>
-					<div class="col-md-3 col-sm-3">
-						<section class="primary-subfooter-section primary-subfooter-search">
-							<?php get_search_form(); ?>
-						</section>
+					<div class="col-sm-2">
+						<h3>Students</h3>
+						<?php
+						wp_nav_menu(
+							array(
+								'theme_location'  => 'footer-menu-3',
+								'container'       => 'nav',
+								'container_class' => 'primary-subfooter-nav',
+								'container_id'    => 'primary-subfooter-nav-3',
+								'menu_class'      => 'menu',
+								'menu_id'         => 'footer-menu-3',
+								'fallback_cb'     => false,
+								'depth'           => 1,
+							)
+						);
+						?>
+						<h3>Alumni</h3>
+						<?php
+						wp_nav_menu(
+							array(
+								'theme_location'  => 'footer-menu-4',
+								'container'       => 'nav',
+								'container_class' => 'primary-subfooter-nav',
+								'container_id'    => 'primary-subfooter-nav-4',
+								'menu_class'      => 'menu',
+								'menu_id'         => 'footer-menu-4',
+								'fallback_cb'     => false,
+								'depth'           => 1,
+							)
+						);
+						?>
+						<h3>Contact</h3>
 					</div>
-					<div class="col-md-3 col-sm-3">
-						<section class="primary-subfooter-section clearfix">
-							<span class="external-link-logo first">
-								<?php echo display_coba_pass(); ?>
-							</span>
-							<span class="external-link-logo">
-								<?php echo display_aascb_logo(); ?>
-							</span>
-						</section>
+					<div class="col-sm-2 col-line-left">
+						<h3>Contact</h3>
+						<div class="organization-name"><?php echo get_theme_option( 'organization_name' ); ?></div>
+						<?php echo display_contact_address(); ?>
+						<p>
+							Office: <?php echo get_theme_option( 'office' ); ?><br>
+							Hours: <?php echo get_theme_option( 'office_hours' ); ?><br>
+							Phone: <?php echo display_phone( 'site_phone' ); ?><br>
+							Fax: <?php echo display_phone( 'site_fax' ); ?><br>
+							Email: <?php echo display_email( 'site_contact' ); ?>
+						</p>
+					</div>
+					<div class="col-sm-6">
+						<h3>Alumni Map</h3>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-4 col-sm-6">
-						<section class="primary-footer-section" id="primary-footer-section-1">
-							<?php if ( !function_exists( 'dynamic_sidebar' ) or !dynamic_sidebar( 'Footer - Column One' ) ) : ?>
-								<?php echo display_site_social(false, 'visible-xs'); ?>
-								<a class="ignore-external footer-logo" href="http://www.ucf.edu">UCF</a>
-								<?php echo display_contact_address(); ?>
-							<?php endif;?>
+				<div class="row footer-bottom">
+					<div class="col-sm-6">
+						<section class="program-name primary-footer-section">
+							DeVos Sports Business<br>Management Program
 						</section>
 					</div>
-					<div class="col-md-3 col-sm-2 col-xs-6">
-						<section class="primary-footer-section" id="primary-footer-section-2">
-							<?php if ( !function_exists( 'dynamic_sidebar' ) or !dynamic_sidebar( 'Footer - Column Two' ) ) : ?>
-							<?php endif; ?>
-						</section>
-					</div>
-					<div class="col-md-2 col-sm-2 col-xs-6">
-						<section class="primary-footer-section" id="primary-footer-section-3">
-							<?php if ( !function_exists( 'dynamic_sidebar' ) or !dynamic_sidebar( 'Footer - Column Three' ) ) : ?>
-							<?php endif; ?>
-						</section>
-					</div>
-					<div class="col-md-3 col-sm-2">
+					<div class="col-sm-6">
 						<section class="primary-footer-section" id="primary-footer-section-4">
 							<?php if ( !function_exists( 'dynamic_sidebar' ) or !dynamic_sidebar( 'Footer - Column Four' ) ) : ?>
 								<?php echo display_site_social(false, 'hidden-xs'); ?>
