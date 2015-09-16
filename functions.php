@@ -899,6 +899,18 @@ function publication_render_columns( $name, $post_id ) {
 }
 add_filter( 'manage_publication_posts_custom_column', 'publication_render_columns', 10, 2 );
 
+function append_centerpiece_metadata( $post ) {
+
+	$post->image = wp_get_attachment_url( get_post_meta( $post->ID, 'centerpiece_image', TRUE ) );
+	$post->thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ) );
+	$post->cta_title = get_post_meta( $post->ID, 'centerpiece_cta_title', TRUE );
+	$post->cta_content = get_post_meta( $post->ID, 'centerpiece_cta_content', TRUE );
+	$post->cta_button_link = get_post_meta( $post->ID, 'centerpiece_cta_button_link', TRUE );
+	$post->cta_button_text = get_post_meta( $post->ID, 'centerpiece_cta_button_text', TRUE );
+
+	return $post;
+}
+
 function get_parent_site_header() {
 	global $theme_options;
 

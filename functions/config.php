@@ -107,9 +107,9 @@ define( 'FEED_FETCH_TIMEOUT', 8 ); // seconds
  **/
 Config::$custom_post_types = array(
 	'Degree',
+	'Centerpiece',
 	'HomePageFeature',
 	'Page',
-	'Person',
 	'Post',
 	'Spotlight',
 	'Publication'

@@ -859,4 +859,65 @@ function publication_list( $attr ) {
 }
 add_shortcode( 'publication-list', 'publication_list' );
 
+function centerpiece_carousel( $attr, $content='' ) {
+	// Get the most recent centerpieces
+	extract( shortcode_atts(
+			array(
+				'default'        => 'No centerpieces to display.',
+				'posts_per_page' => 3
+			), $attr
+		)
+	);
+
+	$posts = get_posts(
+		array(
+			'posts_per_page' => $attr['posts_per_page'],
+			'post_type' => 'centerpiece'
+		)
+	);
+
+	foreach ( $posts as $post ) {
+		append_centerpiece_metadata( $post );
+	}
+
+	ob_start();
+
+	?>
+		<div id="centerpiece-carousel" class="carousel slide centerpiece" data-rise="carousel">
+			<ol class="carousel-indicators">
+				<?php foreach ( $posts as $idx=>$post ) : ?>
+				<li data-target="#centerpiece-carousel" data-slide-to="<?php echo $idx; ?>"<?php if ( $idx == 0 ) : ?> class="active"<?php endif; ?>>
+					<img src="<?php echo $post->thumbnail; ?>" alt="">
+				</li>
+				<?php endforeach; ?>
+			</ol>
+			<div class="carousel-inner" role="listbox">
+				<?php foreach ( $posts as $idx=>$post) : ?>
+					<div class="item<?php if ( $idx == 0 ) : ?> active<?php endif; ?>">
+						<img src="<?php echo $post->image; ?>" alt="">
+						<div class="carousel-caption">
+							<h2><?php echo $post->cta_title; ?></h2>
+							<p><?php echo $post->cta_content; ?></p>
+							<a href="<?php echo $post->cta_button_link; ?>" class="btn btn-lg btn-cta">
+								<?php echo $post->cta_button_text; ?>
+							</a>
+						</div>
+					</div>
+				<?php endforeach; ?>
+			</div>
+			<a class="left carousel-control" href="#centerpiece-carousel" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#centerpiece-carousel" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+	<?php
+
+	return ob_get_clean();
+}
+add_shortcode( 'centerpiece-carousel', 'centerpiece_carousel' );
+
 ?>
