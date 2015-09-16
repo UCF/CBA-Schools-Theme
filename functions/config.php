@@ -334,20 +334,6 @@ Orlando, FL 32816-1991',
     	    'choices' => $homepagefeature->get_objects_as_options(),
     	    'value' => $theme_options['home_feature_3'],
         )),
-        new SelectField(array(
-    	    'name' => 'Home Page Feature 4',
-    	    'id' => THEME_OPTIONS_NAME.'[home_feature_4]',
-    	    'description' => 'The 4th Home Page Feature to appear on the home page.',
-    	    'choices' => $homepagefeature->get_objects_as_options(),
-    	    'value' => $theme_options['home_feature_4'],
-        )),
-        new SelectField(array(
-    	    'name' => 'Home Page Feature 5',
-    	    'id' => THEME_OPTIONS_NAME.'[home_feature_5]',
-    	    'description' => 'The 5th Home Page Feature to appear on the home page.',
-    	    'choices' => $homepagefeature->get_objects_as_options(),
-    	    'value' => $theme_options['home_feature_5'],
-        )),
 		new RadioField(array(
 			'name'        => 'Enable Home Page alternate call-to-action',
 			'id'          => THEME_OPTIONS_NAME.'[enable_home_cta_alt]',
@@ -372,6 +358,15 @@ Orlando, FL 32816-1991',
 		    'choices' => get_image_choices(),
 		    'value' => $theme_options['home_cta_alt_image'],
 	    )),
+	),
+	'Parent Site' => array(
+		new TextField(array(
+			'name'        => 'Parent Site Menu URL',
+			'id'          => THEME_OPTIONS_NAME.'[parent_site_menu_url]',
+			'description' => 'The URL of the menu page on the parent site.',
+			'default'     => 'http://business.ucf.edu/menu/',
+			'value'       => $theme_options['parent_site_menu_url'],
+		))
 	),
 	'Degrees' => array(),
 	'Site' => array(

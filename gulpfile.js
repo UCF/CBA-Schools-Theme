@@ -63,6 +63,9 @@ gulp.task('js', function() {
       // Combine and uglify js files to create script.min.js.
       var minified = [
         config.bowerDir + '/bootstrap-sass-official/assets/javascripts/bootstrap.js',
+        config.bowerDir + '/jquery.dotdotdot/src/js/jquery.dotdotdot.js',
+        config.bowerDir + '/jquery-placeholder/jquery.placeholder.js',
+        config.jsPath + '/webcom-base.js',
         config.jsPath + '/generic-base.js',
         config.jsPath + '/script.js'
       ];

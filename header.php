@@ -49,49 +49,5 @@
 
 	</head>
 	<body ontouchstart class="<?php echo body_classes(); ?>" <?php if ( is_home() ): ?>id="body-home"<?php endif; ?>>
-		<div id="primary-nav-menu-pulldown"></div>
-		<header class="primary-header">
-			<nav class="primary-header-nav">
-				<div class="nav-name-col">
-					<?php if ( is_home() ): ?>
-						<h1 class="site-title">
-					<?php else: ?>
-						<span class="h1 site-title">
-					<?php endif; ?>
-							<a href="<?php echo get_home_url(); ?>">
-								<?php if ( $tagline = get_theme_option( 'site_tagline' ) ): ?>
-									<?php echo $tagline; ?>
-									<span class="alt"><?php echo get_bloginfo('name'); ?></span>
-								<?php else: ?>
-									<?php echo get_bloginfo('name'); ?>
-								<?php endif; ?>
-							</a>
-					<?php if ( is_home() ): ?>
-						</h1>
-					<?php else: ?>
-						</span>
-					<?php endif; ?>
-					<?php echo display_site_social(true); ?>
-				</div>
-				<div class="nav-menu-col">
-					<a id="header-menu-mobile-toggle" href="#">
-						<span class="fa fa-navicon"></span>
-						Menu
-					</a>
-					<?php
-					wp_nav_menu(
-						array(
-							'theme_location' => 'header-menu',
-							'container'      => 'false',
-							'menu_class'     => 'menu '.get_header_styles(),
-							'menu_id'        => 'header-menu',
-							'depth'          => 3,
-							'link_before'    => '<span>',
-							'link_after'     => '</span>'
-						)
-					);
-					?>
-				</div>
-			</nav>
-		</header>
+		<?php get_parent_site_header(); ?>
 		<main>

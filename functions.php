@@ -899,4 +899,22 @@ function publication_render_columns( $name, $post_id ) {
 }
 add_filter( 'manage_publication_posts_custom_column', 'publication_render_columns', 10, 2 );
 
+function get_parent_site_header() {
+	global $theme_options;
+
+	$url = $theme_options['parent_site_menu_url'];
+
+	$opts = array(
+		'http' => array(
+			'timeout' => 15,
+		)
+	);
+
+	$context = stream_context_create( $opts );
+
+	$data = file_get_contents($url, false, $context);
+
+	echo $data;
+}
+
 ?>
