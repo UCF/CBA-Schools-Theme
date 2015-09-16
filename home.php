@@ -9,6 +9,7 @@
 		<div class="col-md-8">
 			<section class="feature-photos">
 				<?php echo do_shortcode( '[centerpiece-carousel]' ); ?>
+				<?php echo do_shortcode( '[spotlight slug="my-spotlight"]' ); ?>
 			</section>
 
 			<section class="feature-blocks">

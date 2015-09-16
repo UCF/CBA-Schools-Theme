@@ -533,21 +533,46 @@ class Spotlight extends CustomPostType {
 		$new_item       = 'New Spotlight',
 		$public         = True,
 		$use_editor     = True,
+		$use_excerpt    = True,
 		$use_thumbnails = True,
 		$use_order      = False,
 		$use_title      = True,
-		$use_metabox    = False,
+		$use_metabox    = True,
 		$use_shortcode  = True,
 
 		$taxonomies     = array();
 
+	public function Fields() {
+		$prefix = $this->options( 'name' ).'_';
+		return array(
+			array(
+				'name' => __('Additional Content'),
+				'desc' => __('Additional content that will appear below the name, featured image and excerpt.'),
+				'id'   => $prefix.'additional_content',
+				'type' => 'textarea'
+			)
+		);
+	}
+
 
 	public function toHTML( $object ) {
+		$additional_content = get_post_meta( $object->ID, 'spotlight_additional_content', TRUE );
 		ob_start();
 	?>
-		<a class="ga-event-link" href="<?php echo get_permalink( $object->ID ); ?>" data-ga-category="Spotlight Links" data-ga-label="<?php echo $object->post_title; ?>">
-			<?php echo get_the_post_thumbnail( $object->ID, 'spotlight-thumb' ); ?>
-		</a>
+		<div class="spotlight">
+			<h2><?php echo $object->post_title; ?></h2>
+			<?php echo get_the_post_thumbnail( $object->ID ); ?>
+			<p><?php echo $object->post_excerpt; ?></p>
+			<hr>
+			<a href="<?php echo get_permalink( $object->ID );?>">
+				Learn More...
+			</a>
+			<?php if ( $additional_content ) : ?>
+				<div class="spotlight-additional-content">
+					<?php echo $additional_content; ?>
+				</div>
+			<?php endif; ?>
+		</div>
 	<?php
 		return ob_get_clean();
 	}
@@ -665,7 +690,7 @@ class Centerpiece extends CustomPostType {
 					'name' => __( 'Call to Action Content' ),
 					'desc' => __( 'The content to appear in the Call to Action' ),
 					'id'   => $prefix.'cta_content',
-					'type' => 'text',
+					'type' => 'textarea',
 				),
 				array(
 					'name' => __( 'Call to Action Button Text' ),

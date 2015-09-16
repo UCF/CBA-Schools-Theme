@@ -859,7 +859,7 @@ function publication_list( $attr ) {
 }
 add_shortcode( 'publication-list', 'publication_list' );
 
-function centerpiece_carousel( $attr, $content='' ) {
+function sc_centerpiece_carousel( $attr, $content='' ) {
 	// Get the most recent centerpieces
 	extract( shortcode_atts(
 			array(
@@ -918,6 +918,30 @@ function centerpiece_carousel( $attr, $content='' ) {
 
 	return ob_get_clean();
 }
-add_shortcode( 'centerpiece-carousel', 'centerpiece_carousel' );
+add_shortcode( 'centerpiece-carousel', 'sc_centerpiece_carousel' );
+
+function sc_spotlight( $attr, $content='' ) {
+	extract( shortcode_atts( array(
+			'slug' => ''
+		), $attr
+	) );
+
+	if ( $attr['slug'] ) {
+		$args = array(
+			'name' => $attr['slug'],
+			'post_type' => 'spotlight',
+			'post_status' => 'publish',
+			'numberposts' => 1
+		);
+
+		$posts = get_posts( $args );
+
+		if ( $posts ) {
+			$post = $posts[0];
+			echo Spotlight::toHTML( $post );
+		}
+	}
+}
+add_shortcode( 'spotlight', 'sc_spotlight' );
 
 ?>
