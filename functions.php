@@ -272,8 +272,8 @@ function get_header_menu_items() {
 	$menu_items = null;
 	$locations = get_nav_menu_locations();
 
-	if ( array_key_exists( 'header-menu', $locations ) ) {
-		$menu = wp_get_nav_menu_object( $locations['header-menu'] );
+	if ( array_key_exists( 'devos-menu', $locations ) ) {
+		$menu = wp_get_nav_menu_object( $locations['devos-menu'] );
 		$menu_items = wp_get_nav_menu_items( $menu->term_id );
 	}
 
@@ -294,7 +294,7 @@ function get_post_header_nav_item( $post_id ) {
 	$post_menu_item = null;
 	$locations = get_nav_menu_locations();
 
-	if ( array_key_exists( 'header-menu', $locations ) ) {
+	if ( array_key_exists( 'devos-menu', $locations ) ) {
 		// Get the current menu item relating to this page
 		$post_menu_item_array = get_posts( array(
 			'post_type' => 'nav_menu_item',
@@ -304,7 +304,7 @@ function get_post_header_nav_item( $post_id ) {
 				array(
 					'taxonomy' => 'nav_menu',
 					'field' => 'term_id',
-					'terms' => $locations['header-menu']
+					'terms' => $locations['devos-menu']
 				)
 			)
 		));
@@ -380,8 +380,8 @@ function get_header_nav_item_children( $nav_item_id ) {
 	$children = null;
 
 	$locations = get_nav_menu_locations();
-	if ( array_key_exists( 'header-menu', $locations ) ) {
-		$menu = wp_get_nav_menu_object( $locations['header-menu'] );
+	if ( array_key_exists( 'devos-menu', $locations ) ) {
+		$menu = wp_get_nav_menu_object( $locations['devos-menu'] );
 		$menu_items = wp_get_nav_menu_items( $menu->term_id );
 
 		// Loop thru all $menu_items and return those that represent a post

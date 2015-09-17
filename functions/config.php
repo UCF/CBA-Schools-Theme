@@ -202,6 +202,13 @@ function define_customizer_sections( $wp_customize ) {
 			'description' => 'Settings for syncing menus with parent site.'
 		)
 	);
+	$wp_customize->add_section(
+		THEME_CUSTOMIZER_PREFIX.'sitestyles',
+		array(
+			'title'       => 'Site Styles',
+			'description' => 'Various style settings for the site.'
+		)
+	);
 
 	$wp_customize->get_section( 'static_front_page' )->panel = THEME_CUSTOMIZER_PREFIX.'home';
 }
@@ -222,6 +229,7 @@ College of Business Administration
 4000 Central Florida Blvd.
 P.O. Box 161991
 Orlando, FL 32816-1991',
+	'bootstrap_menu_styles' => 'nav-pills',
 );
 
 function get_setting_default( $setting, $fallback=null ) {
@@ -730,6 +738,25 @@ function define_customizer_fields( $wp_customize ) {
 				'label'       => 'Facebook Admins',
 				'description' => 'Comma separated facebook usernames or user ids of those responsible for administrating any facebook pages created from pages on this site. Example: <em>592952074, abe.lincoln</em>',
 				'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
+			)
+		);
+
+		$wp_customize->add_setting(
+			'bootstrap_menu_styles'
+		);
+		$wp_customize->add_control(
+			'bootstrap_menu_styles',
+			array(
+				'type'        => 'select',
+				'label'       => 'Bootstrap Menu Style',
+				'description' => 'Choose the style of menu to use for the sidebar menu.',
+				'section'     => THEME_CUSTOMIZER_PREFIX.'sitestyles',
+				'choices'     => array(
+					'default'   => 'Default (list of links with dropdowns)',
+					'nav-tabs'  => 'Tabs with dropdowns',
+					'nav-pills' => 'Pills with dropdowns'
+				),
+				'default'     => get_setting_default( 'bootstrap_menu_styles' )
 			)
 		);
 	}

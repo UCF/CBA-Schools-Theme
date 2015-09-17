@@ -51,3 +51,17 @@
 	<body ontouchstart class="<?php echo body_classes(); ?>" <?php if ( is_home() ): ?>id="body-home"<?php endif; ?>>
 		<?php get_parent_site_header(); ?>
 		<main>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<?php if ( is_home() ) : ?>
+							<h1><?php echo get_bloginfo( 'name' ); ?></h1>
+						<?php else: ?>
+							<span class="h1"><?php echo get_bloginfo( 'name' ); ?></span>
+						<?php endif; ?>
+					</div>
+					<div class="col-md-6">
+					 	<!-- TODO: Insert contact info -->
+					</div>
+				</div>
+			</div>

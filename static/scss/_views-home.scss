@@ -4,9 +4,7 @@
   main {
     background: transparent;
     background-image: none;
-    margin-bottom: $md-header-menu-height * -1;
     padding-top: 0;
-    top: $md-header-menu-height * -1;
 
     @media (max-width: $screen-sm-max) {
       margin-bottom: 0;

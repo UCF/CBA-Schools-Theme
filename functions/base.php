@@ -727,8 +727,8 @@ function get_featured_image_url($post) {
  * @author Jo Greybill
  **/
 function get_header_styles() {
-	$options = get_option(THEME_OPTIONS_NAME);
-	$id = $options['bootstrap_menu_styles'];
+
+	$id = get_theme_mod_or_default( 'bootstrap_menu_styles' );
 
 	switch ($id) {
 		case 'nav-tabs':

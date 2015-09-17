@@ -4,7 +4,19 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-4">
-
+			<?php
+				wp_nav_menu(
+						array(
+							'theme_location' => 'devos-menu',
+							'container'      => 'false',
+							'menu_class'     => 'menu '.get_header_styles().' nav-stacked',
+							'menu_id'        => 'devos-menu',
+							'depth'          => 3,
+							'link_before'    => '<span>',
+							'link_after'     => '</span>'
+						)
+					);
+			?>
 		</div>
 		<div class="col-md-8">
 			<section class="feature-photos">
