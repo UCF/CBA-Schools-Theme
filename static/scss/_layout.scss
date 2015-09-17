@@ -352,8 +352,8 @@ body {
         @media (max-width: $screen-xs-max) {
           bottom: 2px;
           color: #fff;
-          font-size: 12px;
           float: right;
+          font-size: 12px;
           padding: 12px 8px;
           position: absolute;
           text-align: center;
@@ -425,9 +425,9 @@ body {
       z-index: 1001;
 
       @media (max-width: $screen-sm-max) {
+        left: 0;
         margin-left: auto;
         margin-right: auto;
-        left: 0;
         right: 0;
       }
 
@@ -654,12 +654,12 @@ main {
 .primary-footer {
   background-color: $devos-dark-gray;
   color: #fff;
-  font-size: 12px;
+  font-size: 13px;
   padding-top: 25px;
 
   h3 {
     color: #fff;
-    font-size: 12px;
+    font-size: 13px;
     margin-bottom: 18px;
     margin-top: 0;
     text-transform: uppercase;
@@ -681,7 +681,7 @@ main {
   .col-line-right {
 
     @media (max-width: $screen-xs-max) {
-      border: none;
+      border: 0;
     }
   }
 
@@ -695,12 +695,12 @@ main {
     }
 
     > li {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: bold;
       margin-bottom: 18px;
       text-transform: uppercase;
 
-      ul.sub-menu {
+      .sub-menu {
         padding: 0;
 
         li {
@@ -716,6 +716,30 @@ main {
 
   address {
     margin-bottom: 40px;
+  }
+
+  #footer-feature {
+    min-height: 100px;
+    position: relative;
+
+    .cta {
+      background-color: #fff;
+      border-bottom: 2px solid $ucf-gold;
+      color: #000;
+      display: inline-block;
+      font-weight: 700;
+      left: 15%;
+      padding: 15px 20px;
+      position: absolute;
+      text-align: center;
+      top: 25%;
+
+      a {
+        display: inline-block;
+        margin-top: 6px;
+        text-transform: uppercase;
+      }
+    }
   }
 
   .footer-bottom {

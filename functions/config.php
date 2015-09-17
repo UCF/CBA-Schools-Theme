@@ -413,6 +413,26 @@ Orlando, FL 32816-1991',
 			'value'       => $theme_options['aascb_url'],
 		)),
 	),
+	'Footer' => array(
+		new TextField(array(
+			'name'        => 'Feature Title',
+			'id'          => THEME_OPTIONS_NAME.'[footer_feature_title]',
+			'description' => 'Title displayed in the footer feature.',
+			'value'       => $theme_options['footer_feature_title'],
+		)),
+		new TextField(array(
+			'name'        => 'Feature Image',
+			'id'          => THEME_OPTIONS_NAME.'[footer_feature_image]',
+			'description' => 'Background image displayed in the footer feature.',
+			'value'       => $theme_options['footer_feature_image'],
+		)),
+		new TextareaField(array(
+			'name'        => 'Feature CTA',
+			'id'          => THEME_OPTIONS_NAME.'[footer_feature_cta]',
+			'description' => 'CTA in the footer feature.',
+			'value'       => $theme_options['footer_feature_cta'],
+		)),
+	),
 );
 
 function add_degree_callout_settings() {

@@ -109,24 +109,6 @@ function display_contact_address() {
 
 
 /**
- * Display office hours (from theme options)
- **/
-function display_office_hours() {
-	$hours = get_theme_option( 'office_hours' );
-	if ( !empty( $hours ) ) {
-		ob_start();
-	?>
-	<address>
-		<?php echo nl2br( $hours ); ?>
-	</address>
-	<?php
-		return ob_get_clean();
-	}
-	return;
-}
-
-
-/**
  * Display phone information (from theme options)
  **/
 function display_phone($option) {
@@ -153,6 +135,38 @@ function display_email($option) {
 	?>
 	<a href="mailto:<?php echo $email; ?>">
 		<?php echo $email; ?></a>
+	<?php
+		return ob_get_clean();
+	}
+	return;
+}
+
+
+/**
+ * Display footer feature image (from theme options)
+ **/
+function display_footer_feature_image() {
+	$image = get_theme_option( 'footer_feature_image' );
+	if ( !empty( $image ) ) {
+		ob_start();
+	?>
+	<img src="<?php echo $image; ?>" width="100%">
+	<?php
+		return ob_get_clean();
+	}
+	return;
+}
+
+
+/**
+ * Display footer feature cta (from theme options)
+ **/
+function display_footer_feature_cta() {
+	$cta = get_theme_option( 'footer_feature_cta' );
+	if ( !empty( $cta ) ) {
+		ob_start();
+	?>
+	<?php echo nl2br( $cta ); ?>
 	<?php
 		return ob_get_clean();
 	}

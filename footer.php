@@ -35,8 +35,10 @@
 							Email: <?php echo display_email( 'site_contact' ); ?>
 						</p>
 					</div>
-					<div class="col-sm-6">
-						<h3>Alumni Map</h3>
+					<div id="footer-feature" class="col-sm-6">
+						<h3><?php echo get_theme_option( 'footer_feature_title' ); ?></h3>
+						<?php echo display_footer_feature_image(); ?>
+						<div class="cta"><?php echo display_footer_feature_cta(); ?></div>
 					</div>
 				</div>
 				<div class="row footer-bottom">
