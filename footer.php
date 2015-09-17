@@ -2,70 +2,26 @@
 		<footer class="primary-footer">
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-2 col-line-right">
-						<h3>Program Overview</h3>
+					<div class="col-sm-2 col-line-right invisible">
 						<?php
 						wp_nav_menu(
 							array(
-								'theme_location'  => 'footer-menu-1',
+								'theme_location'  => 'devos-menu',
 								'container'       => 'nav',
 								'container_class' => 'primary-subfooter-nav',
 								'container_id'    => 'primary-subfooter-nav-1',
 								'menu_class'      => 'menu',
-								'menu_id'         => 'footer-menu-1',
+								'menu_id'         => 'devos-menu',
 								'fallback_cb'     => false,
-								'depth'           => 1,
-							)
-						);
-						?>
-						<h3>Academic &amp; Admission Information</h3>
-						<?php
-						wp_nav_menu(
-							array(
-								'theme_location'  => 'footer-menu-2',
-								'container'       => 'nav',
-								'container_class' => 'primary-subfooter-nav',
-								'container_id'    => 'primary-subfooter-nav-2',
-								'menu_class'      => 'menu',
-								'menu_id'         => 'footer-menu-2',
-								'fallback_cb'     => false,
-								'depth'           => 1,
+								'depth'           => 0,
 							)
 						);
 						?>
 					</div>
-					<div class="col-sm-2">
-						<h3>Students</h3>
-						<?php
-						wp_nav_menu(
-							array(
-								'theme_location'  => 'footer-menu-3',
-								'container'       => 'nav',
-								'container_class' => 'primary-subfooter-nav',
-								'container_id'    => 'primary-subfooter-nav-3',
-								'menu_class'      => 'menu',
-								'menu_id'         => 'footer-menu-3',
-								'fallback_cb'     => false,
-								'depth'           => 1,
-							)
-						);
-						?>
-						<h3>Alumni</h3>
-						<?php
-						wp_nav_menu(
-							array(
-								'theme_location'  => 'footer-menu-4',
-								'container'       => 'nav',
-								'container_class' => 'primary-subfooter-nav',
-								'container_id'    => 'primary-subfooter-nav-4',
-								'menu_class'      => 'menu',
-								'menu_id'         => 'footer-menu-4',
-								'fallback_cb'     => false,
-								'depth'           => 1,
-							)
-						);
-						?>
-						<h3>Contact</h3>
+					<div class="col-sm-2 invisible">
+						<nav id="primary-subfooter-nav-2" class="primary-subfooter-nav">
+							<ul class="menu"></ul>
+						</nav>
 					</div>
 					<div class="col-sm-2 col-line-left">
 						<h3>Contact</h3>

@@ -677,13 +677,7 @@ main {
     border-right: 1px solid $devos-gray-line;
   }
 
-  .col-line-left {
-
-    @media (max-width: $screen-xs-max) {
-      border: none;
-    }
-  }
-
+  .col-line-left,
   .col-line-right {
 
     @media (max-width: $screen-xs-max) {
@@ -696,17 +690,27 @@ main {
     margin-bottom: 0;
     margin-top: 0;
 
-    li {
-      line-height: 1.1;
-      margin-bottom: 14px;
-    }
-
-    li:last-child {
-      margin-bottom: 20px;
-    }
-
     a {
       color: #fff;
+    }
+
+    > li {
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+
+      ul.sub-menu {
+        padding: 0;
+
+        li {
+          font-weight: normal;
+          list-style: none;
+          margin: 10px 0 0;
+          text-transform: none;
+        }
+      }
+
     }
   }
 

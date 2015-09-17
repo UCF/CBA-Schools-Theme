@@ -20,10 +20,7 @@ function __init__(){
 
 	// Custom Menus
 	register_nav_menu('header-menu', __('Header Menu'));
-	register_nav_menu('footer-menu-1', __('Footer Menu 1'));
-	register_nav_menu('footer-menu-2', __('Footer Menu 2'));
-	register_nav_menu('footer-menu-3', __('Footer Menu 3'));
-	register_nav_menu('footer-menu-4', __('Footer Menu 4'));
+	register_nav_menu('devos-menu', __('Devos Menu'));
 
 	// Custom Sidebars
 	register_sidebar(array(
