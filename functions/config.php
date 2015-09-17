@@ -21,9 +21,7 @@ function __init__(){
 	add_image_size('slideshow-photo', 1140, 641);
 
 	// Custom Menus
-	register_nav_menu('header-menu', __('Header Menu'));
-	register_nav_menu('footer-menu-1', __('Footer Menu 1'));
-	register_nav_menu('footer-menu-2', __('Footer Menu 2'));
+	register_nav_menu('devos-menu', __('Devos Menu'));
 
 	// Custom Sidebars
 	register_sidebar(array(
@@ -146,6 +144,14 @@ function define_customizer_sections( $wp_customize ) {
 	);
 
 	$wp_customize->add_section(
+		THEME_CUSTOMIZER_PREFIX.'footer',
+		array(
+			'title'       => 'Footer',
+			'description' => 'Settings for the site footer',
+		)
+	);
+
+	$wp_customize->add_section(
 		THEME_CUSTOMIZER_PREFIX.'analytics',
 		array(
 			'title' => 'Analytics'
@@ -209,7 +215,13 @@ Config::$settings_defaults = array(
 	'news_max_items'        => 'http://today.ucf.edu/feed/',
 	'enable_google'         => 1,
 	'search_per_page'       => 10,
-	'cloud_typography'      => '//cloud.typography.com/730568/675644/css/fonts.css' // TODO: update to use PROD css key
+	'cloud_typography'      => '//cloud.typography.com/730568/675644/css/fonts.css', // TODO: update to use PROD css key
+	'organization_name'     => 'College of Business Administration',
+	'organization_address'  => 'University of Central Florida
+College of Business Administration
+4000 Central Florida Blvd.
+P.O. Box 161991
+Orlando, FL 32816-1991',
 );
 
 function get_setting_default( $setting, $fallback=null ) {
@@ -217,6 +229,169 @@ function get_setting_default( $setting, $fallback=null ) {
 }
 
 function define_customizer_fields( $wp_customize ) {
+	// Home Settings
+	$wp_customize->add_setting(
+		'home_page_banner'
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control( $wp_customize, 'home_page_banner', 
+			array(
+			    'label'    => 'Home Page Banner Image',
+			    'section'  => THEME_CUSTOMIZER_PREFIX.'homefeatures',
+			)
+		)
+	);
+
+	$centerpieces = get_posts( array( 'post_type' => 'centerpiece' ) );
+
+	$centerpiece_arr = array();
+
+	foreach( $centerpieces as $centerpiece ) {
+		$centerpiece_arr[$centerpiece->ID] = $centerpiece->post_title;
+	}
+
+	$wp_customize->add_setting(
+		'home_page_centerpiece_1'
+	);
+
+	$wp_customize->add_control(
+		'home_page_centerpiece_1',
+		array(
+			'type'        => 'select',
+			'label'       => 'Home Page Centerpiece 1',
+			'section'     => THEME_CUSTOMIZER_PREFIX.'homefeatures',
+			'choices'     => $centerpiece_arr
+		)
+	);
+
+	$wp_customize->add_setting(
+		'home_page_centerpiece_2'
+	);
+
+	$wp_customize->add_control(
+		'home_page_centerpiece_2',
+		array(
+			'type'        => 'select',
+			'label'       => 'Home Page Centerpiece 2',
+			'section'     => THEME_CUSTOMIZER_PREFIX.'homefeatures',
+			'choices'     => $centerpiece_arr
+		)
+	);
+
+	$wp_customize->add_setting(
+		'home_page_centerpiece_3'
+	);
+
+	$wp_customize->add_control(
+		'home_page_centerpiece_3',
+		array(
+			'type'        => 'select',
+			'label'       => 'Home Page Centerpiece 3',
+			'section'     => THEME_CUSTOMIZER_PREFIX.'homefeatures',
+			'choices'     => $centerpiece_arr
+		)
+	);
+
+	$spotlights = get_posts( array( 'post_type' => 'spotlight' ) );
+
+	$spotlight_arr = array();
+
+	foreach( $spotlights as $spotlight ) {
+		$spotlight_arr[$spotlight->ID] = $spotlight->post_title;
+	}
+
+	$wp_customize->add_setting(
+		'home_page_spotlight'
+	);
+
+	$wp_customize->add_control(
+		'home_page_spotlight',
+		array(
+			'type'        => 'select',
+			'label'       => 'Home Page Spotlight',
+			'section'     => THEME_CUSTOMIZER_PREFIX.'homefeatures',
+			'choices'     => $spotlight_arr
+		)
+	);
+
+	$publications = get_posts( array( 'post_type' => 'publication' ) );
+
+	$publication_arr = array();
+
+	foreach( $publications as $publication ) {
+		$publication_arr[$puhblication->ID] = $publication->post_title;
+	}
+
+	$wp_customize->add_setting(
+		'home_page_publication'
+	);
+
+	$wp_customize->add_control(
+		'home_page_publication',
+		array(
+			'type'        => 'select',
+			'label'       => 'Home Page Publication',
+			'section'     => THEME_CUSTOMIZER_PREFIX.'homefeatures',
+			'choices'     => $publication_arr
+		)
+	);
+
+	$wp_customize->add_setting(
+		'home_page_video_url'
+	);
+
+	$wp_customize->add_control(
+		'home_page_video_url',
+		array(
+			'type'        => 'url',
+			'label'       => 'Home Page Video URL',
+			'section'     => THEME_CUSTOMIZER_PREFIX.'homefeatures'
+		)
+	);
+
+	// Footer Settings
+	$wp_customize->add_setting(
+		'footer_feature_title'
+	);
+
+	$wp_customize->add_control(
+		'footer_feature_title',
+		array(
+			'type'        => 'text',
+			'label'       => 'Feature Title',
+			'description' => 'Title displayed in the footer feature.',
+			'section'     => THEME_CUSTOMIZER_PREFIX.'footer'
+		)
+	);
+
+	$wp_customize->add_setting(
+		'footer_feature_image'
+	);
+
+	$wp_customize->add_control( 
+		new WP_Customize_Image_Control( $wp_customize, 'footer_feature_image', 
+			array(
+			    'label'    => 'Feature Image',
+			    'section'  => THEME_CUSTOMIZER_PREFIX.'footer',
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'footer_feature_cta'
+	);
+
+	$wp_customize->add_control(
+		'footer_feature_cta',
+		array(
+			'type'        => 'text',
+			'label'       => 'Feature Call to Action',
+			'description' => 'CTA in the footer feature.',
+			'section'     => THEME_CUSTOMIZER_PREFIX.'footer'
+		)
+	);
+
 	// Analytics
 	$wp_customize->add_setting(
 		'gw_verify'
@@ -369,17 +544,102 @@ function define_customizer_fields( $wp_customize ) {
 	);
 	// Contact Info
 	$wp_customize->add_setting(
-		'site_contact'
+		'organization_name'
+	);
+
+	$wp_customize->add_control(
+		'organization_name',
+		array(
+			'type'        => 'text',
+			'label'       => 'Organization Name',
+			'description' => 'Your organization\'s name',
+			'section'     => THEME_CUSTOMIZER_PREFIX.'contact',
+			'default'     => get_setting_default( 'organization_name' )
+		)
+	);
+
+	$wp_customize->add_setting(
+		'contact_email'
 	);
 	$wp_customize->add_control(
-		'site_contact',
+		'contact_email',
 		array(
 			'type'        => 'email',
 			'label'       => 'Contact Email',
 			'description' => 'Contact email address that visitors to your site can use to contact you.',
-			'section'     => THEME_CUSTOMIZER_PREFIX . 'contact_info'
+			'section'     => THEME_CUSTOMIZER_PREFIX.'contact'
 		)
 	);
+
+	$wp_customize->add_setting(
+		'contact_phone'
+	);
+
+	$wp_customize->add_control(
+		'contact_phone',
+		array(
+			'type'        => 'text',
+			'label'       => 'Contact Phone',
+			'description' => 'Contact phone that visitors to your site can use to contact you.',
+			'section'     => THEME_CUSTOMIZER_PREFIX.'contact'
+		)
+	);
+
+	$wp_customize->add_setting(
+		'contact_fax'
+	);
+
+	$wp_customize->add_control(
+		'contact_fax',
+		array(
+			'type'        => 'tel',
+			'label'       => 'Fax',
+			'description' => 'Fax number that visitors to your site can use to fax you.',
+			'section'     => THEME_CUSTOMIZER_PREFIX.'contact'
+		)
+	);
+
+	$wp_customize->add_setting(
+		'organization_address'
+	);
+
+	$wp_customize->add_control(
+		'organization_address',
+		array(
+			'type'        => 'textarea',
+			'label'       => 'Organization Address',
+			'description' => 'The address of your organization.',
+			'section'     => THEME_CUSTOMIZER_PREFIX.'contact',
+			'default'     => get_setting_default( 'organization_address' )
+		)
+	);
+
+	$wp_customize->add_setting(
+		'office'
+	);
+
+	$wp_customize->add_control(
+		'office',
+		array(
+			'type'       => 'text',
+			'label'      => 'Office Building/Room Number',
+			'section'    => THEME_CUSTOMIZER_PREFIX.'contact'
+		)
+	);
+
+	$wp_customize->add_setting(
+		'office_hours'
+	);
+
+	$wp_customize->add_control(
+		'office_hours',
+		array(
+			'type'       => 'text',
+			'label'      => 'Office Hours',
+			'section'    => THEME_CUSTOMIZER_PREFIX.'contact'
+		)
+	);
+
 	// Social Media
 	$wp_customize->add_setting(
 		'facebook_url'
@@ -436,113 +696,6 @@ function define_customizer_fields( $wp_customize ) {
 			'label'       => 'Parent Site Menu URL',
 			'description' => 'The url of the page on the parent site where the header menu is located.',
 			'section'     => THEME_CUSTOMIZER_PREFIX.'parentmenu'
-		)
-	);
-
-	$centerpieces = get_posts( array( 'post_type' => 'centerpiece' ) );
-
-	$centerpiece_arr = array();
-
-	foreach( $centerpieces as $centerpiece ) {
-		$centerpiece_arr[$centerpiece->ID] = $centerpiece->post_title;
-	}
-
-	$wp_customize->add_setting(
-		'home_page_centerpiece_1'
-	);
-
-	$wp_customize->add_control(
-		'home_page_centerpiece_1',
-		array(
-			'type'        => 'select',
-			'label'       => 'Home Page Centerpiece 1',
-			'section'     => THEME_CUSTOMIZER_PREFIX.'homefeatures',
-			'choices'     => $centerpiece_arr
-		)
-	);
-
-	$wp_customize->add_setting(
-		'home_page_centerpiece_2'
-	);
-
-	$wp_customize->add_control(
-		'home_page_centerpiece_2',
-		array(
-			'type'        => 'select',
-			'label'       => 'Home Page Centerpiece 2',
-			'section'     => THEME_CUSTOMIZER_PREFIX.'homefeatures',
-			'choices'     => $centerpiece_arr
-		)
-	);
-
-	$wp_customize->add_setting(
-		'home_page_centerpiece_3'
-	);
-
-	$wp_customize->add_control(
-		'home_page_centerpiece_3',
-		array(
-			'type'        => 'select',
-			'label'       => 'Home Page Centerpiece 3',
-			'section'     => THEME_CUSTOMIZER_PREFIX.'homefeatures',
-			'choices'     => $centerpiece_arr
-		)
-	);
-
-	$spotlights = get_posts( array( 'post_type' => 'spotlight' ) );
-
-	$spotlight_arr = array();
-
-	foreach( $spotlights as $spotlight ) {
-		$spotlight_arr[$spotlight->ID] = $spotlight->post_title;
-	}
-
-	$wp_customize->add_setting(
-		'home_page_spotlight'
-	);
-
-	$wp_customize->add_control(
-		'home_page_spotlight',
-		array(
-			'type'        => 'select',
-			'label'       => 'Home Page Spotlight',
-			'section'     => THEME_CUSTOMIZER_PREFIX.'homefeatures',
-			'choices'     => $spotlight_arr
-		)
-	);
-
-	$publications = get_posts( array( 'post_type' => 'publication' ) );
-
-	$publication_arr = array();
-
-	foreach( $publications as $publication ) {
-		$publication_arr[$puhblication->ID] = $publication->post_title;
-	}
-
-	$wp_customize->add_setting(
-		'home_page_publication'
-	);
-
-	$wp_customize->add_control(
-		'home_page_publication',
-		array(
-			'type'        => 'select',
-			'label'       => 'Home Page Publication',
-			'section'     => THEME_CUSTOMIZER_PREFIX.'homefeatures',
-			'choices'     => $publication_arr
-		)
-	);
-
-	$wp_customize->add_setting(
-		'home_page_video_url'
-	);
-
-	$wp_customize->add_control(
-		'home_page_video_url',
-		array(
-			'type'        => 'url',
-			'label'       => 'Home Page Video URL',
-			'section'     => THEME_CUSTOMIZER_PREFIX.'homefeatures'
 		)
 	);
 

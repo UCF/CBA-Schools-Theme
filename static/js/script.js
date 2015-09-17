@@ -674,6 +674,26 @@ var responsiveVideos = function($) {
 };
 
 
+/*
+ * Split footer menu into two columns
+ */
+var splitFooterMenu = function ($) {
+  var $primaryFooter = $('.primary-footer'),
+    $subMenuItems = $primaryFooter.find('.sub-menu > li'),
+    middlePoint = Math.ceil($subMenuItems.length / 2),
+    middleElement = $subMenuItems.eq(middlePoint)
+      .parent('.sub-menu')
+      .parent('.menu-item');
+
+  $primaryFooter.find('#primary-subfooter-nav-2')
+    .find('ul')
+    .append(middleElement.nextAll().andSelf());
+
+  $primaryFooter.find('.invisible').removeClass('invisible');
+};
+
+
+
 if (typeof jQuery !== 'undefined'){
   jQuery(document).ready(function($) {
     Webcom.handleExternalLinks($);
@@ -697,5 +717,6 @@ if (typeof jQuery !== 'undefined'){
     horizontalScrolls($);
     homepagefeatureSlider($);
     responsiveVideos($);
+    splitFooterMenu($);
   });
 }else{console.log('jQuery dependency failed to load');}

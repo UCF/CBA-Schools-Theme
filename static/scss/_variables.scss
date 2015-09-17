@@ -1,4 +1,5 @@
 // Custom variables
+
 $ucfhb-height:               50px;
 $non-grid-max-width:         1200px; // absolute max width for "full-screen" elements
 $today-thumb-width:          66px; // width of UCF Today article thumbnails, used in [news-list] shortcode
@@ -17,6 +18,9 @@ $coba-offwhite:              #fafafa;
 $coba-pink-light:            #ffcdff;
 $coba-pink:                  #df1c52;
 $coba-gray:                  #165c7d;
+$devos-gray-line:            #5c5c5c;
+$devos-dark-gray:            #313131;
+$devos-blue:                 #74a1c8;
 
 $site-title-bgcolor:            $ucf-gold;
 $site-title-bgcolor-dark:       darken($ucf-gold, 12%);
@@ -40,9 +44,11 @@ $font-family-base:           $font-family-sans-serif !default;
 
 $text-color:                 #000 !default;
 
+$brand-primary:              #74a1c8; // link color
+
 $headings-font-weight:       600 !default;
 
 $grid-gutter-width:          20px !default;
 
-$icon-font-path:             '../bower_components/bootstrap-sass-official/assets/fonts/bootstrap';
-$fa-font-path:               '../bower_components/font-awesome/fonts';
+$icon-font-path:             '../fonts/bootstrap/';
+$fa-font-path:               '../bower_components/font-awesome/fonts/';

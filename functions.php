@@ -85,7 +85,7 @@ function display_site_social($alt=false, $classes=null) {
 
 
 /**
- * Display COBA address information (from theme options)
+ * Display address information (from theme options)
  **/
 function display_contact_address() {
 	$address = get_theme_mod_or_default( 'organization_address' );
@@ -95,6 +95,72 @@ function display_contact_address() {
 	<address>
 		<?php echo nl2br( $address ); ?>
 	</address>
+	<?php
+		return ob_get_clean();
+	}
+	return;
+}
+
+
+/**
+ * Display phone information (from theme options)
+ **/
+function display_phone($option) {
+	$phone = get_theme_mod_or_default( $option );
+	if ( !empty( $phone ) ) {
+		ob_start();
+	?>
+	<a href="tel:<?php echo preg_replace("/[^0-9,.]/", "", $phone); ?>">
+		<?php echo $phone; ?></a>
+	<?php
+		return ob_get_clean();
+	}
+	return;
+}
+
+
+/**
+ * Display email (from theme options)
+ **/
+function display_email($option) {
+	$email = get_theme_mod_or_default( $option );
+	if ( !empty( $email ) ) {
+		ob_start();
+	?>
+	<a href="mailto:<?php echo $email; ?>">
+		<?php echo $email; ?></a>
+	<?php
+		return ob_get_clean();
+	}
+	return;
+}
+
+
+/**
+ * Display footer feature image (from theme options)
+ **/
+function display_footer_feature_image() {
+	$image = get_theme_mod_or_default( 'footer_feature_image' );
+	if ( !empty( $image ) ) {
+		ob_start();
+	?>
+	<img src="<?php echo $image; ?>" width="100%">
+	<?php
+		return ob_get_clean();
+	}
+	return;
+}
+
+
+/**
+ * Display footer feature cta (from theme options)
+ **/
+function display_footer_feature_cta() {
+	$cta = get_theme_mod_or_default( 'footer_feature_cta' );
+	if ( !empty( $cta ) ) {
+		ob_start();
+	?>
+	<?php echo nl2br( $cta ); ?>
 	<?php
 		return ob_get_clean();
 	}
