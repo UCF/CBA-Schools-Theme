@@ -588,26 +588,29 @@ class Publication extends CustomPostType {
 		$edit_item      = 'Edit Publication',
 		$new_item       = 'New Publication',
 		$public         = True,
-		$use_editor     = True,
+		$use_editor     = False,
 		$use_excerpt    = True,
 		$use_thumbnails = True,
 		$use_order      = False,
 		$use_title      = True,
 		$use_metabox    = True,
-		$use_shortcode  = False,
-
-		$taxonomies     = array('publication_types');
+		$use_shortcode  = False;
 
 
 	public function fields() {
 		$prefix = $this->options( 'name' ).'_';
 		return array(
 			array(
-				'name' => 'People',
-				'desc' => 'People associated with this publication.',
-				'id' => $prefix.'people',
-				'type' => 'multiselect',
-				'options' => $this->get_objects_as_options(array('post_type' => 'person')),
+				'name' => 'Subtitle',
+				'desc' => 'The subtitle of the publication.',
+				'id'   => $prefix.'subtitle',
+				'type' => 'text',
+			),
+			array(
+				'name' => 'File',
+				'desc' => 'The uploaded file for this publication.',
+				'id' => $prefix.'file',
+				'type' => 'file',
 			),
 		);
 	}
@@ -635,20 +638,26 @@ class Publication extends CustomPostType {
 	}
 
 	public function toHTML( $object ) {
-		$excerpt = trim( $object->post_excerpt );
-		$post_content = trim( $object->post_content );
 		$links_to = get_post_meta( $object->ID, '_links_to', true );
-		if ( empty( $excerpt ) ) {
-			$excerpt = wp_trim_words( $post_content );
-		}
+		$subtitle = get_post_meta( $object->ID, 'publication_subtitle', true );
+		$file = wp_get_attachment_url( get_post_meta( $object->ID, 'publication_file', true ) );
 		ob_start();
 	?>
-		<?php if ( empty( $links_to ) && empty( $post_content ) ): ?>
-			<span class="publication-title"><?php echo $object->post_title; ?></span>
+		<div class="publication">
+		<?php if ( empty( $links_to ) && ! empty( $file ) ): ?>
+			<a href="<?php echo $file; ?>" alt="<?php echo $object->post_title; ?>" class="publication-image">
 		<?php else: ?>
-			<a class="publication-title" href="<?php echo get_permalink( $object->ID ); ?>"><?php echo $object->post_title; ?></a>
+			<a href="<?php echo $links_to; ?>" alt="<?php echo $object->post_title; ?>" class="publication-image">
 		<?php endif; ?>
-		<div class="publication-excerpt"><?php echo $excerpt; ?></div>
+				<?php echo get_the_post_thumbnail( $object->ID ); ?>
+				<div class="publication-title">
+					<h3><?php echo $object->post_title; ?></h3>
+					<?php if ( $subtitle ) : ?>
+						<p><?php echo $subtitle; ?></p>
+					<?php endif; ?>
+				</div>
+			</a>
+		</div>
 	<?php
 		return ob_get_clean();
 	}

@@ -474,8 +474,8 @@ add_shortcode('icon', 'sc_icon');
  * in Theme Options as a default.
  **/
 function sc_twitter_timeline($attr) {
-	$widget_id     = $attr['widget_id'] ? $attr['widget_id'] : get_theme_option( 'twitter_primary_widget_id' );
-	$url           = $attr['url'] ? $attr['url'] : get_theme_option( 'twitter_url' );
+	$widget_id     = $attr['widget_id'] ? $attr['widget_id'] : get_theme_mod_or_default( 'twitter_primary_widget_id' );
+	$url           = $attr['url'] ? $attr['url'] : get_theme_mod_or_default( 'twitter_url' );
 	$fallback_text = $attr['fallback_text'] ? $attr['fallback_text'] : 'UCF College of Business Tweets';
 
 	if (!$widget_id) { return; }
@@ -572,8 +572,8 @@ function sc_degree_callout( $attr ) {
 	}
 	$tax_prefix = str_replace( '-', '_', $taxonomy );
 
-	$title = get_theme_option( $tax_prefix.'_callout_title' );
-	$desc  = get_theme_option( $tax_prefix.'_callout_content' );
+	$title = get_theme_mod_or_default( $tax_prefix.'_callout_title' );
+	$desc  = get_theme_mod_or_default( $tax_prefix.'_callout_content' );
 
 	ob_start();
 ?>

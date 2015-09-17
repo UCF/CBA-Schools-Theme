@@ -9,15 +9,9 @@ require_once('shortcodes.php');         		# Per theme shortcodes
 
 // Add theme-specific functions here.
 
-
-/**
- * Returns a theme option value or NULL if it doesn't exist
- **/
-function get_theme_option( $key ) {
-	global $theme_options;
-	return isset( $theme_options[$key] ) ? $theme_options[$key] : NULL;
+function get_theme_mod_or_default( $mod, $fallback='' ) {
+	return get_theme_mod( $mod, get_setting_default( $mod, $fallback ) );
 }
-
 
 /**
  * Disable comments and trackbacks/pingbacks on this site.
@@ -40,12 +34,12 @@ add_action( 'admin_menu', 'hide_admin_links' );
  * Display COBA social buttons (non-post-specific)
  **/
 function display_site_social($alt=false, $classes=null) {
-	$googleplus_url = get_theme_option( 'googleplus_url' );
-	$linkedin_url   = get_theme_option( 'linkedin_url' );
-	$twitter_url    = get_theme_option( 'twitter_url' );
-	$facebook_url   = get_theme_option( 'facebook_url' );
-	$instagram_url  = get_theme_option( 'instagram_url' );
-	$youtube_url    = get_theme_option( 'youtube_url' );
+	$googleplus_url = get_theme_mod_or_default( 'googleplus_url' );
+	$linkedin_url   = get_theme_mod_or_default( 'linkedin_url' );
+	$twitter_url    = get_theme_mod_or_default( 'twitter_url' );
+	$facebook_url   = get_theme_mod_or_default( 'facebook_url' );
+	$instagram_url  = get_theme_mod_or_default( 'instagram_url' );
+	$youtube_url    = get_theme_mod_or_default( 'youtube_url' );
 
 	$googleplus_class = 'btn-googleplus';
 	$linkedin_class   = 'btn-linkedin';
@@ -94,7 +88,7 @@ function display_site_social($alt=false, $classes=null) {
  * Display COBA address information (from theme options)
  **/
 function display_contact_address() {
-	$address = get_theme_option( 'organization_address' );
+	$address = get_theme_mod_or_default( 'organization_address' );
 	if ( !empty( $address ) ) {
 		ob_start();
 	?>
@@ -119,11 +113,11 @@ function display_homepagefeatures() {
 	// Get the homepagefeatures specified in theme options;
 	// if none are set, get the most recent 5:
 	$feature_ids = array_filter(array(
-		get_theme_option( 'home_feature_1' ),
-		get_theme_option( 'home_feature_2' ),
-		get_theme_option( 'home_feature_3' ),
-		get_theme_option( 'home_feature_4' ),
-		get_theme_option( 'home_feature_5' ),
+		get_theme_mod_or_default( 'home_feature_1' ),
+		get_theme_mod_or_default( 'home_feature_2' ),
+		get_theme_mod_or_default( 'home_feature_3' ),
+		get_theme_mod_or_default( 'home_feature_4' ),
+		get_theme_mod_or_default( 'home_feature_5' ),
 	));
 
 	if (empty($feature_ids)) {
@@ -175,39 +169,13 @@ function display_homepagefeatures() {
 	return ob_get_clean();
 }
 
-
-/**
- * Display COBA Pass button.
- * Also creates a shortcode that executes this function.
- **/
-function display_coba_pass() {
-	$url = get_theme_option( 'coba_pass_url' );
-	ob_start();
-?>
-	<a class="coba-pass" href="<?php echo $url; ?>">COBA Pass</a>
-<?php
-	return ob_get_clean();
-}
-add_shortcode('coba-pass', 'display_coba_pass');
-
-
-function display_aascb_logo() {
-	$url = get_theme_option( 'aascb_url' );
-	ob_start();
-?>
-	<a class="aascb-logo" href="<?php echo $url; ?>">AASCB Accredidation</a>
-<?php
-	return ob_get_clean();
-}
-add_shortcode( 'aascb_logo', 'display_aascb_logo' );
-
 /**
  * Displays an alternate CTA image+link, if one is set in Theme Options.
  **/
 function display_home_alt_cta() {
-	$cta_isset  = get_theme_option( 'enable_home_cta_alt' ) == 1 ? true : false;
-	$cta_url    = get_theme_option( 'home_cta_alt_url' );
-	$cta_img_id = get_theme_option( 'home_cta_alt_image' );
+	$cta_isset  = get_theme_mod_or_default( 'enable_home_cta_alt' ) == 1 ? true : false;
+	$cta_url    = get_theme_mod_or_default( 'home_cta_alt_url' );
+	$cta_img_id = get_theme_mod_or_default( 'home_cta_alt_image' );
 
 	if ( $cta_isset && !empty( $cta_url ) && !empty( $cta_img_id ) ) {
 		$cta_img = wp_get_attachment_image( intval( $cta_img_id ), 'full' );
@@ -914,7 +882,7 @@ function append_centerpiece_metadata( $post ) {
 function get_parent_site_header() {
 	global $theme_options;
 
-	$url = $theme_options['parent_site_menu_url'];
+	$url = get_theme_mod_or_default( 'parent_site_menu_url' );
 
 	$opts = array(
 		'http' => array(

@@ -13,9 +13,9 @@ class ArgumentException extends Exception{}
 class Config{
 	static
 		$body_classes      = array(), # Body classes
-		$theme_settings    = array(), # Theme settings
 		$custom_post_types = array(), # Custom post types to register
 		$custom_taxonomies = array(), # Custom taxonomies to register
+		$settings_defaults = array(),
 		$styles            = array(), # Stylesheets to register
 		$scripts           = array(), # Scripts to register
 		$links             = array(), # <link>s to include in <head>
@@ -1088,43 +1088,6 @@ function sc_object_list($attrs, $options = array()){
 	return $html;
 }
 
-
-/**
- * Sets the default values for any theme options that are not currently stored.
- *
- * @return void
- * @author Jared Lang
- **/
-function set_defaults_for_options(){
-	$values  = get_option(THEME_OPTIONS_NAME);
-	if ($values === False or is_string($values)){
-		add_option(THEME_OPTIONS_NAME);
-		$values = array();
-	}
-
-	$options = array();
-	foreach(Config::$theme_settings as $option){
-		if (is_array($option)){
-			$options = array_merge($option, $options);
-		}else{
-			$options[] = $option;
-		}
-	}
-
-	foreach ($options as $option){
-		$key = str_replace(
-			array(THEME_OPTIONS_NAME, '[', ']'),
-			array('', '', ''),
-			$option->id
-		);
-		if ($option->default !== null and !isset($values[$key])){
-			$values[$key] = $option->default;
-			update_option(THEME_OPTIONS_NAME, $values);
-		}
-	}
-}
-
-
 /**
  * Runs as wordpress is shutting down.
  *
@@ -1213,10 +1176,8 @@ function footer_($tabs=2){
  * @author Jared Lang
  **/
 function opengraph_setup(){
-	$options = get_option(THEME_OPTIONS_NAME);
-
-	if (!(bool)$options['enable_og']){return;}
-	if (is_search()){return;}
+	if ( !(bool)get_theme_mod_or_default( 'enable_og' ) ) { return; }
+	if ( is_search() ){ return; }
 
 	global $post, $page;
 	setup_postdata($post);
@@ -1270,7 +1231,7 @@ function opengraph_setup(){
 
 
 	# Include admins if available
-	$admins = trim($options['fb_admins']);
+	$admins = trim( get_theme_mod_or_default( 'fb_admins' ) );
 	if (strlen($admins) > 0){
 		$metas[] = array('property' => 'fb:admins', 'content' => $admins);
 	}

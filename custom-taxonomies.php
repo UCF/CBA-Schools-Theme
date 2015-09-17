@@ -113,31 +113,6 @@ class OrganizationalGroups extends CustomTaxonomy
 
 
 /**
- * Describes employee types
- *
- * @author Jo Dickson
- **/
-class EmployeeTypes extends CustomTaxonomy
-{
-	public
-		$name               = 'employee_types',
-		$general_name       = 'Employee Types',
-		$singular_name      = 'Employee Type',
-		$search_items       = 'Search Employee Types',
-		$popular_items      = 'Popular Employee Types',
-		$all_times          = 'All Employee Types',
-		$parent_item        = 'Parent Employee Type',
-		$parent_item_colon  = 'Parent Employee Type:',
-		$edit_item          = 'Edit Employee Type',
-		$update_item        = 'Update Employee Type',
-		$add_new_item       = 'Add New Employee Type',
-		$new_item_name      = 'New Tag Employee Type',
-
-		$hierarchical = True;
-}
-
-
-/**
  * Describes schools and/or departments
  *
  * @author Jo Dickson
@@ -159,50 +134,6 @@ class Departments extends CustomTaxonomy
 		$new_item_name      = 'New Tag Department',
 
 		$hierarchical = True;
-}
-
-
-/**
- * Describes degree types
- *
- * @author Jo Dickson
- **/
-class DegreeTypes extends CustomTaxonomy
-{
-	public
-		$name               = 'degree_types',
-		$general_name       = 'Degree Types',
-		$singular_name      = 'Degree Type',
-		$search_items       = 'Search Degree Types',
-		$popular_items      = 'Popular Degree Types',
-		$all_times          = 'All Degree Types',
-		$parent_item        = 'Parent Degree Type',
-		$parent_item_colon  = 'Parent Degree Type:',
-		$edit_item          = 'Edit Degree Type',
-		$update_item        = 'Update Degree Type',
-		$add_new_item       = 'Add New Degree Type',
-		$new_item_name      = 'New Tag Degree Type',
-
-		$hierarchical = True;
-}
-
-class PublicationTypes extends CustomTaxonomy
-{
-	public
-		$name               = 'publication_types',
-		$general_name       = 'Publication Types',
-		$singular_name      = 'Publication Type',
-		$search_items       = 'Search Publication Types',
-		$popular_items      = 'Popular Publication Types',
-		$all_items          = 'All Publication Types',
-		$parent_item        = 'Parent Publication Type',
-		$parent_item_colon  = 'Parent Publication Type:',
-		$edit_item          = 'Edit Publication Type',
-		$update_item        = 'Update Publication Type',
-		$add_new_item       = 'Add New Publication Type',
-		$new_item_name      = 'New Publication Type',
-
-		$hierarchical       = True;
 }
 
 ?>
