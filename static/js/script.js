@@ -693,6 +693,21 @@ var splitFooterMenu = function ($) {
 };
 
 
+/*
+ * Display the side menu subnav
+ */
+var showSubMenu = function ($) {
+  var $currentPage = $('#side-menu').find('.current_page_item'),
+    $parent = $currentPage.parent();
+
+  if ($parent.hasClass('sub-menu')) {
+    $currentPage.addClass('selected');
+    $parent.attr('style','display:block');
+  } else {
+    $currentPage.find('.sub-menu').attr('style','display:block');
+  }
+};
+
 
 if (typeof jQuery !== 'undefined'){
   jQuery(document).ready(function($) {
@@ -704,7 +719,7 @@ if (typeof jQuery !== 'undefined'){
     Generic.PostTypeSearch($);
 
     /* Theme-specific Functions */
-    $('input, textarea').placeholder();
+    // $('input, textarea').placeholder();
     addBodyClasses($);
     stripEmptyPtags($);
     gaEventTracking($);
@@ -718,5 +733,6 @@ if (typeof jQuery !== 'undefined'){
     homepagefeatureSlider($);
     responsiveVideos($);
     splitFooterMenu($);
+    showSubMenu($);
   });
 }else{console.log('jQuery dependency failed to load');}

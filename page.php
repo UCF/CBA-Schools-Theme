@@ -5,7 +5,17 @@
 	<div class="row">
 		<div class="col-md-4">
 			<?php
-				echo display_page_side_menu( $post->ID, TRUE );
+				wp_nav_menu(
+						array(
+							'theme_location' => 'devos-menu',
+							'container'      => 'false',
+							'menu_class'     => 'menu '.get_header_styles().' nav-stacked',
+							'menu_id'        => 'side-menu',
+							'depth'          => 3,
+							'link_before'    => '<span>',
+							'link_after'     => '</span>'
+						)
+					);
 			?>
 		</div>
 		<div class="col-md-8">

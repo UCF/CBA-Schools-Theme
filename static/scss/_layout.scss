@@ -553,6 +553,67 @@ main {
   padding-top: 100px;
   position: relative;
 
+  #side-menu {
+    text-transform: uppercase;
+
+    li {
+      margin: 0;
+
+      a {
+        border-radius: 0;
+        color: #fff;
+        margin: 0;
+        text-decoration: none;
+
+        &:hover {
+          border-color: transparent;
+        }
+      }
+    }
+
+    > .menu-item > a {
+      background-color: #303030;
+      border-bottom: 1px solid #5e5e5e;
+      font-weight: 700;
+
+      span::after {
+          content: "\203A";
+          font-size: 17px;
+          font-weight: 700;
+          line-height: 17px;
+          position: absolute;
+          right: 10px;
+      }
+
+      &:hover {
+        background-color: #5e5e5e;
+      }
+    }
+
+    ul.sub-menu {
+      display: none;
+      padding: 0;
+
+      li {
+        background-color: #74a2c7;
+        border-bottom: 1px solid #94c3e7;
+        list-style: none;
+
+        a {
+          display: inline-block;
+          padding: 10px 15px;
+          width: 100%;
+        }
+
+        &:hover,
+        &.selected {
+          background-color: #9fc8e8;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
   @media (max-width: $screen-sm-max) {
     padding-top: 80px;
   }
@@ -764,7 +825,7 @@ main {
 }
 
 .primary-footer-section {
-  @include clearfix();
+  margin-bottom: 20px;
   margin-top: 15px;
   position: relative;
 
