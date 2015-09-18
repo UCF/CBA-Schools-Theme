@@ -17,6 +17,8 @@
 						)
 					);
 			?>
+			<!-- Insert Facebook Content Here -->
+			<?php echo do_shortcode( '[spotlight slug="my-spotlight"]' ); ?>
 		</div>
 		<div class="col-sm-8">
 			<section class="feature-photos">

@@ -111,8 +111,7 @@ function display_phone($option) {
 		ob_start();
 	?>
 	<a href="tel:<?php echo preg_replace("/[^0-9,.]/", "", $phone); ?>">
-		<?php echo $phone; ?></a>
-	<?php
+		<?php echo $phone; ?></a><?php
 		return ob_get_clean();
 	}
 	return;
@@ -128,8 +127,7 @@ function display_email($option) {
 		ob_start();
 	?>
 	<a href="mailto:<?php echo $email; ?>">
-		<?php echo $email; ?></a>
-	<?php
+		<?php echo $email; ?></a><?php
 		return ob_get_clean();
 	}
 	return;

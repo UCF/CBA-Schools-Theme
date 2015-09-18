@@ -51,17 +51,23 @@
 	<body ontouchstart class="<?php echo body_classes(); ?>" <?php if ( is_home() ): ?>id="body-home"<?php endif; ?>>
 		<?php get_parent_site_header(); ?>
 		<main>
-			<div class="container">
+			<div class="school-header container">
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-sm-4">
 						<?php if ( is_home() ) : ?>
 							<h1><?php echo get_bloginfo( 'name' ); ?></h1>
 						<?php else: ?>
 							<span class="h1"><?php echo get_bloginfo( 'name' ); ?></span>
 						<?php endif; ?>
 					</div>
-					<div class="col-md-6">
-					 	<!-- TODO: Insert contact info -->
+					<div class="school-contact-info col-sm-8">
+							Office: <?php echo get_theme_mod_or_default( 'office' ); ?><br>
+							Hours: <?php echo get_theme_mod_or_default( 'office_hours' ); ?><br>
+							Phone: <?php echo display_phone( 'contact_phone' ); ?><br>
+							Email: <?php echo display_email( 'contact_email' ); ?></br>
+							<?php if ( !function_exists( 'dynamic_sidebar' ) or !dynamic_sidebar( 'Footer - Column Four' ) ) : ?>
+								<?php echo display_site_social(false, 'hidden-xs'); ?>
+							<?php endif; ?>
 					</div>
 				</div>
 			</div>

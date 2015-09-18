@@ -10,9 +10,9 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     jshintStylish = require('jshint-stylish'),
     scsslint = require('gulp-scss-lint'),
-    vinylPaths = require('vinyl-paths');
-    // browserSync = require('browser-sync').create(),
-    // reload = browserSync.reload;
+    vinylPaths = require('vinyl-paths'),
+    browserSync = require('browser-sync').create(),
+    reload = browserSync.reload;
 
 var config = {
   sassPath: './static/scss',
@@ -49,8 +49,8 @@ gulp.task('css', function() {
     .pipe(minifyCss({compatibility: 'ie8'}))
     .pipe(rename('style.min.css'))
     .pipe(bless())
-    .pipe(gulp.dest(config.cssPath));
-    // .pipe(browserSync.stream());
+    .pipe(gulp.dest(config.cssPath))
+    .pipe(browserSync.stream());
 });
 
 // Lint, concat and uglify js files.
@@ -84,14 +84,14 @@ gulp.task('js', function() {
 
 // Rerun tasks when files change
 gulp.task('watch', function() {
-  // browserSync.init({
-  //     proxy: {
-  //       target: "localhost/wordpress/impact"
-  //     }
-  // });
-  // gulp.watch(config.jsPath + '/*.js', ['js']).on('change', reload);
-  // gulp.watch(config.phpPath + '/*.php').on('change', reload);
-  // gulp.watch(config.phpPath + '/*.php');
+  browserSync.init({
+      proxy: {
+        target: "localhost/devos"
+      }
+  });
+  gulp.watch(config.jsPath + '/*.js', ['js']).on('change', reload);
+  gulp.watch(config.phpPath + '/*.php').on('change', reload);
+  gulp.watch(config.phpPath + '/*.php');
 
   gulp.watch(config.sassPath + '/*.scss', ['css']);
   gulp.watch(config.jsPath + '/*.js', ['js']);

@@ -18,9 +18,9 @@ $coba-offwhite:              #fafafa;
 $coba-pink-light:            #ffcdff;
 $coba-pink:                  #df1c52;
 $coba-gray:                  #165c7d;
-$devos-gray-line:            #5c5c5c;
-$devos-dark-gray:            #313131;
-$devos-blue:                 #74a1c8;
+$school-gray-line:            #5c5c5c;
+$school-dark-gray:            #313131;
+$school-blue:                 #74a1c8;
 
 $site-title-bgcolor:            $ucf-gold;
 $site-title-bgcolor-dark:       darken($ucf-gold, 12%);
@@ -34,8 +34,8 @@ $md-site-title-height:          $md-header-menu-height;
 $sm-site-title-height:          52px;
 $xs-site-title-height:          $xs-header-menu-height;
 
-$font-size-h1:                  48px;
-$font-size-h1-xs:               36px;
+$font-size-h1:                  30px;
+$font-size-h1-xs:               24px;
 
 
 // Bootstrap overrides
@@ -46,7 +46,7 @@ $text-color:                 #000 !default;
 
 $brand-primary:              #74a1c8; // link color
 
-$headings-font-weight:       600 !default;
+$headings-font-weight:       800 !default;
 
 $grid-gutter-width:          20px !default;
 

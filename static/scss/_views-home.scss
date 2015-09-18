@@ -1,11 +1,6 @@
 #body-home {
-  background-image: none;
 
   main {
-    background: transparent;
-    background-image: none;
-    padding-top: 0;
-
     @media (max-width: $screen-sm-max) {
       margin-bottom: 0;
       top: 0;
@@ -140,6 +135,57 @@
 }
 
 
+.spotlight {
+  background-color: $school-dark-gray;
+  padding: 10px;
+
+  h2 {
+    border-bottom: solid 1px $school-gray-line;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  img {
+    height: auto;
+    width: 100%;
+  }
+
+  p {
+    border-bottom: solid 1px $school-gray-line;
+    color: #fff;
+    font-size: 12px;
+    padding-bottom: 8px;
+  }
+
+  a,
+  a:active,
+  a:visited {
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: right;
+    text-transform: uppercase;
+    width: 100%;
+
+    &::after {
+      content: "\203A";
+    }
+  }
+
+  .spotlight-additional-content {
+    background-color: $school-blue;
+    color: #fff;
+    margin-top: 8px;
+    padding: 8px;
+    text-align: center;
+  }
+}
+
 .feature-blocks {
   margin-top: $grid-gutter-width;
   position: relative;
@@ -170,6 +216,7 @@
       padding-right: 0;
     }
   }
+
 
   .spotlight-list {
     @extend .row;

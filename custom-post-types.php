@@ -561,12 +561,17 @@ class Spotlight extends CustomPostType {
 	?>
 		<div class="spotlight">
 			<h2><?php echo $object->post_title; ?></h2>
-			<?php echo get_the_post_thumbnail( $object->ID ); ?>
-			<p><?php echo $object->post_excerpt; ?></p>
-			<hr>
-			<a href="<?php echo get_permalink( $object->ID );?>">
-				Learn More...
-			</a>
+			<div class="row">
+				<div class="col-sm-6">
+					<?php echo get_the_post_thumbnail( $object->ID ); ?>
+				</div>
+				<div class="col-sm-6">
+					<p><?php echo $object->post_excerpt; ?></p>
+					<a href="<?php echo get_permalink( $object->ID );?>">
+						Learn More
+					</a>
+				</div>
+			</div>
 			<?php if ( $additional_content ) : ?>
 				<div class="spotlight-additional-content">
 					<?php echo $additional_content; ?>

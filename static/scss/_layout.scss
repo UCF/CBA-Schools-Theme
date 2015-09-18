@@ -550,11 +550,11 @@ main {
   @include main-gradient-overlay();
   min-height: 250px;
   padding-bottom: 40px;
-  padding-top: 100px;
   position: relative;
 
   #side-menu {
     text-transform: uppercase;
+    margin-bottom: 20px;
 
     li {
       margin: 0;
@@ -627,21 +627,34 @@ main {
     line-height: 1.52857;
   }
 
-  h1,
-  .page-title {
-    font-style: italic;
-    letter-spacing: -.04em;
-    line-height: 1;
-    margin-top: 0;
+  .school-header {
 
-    @media (max-width: $screen-sm-max) {
-      font-size: $font-size-h1-xs;
+    .row {
+      margin: 20px 0;
+
+      h1,
+      .h1 {
+        font-style: italic;
+        letter-spacing: -.04em;
+        line-height: 1;
+        margin-top: 0;
+
+        @media (max-width: $screen-sm-max) {
+          font-size: $font-size-h1-xs;
+        }
+
+        small {
+          letter-spacing: -.025em;
+          margin-top: 5px;
+        }
+      }
+
+      .school-contact-info {
+        font-weight: 700;
+        text-align: right;
+      }
     }
 
-    small {
-      letter-spacing: -.025em;
-      margin-top: 5px;
-    }
   }
 }
 
@@ -713,7 +726,7 @@ main {
 
 // Footer
 .primary-footer {
-  background-color: $devos-dark-gray;
+  background-color: $school-dark-gray;
   color: #fff;
   font-size: 13px;
   padding-top: 25px;
@@ -731,11 +744,11 @@ main {
   }
 
   .col-line-left {
-    border-left: 1px solid $devos-gray-line;
+    border-left: 1px solid $school-gray-line;
   }
 
   .col-line-right {
-    border-right: 1px solid $devos-gray-line;
+    border-right: 1px solid $school-gray-line;
   }
 
   .col-line-left,
@@ -804,7 +817,7 @@ main {
   }
 
   .footer-bottom {
-    border-top: 1px solid $devos-gray-line;
+    border-top: 1px solid $school-gray-line;
     margin-top: 25px;
 
     .program-name {
