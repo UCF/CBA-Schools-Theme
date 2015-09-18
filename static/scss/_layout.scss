@@ -614,10 +614,6 @@ main {
     }
   }
 
-  @media (max-width: $screen-sm-max) {
-    padding-top: 80px;
-  }
-
   @media (max-width: $screen-xs-max) {
     padding-bottom: 0;
     padding-top: $grid-gutter-width;

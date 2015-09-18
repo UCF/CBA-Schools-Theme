@@ -17,20 +17,30 @@
 						)
 					);
 			?>
-			<!-- Insert Facebook Content Here -->
-			<?php echo do_shortcode( '[spotlight slug="my-spotlight"]' ); ?>
+			<section id="facebook">
+				<h3>DeVos on FACEBOOK</h3>
+				<a href="">Get Social</a>
+			</section>
+			<section>
+				<?php
+					echo do_shortcode( '[spotlight id="' . get_theme_mod_or_default( 'home_page_spotlight' ) . '"]' );
+				?>
+			</section>
 		</div>
 		<div class="col-sm-8">
 			<section class="feature-photos">
 				<?php echo do_shortcode( '[centerpiece-carousel]' ); ?>
-				<?php echo do_shortcode( '[spotlight slug="my-spotlight"]' ); ?>
 			</section>
-
-			<section class="feature-blocks">
-				<div class="container">
-					<?php echo do_shortcode( '[spotlight-list orderby="date" order="DESC" posts_per_page="6"]' ); ?>
+			<div class="row">
+				<div class="col-sm-8">
+					<?php echo get_embed_html( get_theme_mod_or_default( 'home_page_video_url' ) ); ?>
 				</div>
-			</section>
+				<div class="col-sm-4">
+					<?php
+						echo do_shortcode( '[publication id="' . get_theme_mod_or_default( 'home_page_publication' ) . '"]' );
+					?>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

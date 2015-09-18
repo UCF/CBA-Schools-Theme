@@ -922,26 +922,36 @@ add_shortcode( 'centerpiece-carousel', 'sc_centerpiece_carousel' );
 
 function sc_spotlight( $attr, $content='' ) {
 	extract( shortcode_atts( array(
-			'slug' => ''
+			'id' => ''
 		), $attr
 	) );
 
-	if ( $attr['slug'] ) {
-		$args = array(
-			'name' => $attr['slug'],
-			'post_type' => 'spotlight',
-			'post_status' => 'publish',
-			'numberposts' => 1
-		);
+	if ( $attr['id'] ) {
 
-		$posts = get_posts( $args );
+		$post = get_post( $attr['id'] );
 
-		if ( $posts ) {
-			$post = $posts[0];
+		if ( $post ) {
 			echo Spotlight::toHTML( $post );
 		}
 	}
 }
 add_shortcode( 'spotlight', 'sc_spotlight' );
+
+function sc_publication( $attr, $content='' ) {
+	extract( shortcode_atts( array(
+			'id' => ''
+		), $attr
+	) );
+
+	if ( $attr['id'] ) {
+
+		$post = get_post( $attr['id'] );
+
+		if ( $post ) {
+			echo Publication::toHTML( $post );
+		}
+	}
+}
+add_shortcode( 'publication', 'sc_publication' );
 
 ?>

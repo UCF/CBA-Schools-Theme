@@ -42,12 +42,12 @@
 					</div>
 				</div>
 				<div class="row footer-bottom">
-					<div class="col-sm-6">
+					<div class="col-sm-3 col-lg-2">
 						<section class="program-name primary-footer-section">
-							DeVos Sports Business<br>Management Program
+							<?php echo get_bloginfo( 'name' ); ?>
 						</section>
 					</div>
-					<div class="col-sm-6">
+					<div class="col-sm-9 col-lg-10">
 						<section class="primary-footer-section" id="primary-footer-section-4">
 							<?php if ( !function_exists( 'dynamic_sidebar' ) or !dynamic_sidebar( 'Footer - Column Four' ) ) : ?>
 								<?php echo display_site_social(false, 'hidden-xs'); ?>

@@ -560,7 +560,7 @@ class Spotlight extends CustomPostType {
 		ob_start();
 	?>
 		<div class="spotlight">
-			<h2><?php echo $object->post_title; ?></h2>
+			<h3><?php echo $object->post_title; ?></h3>
 			<div class="row">
 				<div class="col-sm-6">
 					<?php echo get_the_post_thumbnail( $object->ID ); ?>
@@ -649,19 +649,15 @@ class Publication extends CustomPostType {
 		ob_start();
 	?>
 		<div class="publication">
-		<?php if ( empty( $links_to ) && ! empty( $file ) ): ?>
-			<a href="<?php echo $file; ?>" alt="<?php echo $object->post_title; ?>" class="publication-image">
-		<?php else: ?>
-			<a href="<?php echo $links_to; ?>" alt="<?php echo $object->post_title; ?>" class="publication-image">
-		<?php endif; ?>
-				<?php echo get_the_post_thumbnail( $object->ID ); ?>
-				<div class="publication-title">
-					<h3><?php echo $object->post_title; ?></h3>
-					<?php if ( $subtitle ) : ?>
-						<p><?php echo $subtitle; ?></p>
-					<?php endif; ?>
-				</div>
-			</a>
+			<h3>Publications</h3>
+			<?php if ( empty( $links_to ) && ! empty( $file ) ): ?>
+				<a href="<?php echo $file; ?>" alt="<?php echo $object->post_title; ?>" class="publication-image">
+			<?php else: ?>
+				<a href="<?php echo $links_to; ?>" alt="<?php echo $object->post_title; ?>" class="publication-image">
+			<?php endif; ?>
+					<?php echo get_the_post_thumbnail( $object->ID ); ?>
+				</a>
+			<a href="" class="more-publications">More Publications</a>
 		</div>
 	<?php
 		return ob_get_clean();

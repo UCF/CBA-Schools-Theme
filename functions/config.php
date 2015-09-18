@@ -181,7 +181,7 @@ function define_customizer_sections( $wp_customize ) {
 		THEME_CUSTOMIZER_PREFIX.'contact',
 		array(
 			'title'       => 'Contact Information'
-		) 
+		)
 	);
 	$wp_customize->add_section(
 		THEME_CUSTOMIZER_PREFIX.'social',
@@ -243,7 +243,7 @@ function define_customizer_fields( $wp_customize ) {
 	);
 
 	$wp_customize->add_control(
-		new WP_Customize_Image_Control( $wp_customize, 'home_page_banner', 
+		new WP_Customize_Image_Control( $wp_customize, 'home_page_banner',
 			array(
 			    'label'    => 'Home Page Banner Image',
 			    'section'  => THEME_CUSTOMIZER_PREFIX.'homefeatures',
@@ -328,7 +328,7 @@ function define_customizer_fields( $wp_customize ) {
 	$publication_arr = array();
 
 	foreach( $publications as $publication ) {
-		$publication_arr[$puhblication->ID] = $publication->post_title;
+		$publication_arr[$publication->ID] = $publication->post_title;
 	}
 
 	$wp_customize->add_setting(
@@ -377,8 +377,8 @@ function define_customizer_fields( $wp_customize ) {
 		'footer_feature_image'
 	);
 
-	$wp_customize->add_control( 
-		new WP_Customize_Image_Control( $wp_customize, 'footer_feature_image', 
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control( $wp_customize, 'footer_feature_image',
 			array(
 			    'label'    => 'Feature Image',
 			    'section'  => THEME_CUSTOMIZER_PREFIX.'footer',

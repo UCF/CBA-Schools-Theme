@@ -53,14 +53,14 @@
 		<main>
 			<div class="school-header container">
 				<div class="row">
-					<div class="col-sm-4">
+					<div class="col-sm-6 col-lg-4">
 						<?php if ( is_home() ) : ?>
 							<h1><?php echo get_bloginfo( 'name' ); ?></h1>
 						<?php else: ?>
 							<span class="h1"><?php echo get_bloginfo( 'name' ); ?></span>
 						<?php endif; ?>
 					</div>
-					<div class="school-contact-info col-sm-8">
+					<div class="school-contact-info col-sm-6 col-lg-8">
 							Office: <?php echo get_theme_mod_or_default( 'office' ); ?><br>
 							Hours: <?php echo get_theme_mod_or_default( 'office_hours' ); ?><br>
 							Phone: <?php echo display_phone( 'contact_phone' ); ?><br>
