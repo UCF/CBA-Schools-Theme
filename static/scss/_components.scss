@@ -71,6 +71,16 @@
   background-position: -183px -37px;
 }
 
+.btn-ucf {
+  background: $ucf-gold;
+  border-radius: 0;
+  box-shadow: 0 4px 4px #000;
+  font-family: $font-family-cta;
+  font-weight: 700;
+  color: #fff;
+  width: 100%;
+}
+
 
 // Document icons
 %doc-icon {

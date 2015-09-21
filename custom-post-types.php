@@ -283,6 +283,12 @@ class Page extends CustomPostType {
 		$prefix = $this->options( 'name' ).'_';
 		return array(
 			array(
+				'name' => 'Call to Action Markup',
+				'desc' => 'The content of this field will be displayed under the side menu. Accepts HTML markup.',
+				'id'   => $prefix.'cta_markup',
+				'type' => 'textarea'
+			),
+			array(
 				'name' => 'Brief Description',
 				'desc' => 'A brief description of this page, used when this page is listed via <code>[child-page-list]</code>',
 				'id' => $prefix.'desc_brief',
