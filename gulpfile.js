@@ -20,7 +20,8 @@ var config = {
   jsPath: './static/js',
   fontPath: './static/fonts',
   phpPath: './',
-  bowerDir: './static/bower_components'
+  bowerDir: './static/bower_components',
+  sync: false,
 };
 
 
@@ -84,11 +85,13 @@ gulp.task('js', function() {
 
 // Rerun tasks when files change
 gulp.task('watch', function() {
-  browserSync.init({
-      proxy: {
-        target: "localhost/devos"
-      }
-  });
+  if (config.sync) {
+    browserSync.init({
+        proxy: {
+          target: "localhost/devos"
+        }
+    });
+  }
   gulp.watch(config.jsPath + '/*.js', ['js']).on('change', reload);
   gulp.watch(config.phpPath + '/*.php').on('change', reload);
   gulp.watch(config.phpPath + '/*.php');
