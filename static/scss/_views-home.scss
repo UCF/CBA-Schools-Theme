@@ -137,12 +137,12 @@
 #centerpiece-carousel {
   .carousel-caption {
     background-color: rgba(0,0,0,0.45);
-    bottom: 0;
+    bottom: auto;
     left: 0;
     padding: 15px;
     position: absolute;
     right: auto;
-    top: auto;
+    top: 0;
     width: 30%;
 
     h2 {
