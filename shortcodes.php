@@ -773,34 +773,6 @@ add_shortcode( 'gallery', 'sc_bootstrap_slideshow' );
  * Returns a list of publications.
  **/
 function publication_list( $attr ) {
-	extract( shortcode_atts(
-		array(
-			'default'           => 'No publications found.',
-			'display'           => '',
-			'order'             => 'DESC',
-			'orderby'           => 'date title',
-			'person'            => '',
-			'posts_per_page'    => -1,
-			'publication_types' => ''
-		),
-		$attr
-	) );
-
-	if ( !empty( $person ) ) {
-		$person_post = get_posts( array(
-			'posts_per_page' => 1,
-			'post_type' => 'person',
-			'name' => $person
-		) );
-		if ( $person_post ) {
-			$person_id = $person_post[0]->ID;
-		}
-	}
-	$publication_types = trim( preg_replace( '/\s+/', ' ', $publication_types ) );
-	$publication_types = explode( ' ', $publication_types );
-	$publication_types = array_filter( $publication_types );
-
-	$output = '';
 	$args = array(
 		'order' => $order,
 		'orderby' => $orderby,
@@ -808,54 +780,32 @@ function publication_list( $attr ) {
 		'posts_per_page' => $posts_per_page,
 	);
 
-	if ( !empty( $person_id ) ) {
-		// publication_people is stored as a serialized array in the db.
-		// Check for serialized ID matches, as both an int and str, since the
-		// saved db values can vary.
-		$args['meta_query'] = array(
-			'relation' => 'OR',
-			array(
-				'key' => 'publication_people',
-				'value' => serialize( strval( $person_id ) ),
-				'compare' => 'LIKE'
-			),
-			array(
-				'key' => 'publication_people',
-				'value' => serialize( $person_id ),
-				'compare' => 'LIKE'
-			)
-		);
-	}
-	if ( !empty( $publication_types ) ) {
-		$args['tax_query'] = array(
-			array(
-				'taxonomy' => 'publication_types',
-				'field' => 'slug',
-				'terms' => $publication_types,
-				'operator' => 'AND'
-			)
-		);
-	}
-
 	$publications = get_posts( $args );
 
-	if ( $publications ) {
-		$p = new Publication;
+	ob_start();
 
-		switch ( $display ) {
-			case 'excerpt':
-				$output .= $p->objectsToHTML( $publications, 'publication-excerpt-list' );
-				break;
-			default:
-				$output .= $p->objectsToHTML( $publications, '' );
-				break;
-		}
-	}
-	else {
-		$output = '<span class="publication-list">'. $default .'</span>';
-	}
+	?>
+	<div class="publication-list">
+		<div class="row">
+		<?php foreach( $publications as $pub ) : 
 
-	return $output;
+			$links_to = get_post_meta( $pub->ID, '_links_to', true );
+			$file = wp_get_attachment_url( get_post_meta( $pub->ID, 'publication_file', true ) );
+		?>
+			<div class="col-md-4">
+				<article class="publication">
+					<h3><?php echo $pub->post_title; ?></h3>
+					<a href="<?php echo ($file) ? $file : $links_to; ?>">
+						<?php echo get_the_post_thumbnail( $pub->ID ); ?>
+					</a>
+				</article>
+			</div>
+		<?php endforeach; ?>
+		</div>
+	</div>
+	<?php 
+
+	return ob_get_clean();
 }
 add_shortcode( 'publication-list', 'publication_list' );
 
