@@ -101,9 +101,7 @@ define( 'FEED_FETCH_TIMEOUT', 8 ); // seconds
  * object.
  **/
 Config::$custom_post_types = array(
-	'Degree',
 	'Centerpiece',
-	'HomePageFeature',
 	'Page',
 	'Post',
 	'Spotlight',
@@ -116,9 +114,6 @@ Config::$custom_taxonomies = array(
 );
 
 Config::$body_classes = array();
-
-
-$homepagefeature = new HomePageFeature();
 /**
  * Configure theme settings, see abstract class Field's descendants for
  * available fields. -- functions/base.php

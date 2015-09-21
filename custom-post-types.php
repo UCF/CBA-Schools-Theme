@@ -254,50 +254,6 @@ abstract class CustomPostType {
 	}
 }
 
-class HomePageFeature extends CustomPostType {
-	public
-		$name           = 'homepagefeature',
-		$plural_name    = 'Home Page Features',
-		$singular_name  = 'Home Page Feature',
-		$add_new_item   = 'Add New Home Page Feature',
-		$edit_item      = 'Edit Home Page Feature',
-		$new_item       = 'New Home Page Feature',
-		$public         = True,
-		$use_editor     = False,
-		$use_thumbnails = True,
-		$use_order      = False,
-		$use_title      = True,
-		$use_metabox    = True,
-		$use_shortcode  = False,
-
-		$taxonomies     = array();
-
-	public function fields() {
-		$prefix = $this->options( 'name' ).'_';
-		return array(
-			array(
-				'name' => 'Link text',
-				'desc' => '',
-				'id' => $prefix.'link_text',
-				'type' => 'text',
-			),
-			array(
-				'name' => 'Link subtext',
-				'desc' => '',
-				'id' => $prefix.'link_subtext',
-				'type' => 'text',
-			),
-			array(
-				'name' => 'Link content',
-				'desc' => 'Additional text to display below subtitle. Limited to 240 characters.',
-				'id' => $prefix.'link_content',
-				'type' => 'textarea',
-			),
-		);
-	}
-}
-
-
 class Page extends CustomPostType {
 	public
 		$name            = 'page',

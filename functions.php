@@ -691,4 +691,49 @@ function get_parent_site_header() {
 	echo $data;
 }
 
+class ApplyNow extends WP_Widget {
+	function __construct() {
+		parent::__construct(
+			'cta_widget',
+			'Apply'
+		);
+	}
+
+	public function widget( $args, $instance ) {
+		echo $args['before_widget'];
+		if ( ! empty( $instance['title'] ) ) {
+			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
+		}
+		echo $args['after_widget'];
+	}
+
+	public function form( $instance ) {
+		$intro_copy = ! empty( $instance['intro_copy'] ) ? $instance['intro_copy'] : __('Introdocution Copy');
+		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'New Title' );
+		?>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'intro_copy' ); ?>">Intro Copy</label>
+			<textarea class="widefat" id="<?php echo $this->get_field_id( 'intro_copy'); ?>" name="<?php echo $this->get_field_name( 'intro_copy' )?>" type="textarea" value="<?php echo esc_attr( $intro_copy); ?>"></textarea>
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>">Title:</label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+		</p>
+		<?php
+	}
+
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['intro_copy'] = ( ! empty( $new_instance['intro_copy'] ) ) ? strip_tags( $new_instance['intro_copy'] ) : '';
+		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+		return $instance;
+	}
+}
+
+function register_apply_now_widget() {
+	register_widget( 'ApplyNow' );
+}
+
+add_action( 'widgets_init', 'register_apply_now_widget' );
+
 ?>
