@@ -673,6 +673,83 @@ function append_centerpiece_metadata( $post ) {
 	return $post;
 }
 
+function display_home_centerpieces() {
+	$date = date('m/d/Y');
+	$args = array(
+		'post_type' => 'centerpiece',
+		'posts_per_page' => 3,
+		'meta_query' => array(
+			array(
+				'key'     => 'centerpiece_expires',
+				'value'   => $date,
+				'compare' => '>='
+			)
+		)
+	);
+
+	$posts = get_posts( $args );
+
+	if ( count( $posts ) > 0 ) {
+		foreach( $posts as $post ) {
+			append_centerpiece_metadata( $post );
+		}
+	} else {
+		$post_id = get_theme_mod_or_default( 'home_page_default_centerpiece' );
+		$post = get_post( $post_id );
+		append_centerpiece_metadata( $post );
+		$posts[] = $post;
+	}
+
+	$count = count( $posts );
+
+	ob_start();
+
+	?>
+
+	<div id="centerpiece-carousel" class="carousel<?php echo ( $count > 1 ) ? ' slide' : ''; ?> centerpiece" data-ride="carousel">
+		<?php if ( $count > 1 ) : ?>
+		<ol class="carousel-indicators">
+		<?php foreach( $posts as $idx=>$post ) : ?>
+			<li data-target="#centerpiece-carousel" data-slide-to="<?php echo $idx; ?>"<?php if ( $idx == 0 ) : ?> class="active"<?php endif; ?>>
+				<img src="<?php echo $post->thumbnail; ?>" alt="">
+			</li>
+		<?php endforeach; ?>
+		</ol>
+		<?php endif; ?>
+		<div class="carousel-inner" role="listbox">
+		<?php foreach ( $posts as $idx=>$post ) : ?>
+			<div class="item<?php echo ( $idx == 0 ) ? ' active' : ''; ?>">
+				<img src="<?php echo $post->image; ?>" alt="">
+				<div class="carousel-caption">
+					<h2><?php echo $post->post_title; ?></h2>
+				</div>
+				<div class="carousel-cta">
+					<h3><?php echo $post->cta_title; ?></h3>
+					<p class="pull-left"><?php echo $post->cta_content; ?></p>
+					<a href="<?php echo $post->cta_button_link; ?>" class="btn btn-lg btn-cta pull-right">
+						<?php echo $post->cta_button_text; ?>
+					</a>
+				</div>
+			</div>
+		<?php endforeach; ?>
+		</div>
+		<?php if ( $count > 1 ) : ?>
+		<a class="left carousel-control" href="#centerpiece-carousel" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="right carousel-control" href="#centerpiece-carousel" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+		<?php endif; ?>
+	</div>
+
+	<?php
+
+	return ob_get_clean();
+}
+
 function get_parent_site_header() {
 	global $theme_options;
 

@@ -255,44 +255,16 @@ function define_customizer_fields( $wp_customize ) {
 	}
 
 	$wp_customize->add_setting(
-		'home_page_centerpiece_1'
+		'home_page_default_centerpiece'
 	);
 
 	$wp_customize->add_control(
-		'home_page_centerpiece_1',
+		'home_page_default_centerpiece',
 		array(
-			'type'        => 'select',
-			'label'       => 'Home Page Centerpiece 1',
-			'section'     => THEME_CUSTOMIZER_PREFIX.'homefeatures',
-			'choices'     => $centerpiece_arr
-		)
-	);
-
-	$wp_customize->add_setting(
-		'home_page_centerpiece_2'
-	);
-
-	$wp_customize->add_control(
-		'home_page_centerpiece_2',
-		array(
-			'type'        => 'select',
-			'label'       => 'Home Page Centerpiece 2',
-			'section'     => THEME_CUSTOMIZER_PREFIX.'homefeatures',
-			'choices'     => $centerpiece_arr
-		)
-	);
-
-	$wp_customize->add_setting(
-		'home_page_centerpiece_3'
-	);
-
-	$wp_customize->add_control(
-		'home_page_centerpiece_3',
-		array(
-			'type'        => 'select',
-			'label'       => 'Home Page Centerpiece 3',
-			'section'     => THEME_CUSTOMIZER_PREFIX.'homefeatures',
-			'choices'     => $centerpiece_arr
+			'type'    => 'select',
+			'label'   => 'Home Page Default Centerpiece',
+			'section' => THEME_CUSTOMIZER_PREFIX.'homefeatures',
+			'choices' => $centerpiece_arr
 		)
 	);
 

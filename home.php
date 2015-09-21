@@ -29,7 +29,7 @@
 		</div>
 		<div class="col-sm-8">
 			<section class="feature-photos">
-				<?php echo do_shortcode( '[centerpiece-carousel]' ); ?>
+				<?php echo display_home_centerpieces(); ?>
 			</section>
 			<div class="row">
 				<div class="col-sm-8">
