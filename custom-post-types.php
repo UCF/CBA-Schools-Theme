@@ -504,34 +504,40 @@ class Centerpiece extends CustomPostType {
 		$prefix = $this->options( 'name' ).'_';
 		return array(
 				array(
-					'name' => 'Image',
-					'desc' => 'The image to show on this centerpiece.',
-					'id'   => $prefix.'image',
-					'type' => 'file',
+					'name'    => 'Image',
+					'desc'    => 'The image to show on this centerpiece.',
+					'id'      => $prefix.'image',
+					'type'    => 'file',
 				),
 				array(
-					'name' => __( 'Call to Action Title' ),
-					'desc' => __( 'The title to appear in the Call to Action' ),
-					'id'   => $prefix.'cta_title',
-					'type' => 'text',
+					'name'    => 'Expires',
+					'desc'    => 'The expiration date of the centerpiece.',
+					'id'      => $prefix.'expires',
+					'type'    => 'date'
 				),
 				array(
-					'name' => __( 'Call to Action Content' ),
-					'desc' => __( 'The content to appear in the Call to Action' ),
-					'id'   => $prefix.'cta_content',
-					'type' => 'textarea',
+					'name'    => __( 'Call to Action Title' ),
+					'desc'    => __( 'The title to appear in the Call to Action' ),
+					'id'      => $prefix.'cta_title',
+					'type'    => 'text',
 				),
 				array(
-					'name' => __( 'Call to Action Button Text' ),
-					'desc' => __( 'The text to appear in the Call to Action Button' ),
-					'id'   => $prefix.'cta_button_text',
-					'type' => 'text',
+					'name'    => __( 'Call to Action Content' ),
+					'desc'    => __( 'The content to appear in the Call to Action' ),
+					'id'      => $prefix.'cta_content',
+					'type'    => 'textarea',
 				),
 				array(
-					'name' => __( 'Call to Action Button Link' ),
-					'desc' => __( 'The link to use for the Call to Action Button' ),
-					'id'   => $prefix.'cta_button_link',
-					'type' => 'text',
+					'name'    => __( 'Call to Action Button Text' ),
+					'desc'    => __( 'The text to appear in the Call to Action Button' ),
+					'id'      => $prefix.'cta_button_text',
+					'type'    => 'text',
+				),
+				array(
+					'name'    => __( 'Call to Action Button Link' ),
+					'desc'    => __( 'The link to use for the Call to Action Button' ),
+					'id'      => $prefix.'cta_button_link',
+					'type'    => 'text',
 				),
 			);
 	}

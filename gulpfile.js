@@ -88,7 +88,7 @@ gulp.task('watch', function() {
   if (config.sync) {
     browserSync.init({
         proxy: {
-          target: "localhost/wordpress/devos"
+          target: "localhost/devos"
         }
     });
   }

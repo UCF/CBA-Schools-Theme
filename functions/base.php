@@ -209,6 +209,23 @@ class TextField extends Field{
 	}
 }
 
+/*
+ * DateSelector class represents a date input
+ *
+ * @package default
+ * @author Jim Barnes
+ **/
+class DateSelector extends Field {
+	protected $type_attr = 'date';
+
+	function input_html() {
+		ob_start();
+		?>
+		<input type="<?php echo $this->type_attr; ?>" id="<?php echo htmlentities($this->id); ?>" name="<?php echo htmlentities($this->id); ?>" value="<?php echo htmlentities($this->value); ?>" />
+		<?php
+		return ob_get_clean();
+	}
+}
 
 /**
  * PasswordField can be used to accept sensitive information, not encrypted on
@@ -1668,7 +1685,8 @@ function _show_meta_boxes($post, $meta_box){
 			<?php switch ($field['type']):
 				case 'text':?>
 				<input type="text" name="<?=$field['id']?>" id="<?=$field['id']?>" value="<?=($current_value) ? htmlentities($current_value) : $field['std']?>" />
-
+			<?php break; case 'date': ?>
+				<input type="date" name="<?php echo $field['id']; ?>" id="<?php echo $field['id']; ?>" value="<?php echo ( $current_value ) ? htmlentities($current_value) : $field['default']; ?>" />
 			<?php break; case 'textarea':?>
 				<textarea name="<?=$field['id']?>" id="<?=$field['id']?>" cols="60" rows="4"><?=($current_value) ? htmlentities($current_value) : $field['std']?></textarea>
 
