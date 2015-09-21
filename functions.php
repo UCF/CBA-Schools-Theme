@@ -706,7 +706,8 @@ add_filter( 'manage_publication_posts_custom_column', 'publication_render_column
 function append_centerpiece_metadata( $post ) {
 
 	$post->image = wp_get_attachment_url( get_post_meta( $post->ID, 'centerpiece_image', TRUE ) );
-	$post->thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ) );
+	$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ) );
+	$post->thumbnail = $thumbnail[0];
 	$post->cta_title = get_post_meta( $post->ID, 'centerpiece_cta_title', TRUE );
 	$post->cta_content = get_post_meta( $post->ID, 'centerpiece_cta_content', TRUE );
 	$post->cta_button_link = get_post_meta( $post->ID, 'centerpiece_cta_button_link', TRUE );
@@ -762,11 +763,8 @@ function display_home_centerpieces() {
 		<?php foreach ( $posts as $idx=>$post ) : ?>
 			<div class="item<?php echo ( $idx == 0 ) ? ' active' : ''; ?>">
 				<img src="<?php echo $post->image; ?>" alt="">
-				<div class="carousel-caption">
-					<h2><?php echo $post->post_title; ?></h2>
-				</div>
 				<div class="carousel-cta">
-					<h3><?php echo $post->cta_title; ?></h3>
+					<h2><?php echo $post->cta_title; ?></h2>
 					<p class="pull-left"><?php echo $post->cta_content; ?></p>
 					<a href="<?php echo $post->cta_button_link; ?>" class="btn btn-lg btn-cta pull-right">
 						<?php echo $post->cta_button_text; ?>

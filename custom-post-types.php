@@ -500,7 +500,7 @@ class Centerpiece extends CustomPostType {
 		$public         = True,
 		$use_editor     = False,
 		$use_excerpt    = False,
-		$use_thumbnails = False,
+		$use_thumbnails = True,
 		$use_order      = False,
 		$use_title      = True,
 		$use_metabox    = True,

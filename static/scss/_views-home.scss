@@ -156,6 +156,35 @@
     }
   }
 
+  .carousel-indicators {
+    bottom: 10px;
+    left: 10px;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-bottom: 0;
+    position: absolute;
+    text-align: left;
+
+    li {
+      background-color: transparent;
+      border: 0;
+      border-radius: 0;
+      height: 75px;
+      margin: 0;
+      width: 75px;
+
+      &.active {
+        border: 1px solid $school-dark-gray;
+      }
+
+      img {
+        height: 73px;
+        position: absolute;
+        width: 73px;
+      }
+    }
+  }
+
   .carousel-cta {
     background-color: $school-blue;
     bottom: 0;
