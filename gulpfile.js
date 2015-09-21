@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+    config = require('./config.json'),
     sass = require('gulp-sass'),
     minifyCss = require('gulp-minify-css'),
     bless = require('gulp-bless'),
@@ -21,7 +22,7 @@ var config = {
   fontPath: './static/fonts',
   phpPath: './',
   bowerDir: './static/bower_components',
-  sync: false,
+  sync: config.sync,
 };
 
 

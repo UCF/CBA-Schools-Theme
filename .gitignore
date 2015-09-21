@@ -32,3 +32,5 @@ typings/*
 
 # Gulp
 node_modules/*
+# developer specific settings
+config.json
