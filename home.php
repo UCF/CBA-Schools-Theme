@@ -28,6 +28,14 @@
 			</section>
 		</div>
 		<div class="col-sm-8">
+			<section class="home-page-banner">
+				<?php
+					$image = get_theme_mod_or_default( 'home_page_banner' );
+					if ( $image ) :
+				?>
+				<img src="<?php echo $image; ?>" alt="home page banner" class="img-responsive">
+				<?php endif; ?>
+			</section>
 			<section class="feature-photos">
 				<?php echo display_home_centerpieces(); ?>
 			</section>
