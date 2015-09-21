@@ -181,16 +181,16 @@
     width: 100%;
   }
 
-  p {
+  p.main {
     border-bottom: solid 1px $school-gray-line;
     color: #fff;
     font-size: 12px;
     padding-bottom: 8px;
   }
 
-  a,
-  a:active,
-  a:visited {
+  a.learn-more,
+  a.learn-more:active,
+  a.learn-more:visited {
     color: #fff;
     display: inline-block;
     font-size: 12px;
@@ -210,6 +210,19 @@
     margin-top: 8px;
     padding: 8px;
     text-align: center;
+
+    a,
+    a,
+    a {
+      color: #000;
+      font-weight: 700;
+    }
+
+    p {
+      font-style: italic;
+      margin: 0;
+    }
+
   }
 }
 
