@@ -17,6 +17,14 @@
 						)
 					);
 			?>
+			<?php
+				$cta = get_post_meta( $post->ID, 'page_cta_markup', true );
+
+				if ( $cta ) : ?>
+				<div class="call-to-action">
+				<?php echo apply_filters( 'the_content', $cta ); ?>
+				</div>
+			<?php endif; ?>
 		</div>
 		<div class="col-md-8">
 			<h1><?php the_title(); ?></h1>
