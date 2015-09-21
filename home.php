@@ -19,7 +19,8 @@
 			?>
 			<section id="facebook">
 				<h3>DeVos on FACEBOOK</h3>
-				<a href="">Get Social</a>
+				<?php echo do_shortcode( '[facebook_posts]' ); ?>
+				<a href="<?php echo get_theme_mod_or_default( 'facebook_url' ) ?>" class="all-posts">Get Social</a>
 			</section>
 			<section>
 				<?php

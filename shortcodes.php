@@ -954,4 +954,9 @@ function sc_publication( $attr, $content='' ) {
 }
 add_shortcode( 'publication', 'sc_publication' );
 
+function sc_facebook_posts( $attr ) {
+	echo get_facebook_posts();
+}
+add_shortcode( 'facebook_posts', 'sc_facebook_posts' );
+
 ?>

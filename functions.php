@@ -85,6 +85,48 @@ function display_site_social($alt=false, $classes=null) {
 
 
 /**
+ * Get Facebook Posts
+ **/
+function get_facebook_posts() {
+	$access_token = "";
+	$url = "https://graph.facebook.com/v2.4/me/posts?access_token="
+		.$access_token."&fields=link%2Cpicture%2Cmessage%2Ccreated_time&format=json&limit=3&method=get&pretty=1&suppress_http_code=1";
+	ob_start();
+
+	$json = file_get_contents( $url );
+	$obj = json_decode( $json );
+	ob_start();
+
+	foreach ( $obj->data as $post ) {
+		$message = 'View Post';
+		if( !empty( $post->message ) )  {
+			$message = $post->message;
+		}
+	?>
+		<div class="row">
+			<a href="<?php echo $post->link; ?>">
+				<div class="col-xs-3">
+					<img src="<?php echo $post->picture; ?>" width="100%">
+				</div>
+				<div class="col-xs-9">
+					<h4><?php echo date_format( date_create( $post->created_time ), 'M d \a\t g:i A' ); ?></h4>
+					<p><?php echo $post->message; ?></p>
+				</div>
+			</a>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<hr>
+			</div>
+		</div>
+	<?php
+	}
+
+	return ob_get_clean();
+}
+
+
+/**
  * Display address information (from theme options)
  **/
 function display_contact_address() {

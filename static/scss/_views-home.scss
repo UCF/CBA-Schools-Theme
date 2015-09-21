@@ -140,6 +140,7 @@
   margin-bottom: 20px;
 
   h3 {
+    border-bottom: 1px solid $school-blue;
     color: $school-blue;
     font-size: 14px;
     font-weight: 700;
@@ -147,7 +148,28 @@
     padding-bottom: 8px;
   }
 
-  a {
+  .row {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+  }
+
+  h4 {
+    font-size: 12px;
+    margin: 3px 0;
+  }
+
+  p {
+    color: #000;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  hr {
+    border-bottom: 1px solid $school-blue;
+    margin: 0;
+  }
+
+  a.all-posts {
     display: inline-block;
     font-size: 12px;
     font-weight: 700;
