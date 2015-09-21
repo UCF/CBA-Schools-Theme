@@ -482,7 +482,7 @@ class Publication extends CustomPostType {
 			<?php endif; ?>
 					<?php echo get_the_post_thumbnail( $object->ID ); ?>
 				</a>
-			<a href="" class="more-publications">More Publications</a>
+			<a href="publications/" class="more-publications">More Publications</a>
 		</div>
 	<?php
 		return ob_get_clean();
