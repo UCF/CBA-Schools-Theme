@@ -764,7 +764,7 @@ function display_home_centerpieces() {
 			<div class="item<?php echo ( $idx == 0 ) ? ' active' : ''; ?>">
 				<img src="<?php echo $post->image; ?>" alt="">
 				<div class="carousel-cta">
-					<h2><?php echo $post->cta_title; ?></h2>
+					<h3><?php echo $post->cta_title; ?></h3>
 					<p class="pull-left"><?php echo $post->cta_content; ?></p>
 					<a href="<?php echo $post->cta_button_link; ?>" class="btn btn-lg btn-cta pull-right">
 						<?php echo $post->cta_button_text; ?>

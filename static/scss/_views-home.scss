@@ -190,9 +190,10 @@
     top: auto;
     width: 30%;
 
-    h2 {
+    h3 {
       color: #fff;
       border-bottom: 1px solid #fff;
+      font-size: 16px;
       margin-top: 0;
       padding-bottom: 5px;
       text-align: center;
@@ -200,6 +201,9 @@
     }
 
     p {
+      font-size: 12px;
+      padding-right: 10px;
+      text-align: right;
       width: 70%;
     }
 
@@ -208,7 +212,9 @@
       border: 1px solid #000;
       border-radius: 0;
       color: #fff;
-      font-weight: 500;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px;
       text-overflow: ellipsis;
       white-space: normal;
       width: 30%;

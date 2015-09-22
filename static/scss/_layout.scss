@@ -635,6 +635,10 @@ main {
         line-height: 1;
         margin-top: 0;
 
+        a {
+          color: #000;
+        }
+
         @media (max-width: $screen-sm-max) {
           font-size: $font-size-h1-xs;
         }

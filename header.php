@@ -57,7 +57,7 @@
 						<?php if ( is_home() ) : ?>
 							<h1><?php echo get_bloginfo( 'name' ); ?></h1>
 						<?php else: ?>
-							<span class="h1"><?php echo get_bloginfo( 'name' ); ?></span>
+							<span class="h1"><a href="<?php echo bloginfo( 'url' ); ?>"><?php echo get_bloginfo( 'name' ); ?></a></span>
 						<?php endif; ?>
 					</div>
 					<div class="school-contact-info col-sm-6 col-lg-8">
