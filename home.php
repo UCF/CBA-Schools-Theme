@@ -3,32 +3,22 @@
 <?php get_header(); ?>
 <div class="container">
 	<div class="row">
-		<div class="col-sm-4">
+		<div class="col-sm-8 col-sm-push-4">
+			<div class="visible-xs-block">
 			<?php
 				wp_nav_menu(
-						array(
-							'theme_location' => 'devos-menu',
-							'container'      => 'false',
-							'menu_class'     => 'menu '.get_header_styles().' nav-stacked side-menu',
-							'menu_id'        => 'side-menu',
-							'depth'          => 3,
-							'link_before'    => '<span>',
-							'link_after'     => '</span>'
-						)
-					);
+					array(
+						'theme_location' => 'devos-menu',
+						'container'      => 'false',
+						'menu_class'     => 'menu '.get_header_styles().' nav-stacked side-menu',
+						'menu_id'        => 'side-menu',
+						'depth'          => 3,
+						'link_before'    => '<span>',
+						'link_after'     => '</span>'
+					)
+				);
 			?>
-			<section id="facebook">
-				<h3>DeVos on FACEBOOK</h3>
-				<?php echo do_shortcode( '[facebook_posts]' ); ?>
-				<a href="<?php echo get_theme_mod_or_default( 'facebook_url' ) ?>" class="all-posts">Get Social</a>
-			</section>
-			<section>
-				<?php
-					echo do_shortcode( '[spotlight id="' . get_theme_mod_or_default( 'home_page_spotlight' ) . '"]' );
-				?>
-			</section>
-		</div>
-		<div class="col-sm-8">
+			</div>
 			<section class="home-page-banner">
 				<?php
 					$image = get_theme_mod_or_default( 'home_page_banner' );
@@ -50,6 +40,33 @@
 					?>
 				</div>
 			</div>
+		</div>
+		<div class="col-sm-4 col-sm-pull-8">
+			<div class="hidden-xs">
+			<?php
+				wp_nav_menu(
+					array(
+						'theme_location' => 'devos-menu',
+						'container'      => 'false',
+						'menu_class'     => 'menu '.get_header_styles().' nav-stacked side-menu',
+						'menu_id'        => 'side-menu',
+						'depth'          => 3,
+						'link_before'    => '<span>',
+						'link_after'     => '</span>'
+					)
+				);
+			?>
+			</div>
+			<section id="facebook">
+				<h3>DeVos on FACEBOOK</h3>
+				<?php echo do_shortcode( '[facebook_posts]' ); ?>
+				<a href="<?php echo get_theme_mod_or_default( 'facebook_url' ) ?>" class="all-posts">Get Social</a>
+			</section>
+			<section>
+				<?php
+					echo do_shortcode( '[spotlight id="' . get_theme_mod_or_default( 'home_page_spotlight' ) . '"]' );
+				?>
+			</section>
 		</div>
 	</div>
 </div>
