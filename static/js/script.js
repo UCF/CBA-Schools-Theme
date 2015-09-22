@@ -697,7 +697,7 @@ var splitFooterMenu = function ($) {
  * Display the side menu subnav
  */
 var showSubMenu = function ($) {
-  var $currentPage = $('#side-menu').find('.current_page_item'),
+  var $currentPage = $('.side-menu').find('.current_page_item'),
     $parent = $currentPage.parent();
 
   if ($parent.hasClass('sub-menu')) {

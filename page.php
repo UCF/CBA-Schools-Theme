@@ -3,13 +3,34 @@
 <?php get_header(); the_post(); ?>
 <div class="container">
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-sm-8 col-sm-push-4">
+			<h1><?php the_title(); ?></h1>
+			<div class="visible-xs-block">
+				<?php
+				wp_nav_menu(
+						array(
+							'theme_location' => 'devos-menu',
+							'container'      => 'false',
+							'menu_class'     => 'menu '.get_header_styles().' nav-stacked side-menu',
+							'menu_id'        => 'side-menu',
+							'depth'          => 3,
+							'link_before'    => '<span>',
+							'link_after'     => '</span>'
+						)
+					);
+				?>
+			</div>
+			<article id="article-<?php echo $post->post_name; ?>">
+				<?php the_content(); ?>
+			</article>
+		</div>
+		<div class="col-sm-4 col-sm-pull-8">
 			<?php
 				wp_nav_menu(
 						array(
 							'theme_location' => 'devos-menu',
 							'container'      => 'false',
-							'menu_class'     => 'menu '.get_header_styles().' nav-stacked',
+							'menu_class'     => 'menu '.get_header_styles().' nav-stacked side-menu',
 							'menu_id'        => 'side-menu',
 							'depth'          => 3,
 							'link_before'    => '<span>',
@@ -25,12 +46,6 @@
 				<?php echo apply_filters( 'the_content', $cta ); ?>
 				</div>
 			<?php endif; ?>
-		</div>
-		<div class="col-md-8">
-			<h1><?php the_title(); ?></h1>
-			<article id="article-<?php echo $post->post_name; ?>">
-				<?php the_content(); ?>
-			</article>
 		</div>
 	</div>
 </div>

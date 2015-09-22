@@ -9,7 +9,7 @@
 						array(
 							'theme_location' => 'devos-menu',
 							'container'      => 'false',
-							'menu_class'     => 'menu '.get_header_styles().' nav-stacked',
+							'menu_class'     => 'menu '.get_header_styles().' nav-stacked side-menu',
 							'menu_id'        => 'side-menu',
 							'depth'          => 3,
 							'link_before'    => '<span>',
