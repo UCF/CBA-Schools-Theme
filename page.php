@@ -25,6 +25,7 @@
 			</article>
 		</div>
 		<div class="col-sm-4 col-sm-pull-8">
+			<div class="hidden-xs">
 			<?php
 				wp_nav_menu(
 						array(
@@ -38,6 +39,7 @@
 						)
 					);
 			?>
+			</div>
 			<?php
 				$cta = get_post_meta( $post->ID, 'page_cta_markup', true );
 
