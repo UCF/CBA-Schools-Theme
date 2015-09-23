@@ -716,6 +716,19 @@ function append_centerpiece_metadata( $post ) {
 	return $post;
 }
 
+function append_person_metadata( $post ) {
+	$post->thumbnail           = get_the_post_thumbnail( $post->ID, 'thumbnail', array( 'class' => 'img-responsive img-rounded' ) );
+	$post->hometown            = get_post_meta( $post->ID, 'person_hometown', TRUE );
+	$post->undergrad_institute = get_post_meta( $post->ID, 'person_undergrad_insitution', TRUE );
+	$post->undergrad_degree    = get_post_meta( $post->ID, 'person_undergrad_degree', TRUE );
+	$post->postgrad_degree     = get_post_meta( $post->ID, 'person_postgrad_degree', TRUE );
+	$post->internships         = get_post_meta( $post->ID, 'person_internships', TRUE );
+	$post->outreach            = get_post_meta( $post->ID, 'person_outreach', TRUE );
+	$post->career              = get_post_meta( $post->ID, 'person_career', TRUE );
+
+	return $posts;
+}
+
 function display_home_centerpieces() {
 	$date = date('m/d/Y');
 	$args = array(

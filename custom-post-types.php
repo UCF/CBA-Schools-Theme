@@ -317,6 +317,157 @@ class Page extends CustomPostType {
 	}
 }
 
+class Person extends CustomPostType {
+	public
+		$name           = 'person',
+		$plural_name    = 'People',
+		$singular_name  = 'Person',
+		$add_new_item   = 'Add New Person',
+		$edit_item      = 'Edit Person',
+		$new_item       = 'New Person',
+		$public         = True,
+		$use_editor     = True,
+		$use_thumbnails = True,
+		$use_order      = True,
+		$use_title      = True,
+		$use_metabox    = True,
+		$taxonomies     = array('cohorts');
+
+	public function fields() {
+		$prefix = $this->options( 'name' ).'_';
+		return array(
+			array(
+				'name' => 'Hometown',
+				'desc' => 'The hometown of the student',
+				'id'   => $prefix.'hometown',
+				'type' => 'text'
+			),
+			array(
+				'name' => 'Undergraduate Institution',
+				'desc' => 'The student\'s undergraduate institution',
+				'id'   => $prefix.'undergrad_institution',
+				'type' => 'text'
+			),
+			array(
+				'name' => 'Undergraduate Degree',
+				'desc' => 'The student\'s undergraduate degree',
+				'id'   => $prefix.'undergrad_degree',
+				'type' => 'text'
+			),
+			array(
+				'name' => 'PostGraduate Degree',
+				'desc' => '',
+				'id'   => $prefix.'postgrad_degree',
+				'type' => 'text'
+			),
+			array(
+				'name' => 'Assistantships and Interships',
+				'desc' => 'The student\'s past internships and assistantships',
+				'id'   => $prefix.'internships',
+				'type' => 'text'
+			),
+			array(
+				'name' => 'Community Outreach',
+				'desc' => '',
+				'id'   => $prefix.'outreach',
+				'type' => 'text'
+			),
+			array(
+				'name' => 'Career Aspirations',
+				'desc' => '',
+				'id'   => $prefix.'career',
+				'type' => 'text'
+			)
+		);
+	}
+
+	public function toHTML( $object ) {
+		append_person_metadata( $object );
+
+		ob_start();
+
+		?>
+		<div class="col-sm-4">
+			<a href="#" data-toggle="modal" data-target="#person-modal-<?php echo $object->ID; ?>">
+				<div class="thumbnail person">
+				<?php echo $object->thumbnail; ?>
+				<div class="caption">
+					<h3><?php echo $object->post_title; ?></h3>
+				</div>
+				</div>
+			</a>
+		</div>
+		<div class="modal fade" id="person-modal-<?php echo $object->ID; ?>" tab-index="-1" role="dialog" aria-labelledby="<?php echo $object->title; ?>">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h2><?php echo $object->post_title; ?>
+					</div>
+					<div class="modal-body">
+						<dl class="person dl-horizontal">
+						<?php if ( $object->hometown ) : ?>
+							<dt>Hometown:</dt>
+							<dd><?php echo $object->hometown; ?></dd>
+						<?php endif; ?>
+						<?php if ( $object->undergrad_institution ) : ?>
+							<dt>Undergraduate Institution</dt>
+							<dd><?php echo $object->undergrad_institution; ?></dd>
+						<?php endif; ?>
+						<?php if ( $object->undergrad_degree ) : ?>
+							<dt>Undergraduate Degree</dt>
+							<dd><?php echo $object->undergrad_degree; ?></dd>
+						<?php endif; ?>
+						<?php if ( $object->postgrad_degree ) : ?>
+							<dt>Postgraduate Degree</dt>
+							<dd><?php echo $object->postgrad_degree; ?></dd>
+						<?php endif; ?>
+						<?php if ( $object->internships ) : ?>
+							<dt>Assistantships and Internships</dt>
+							<dd><?php echo $object->internships; ?></dd>
+						<?php endif; ?>
+						<?php if ( $object->outreach ) : ?>
+							<dt>Community Outreach</dt>
+							<dd><?php echo $object->outreach; ?></dd>
+						<?php endif; ?>
+						<?php if ( $object->career ) : ?>
+							<dt>Career Aspirations</dt>
+							<dd><?php echo $object->career; ?></dd>
+						<?php endif; ?>
+						</dl>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php
+
+		return ob_get_clean();
+	}
+
+	public function objectsToHTML( $objects, $css_classes ) {
+		if ( count( $objects ) < 1 ) { return ''; }
+
+		$class = get_custom_post_type($objects[0]->post_type);
+		$class = new $class;
+
+		ob_start();
+
+		?>
+		<div class="row person-list">
+		<?php 
+			$person = new Person();
+			foreach( $objects as $object ) {
+				echo $person::toHTML( $object );
+			}
+		?>
+		</div>
+		<?php
+
+		return ob_get_clean();
+	}
+
+}
+
 class Post extends CustomPostType {
 	public
 		$name           = 'post',
