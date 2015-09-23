@@ -405,36 +405,43 @@ class Person extends CustomPostType {
 						<h2><?php echo $object->post_title; ?>
 					</div>
 					<div class="modal-body">
-						<dl class="person dl-horizontal">
-						<?php if ( $object->hometown ) : ?>
-							<dt>Hometown:</dt>
-							<dd><?php echo $object->hometown; ?></dd>
-						<?php endif; ?>
-						<?php if ( $object->undergrad_institution ) : ?>
-							<dt>Undergraduate Institution</dt>
-							<dd><?php echo $object->undergrad_institution; ?></dd>
-						<?php endif; ?>
-						<?php if ( $object->undergrad_degree ) : ?>
-							<dt>Undergraduate Degree</dt>
-							<dd><?php echo $object->undergrad_degree; ?></dd>
-						<?php endif; ?>
-						<?php if ( $object->postgrad_degree ) : ?>
-							<dt>Postgraduate Degree</dt>
-							<dd><?php echo $object->postgrad_degree; ?></dd>
-						<?php endif; ?>
-						<?php if ( $object->internships ) : ?>
-							<dt>Assistantships and Internships</dt>
-							<dd><?php echo $object->internships; ?></dd>
-						<?php endif; ?>
-						<?php if ( $object->outreach ) : ?>
-							<dt>Community Outreach</dt>
-							<dd><?php echo $object->outreach; ?></dd>
-						<?php endif; ?>
-						<?php if ( $object->career ) : ?>
-							<dt>Career Aspirations</dt>
-							<dd><?php echo $object->career; ?></dd>
-						<?php endif; ?>
-						</dl>
+						<div class="row">
+							<div class="col-sm-3">
+						<?php echo $object->thumbnail; ?>
+							</div>
+							<div class="col-sm-9">
+								<dl class="person dl-horizontal">
+								<?php if ( $object->hometown ) : ?>
+									<dt>Hometown:</dt>
+									<dd><?php echo $object->hometown; ?></dd>
+								<?php endif; ?>
+								<?php if ( $object->undergrad_institution ) : ?>
+									<dt>Undergraduate Institution</dt>
+									<dd><?php echo $object->undergrad_institution; ?></dd>
+								<?php endif; ?>
+								<?php if ( $object->undergrad_degree ) : ?>
+									<dt>Undergraduate Degree</dt>
+									<dd><?php echo $object->undergrad_degree; ?></dd>
+								<?php endif; ?>
+								<?php if ( $object->postgrad_degree ) : ?>
+									<dt>Postgraduate Degree</dt>
+									<dd><?php echo $object->postgrad_degree; ?></dd>
+								<?php endif; ?>
+								<?php if ( $object->internships ) : ?>
+									<dt>Internships</dt>
+									<dd><?php echo $object->internships; ?></dd>
+								<?php endif; ?>
+								<?php if ( $object->outreach ) : ?>
+									<dt>Community Outreach</dt>
+									<dd><?php echo $object->outreach; ?></dd>
+								<?php endif; ?>
+								<?php if ( $object->career ) : ?>
+									<dt>Career Aspirations</dt>
+									<dd><?php echo $object->career; ?></dd>
+								<?php endif; ?>
+								</dl>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
