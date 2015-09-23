@@ -382,20 +382,62 @@ class Person extends CustomPostType {
 	}
 
 	public function toHTML( $object ) {
-		$thumbnail  = get_the_post_thumbnail( $object->ID, 'thumbnail', array( 'class' => 'img-responsive img-rounded' ) );
+		append_person_metadata( $object );
 
 		ob_start();
 
 		?>
 		<div class="col-sm-4">
-			<a href="<?php echo get_permalink( $object->ID );?>">
+			<a href="#" data-toggle="modal" data-target="#person-modal-<?php echo $object->ID; ?>">
 				<div class="thumbnail person">
-				<?php echo $thumbnail; ?>
+				<?php echo $object->thumbnail; ?>
 				<div class="caption">
 					<h3><?php echo $object->post_title; ?></h3>
 				</div>
 				</div>
 			</a>
+		</div>
+		<div class="modal fade" id="person-modal-<?php echo $object->ID; ?>" tab-index="-1" role="dialog" aria-labelledby="<?php echo $object->title; ?>">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h2><?php echo $object->post_title; ?>
+					</div>
+					<div class="modal-body">
+						<dl class="person dl-horizontal">
+						<?php if ( $object->hometown ) : ?>
+							<dt>Hometown:</dt>
+							<dd><?php echo $object->hometown; ?></dd>
+						<?php endif; ?>
+						<?php if ( $object->undergrad_institution ) : ?>
+							<dt>Undergraduate Institution</dt>
+							<dd><?php echo $object->undergrad_institution; ?></dd>
+						<?php endif; ?>
+						<?php if ( $object->undergrad_degree ) : ?>
+							<dt>Undergraduate Degree</dt>
+							<dd><?php echo $object->undergrad_degree; ?></dd>
+						<?php endif; ?>
+						<?php if ( $object->postgrad_degree ) : ?>
+							<dt>Postgraduate Degree</dt>
+							<dd><?php echo $object->postgrad_degree; ?></dd>
+						<?php endif; ?>
+						<?php if ( $object->internships ) : ?>
+							<dt>Assistantships and Internships</dt>
+							<dd><?php echo $object->internships; ?></dd>
+						<?php endif; ?>
+						<?php if ( $object->outreach ) : ?>
+							<dt>Community Outreach</dt>
+							<dd><?php echo $object->outreach; ?></dd>
+						<?php endif; ?>
+						<?php if ( $object->career ) : ?>
+							<dt>Career Aspirations</dt>
+							<dd><?php echo $object->career; ?></dd>
+						<?php endif; ?>
+						</dl>
+					</div>
+				</div>
+			</div>
 		</div>
 		<?php
 
