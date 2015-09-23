@@ -29,9 +29,9 @@
   }
 
   &.js-feature-photo {
+    left: 0;
     position: absolute;
     top: 0;
-    left: 0;
   }
 }
 
@@ -140,14 +140,20 @@
 }
 
 #centerpiece-carousel {
+  margin-bottom: 20px;
+
   .carousel-indicators {
     bottom: 10px;
     left: 10px;
-    margin-bottom: 0;
+    margin-bottom: 15px;
     margin-left: 0;
     padding-bottom: 0;
     position: absolute;
     text-align: left;
+
+    @media (max-width: $screen-xs-max) {
+      display: none;
+    }
 
     li {
       background-color: transparent;
@@ -184,15 +190,26 @@
     bottom: 0;
     color: #fff;
     left: auto;
+    margin: 10px;
     padding: 10px;
     position: absolute;
     right: 0;
     top: auto;
     width: 30%;
 
+    @media (max-width: $screen-md-max) {
+      width: 50%;
+    }
+
+    @media (max-width: $screen-xs-max) {
+      margin: 0;
+      position: static;
+      width: 100%;
+    }
+
     h3 {
-      color: #fff;
       border-bottom: 1px solid #fff;
+      color: #fff;
       font-size: 16px;
       margin-top: 0;
       padding-bottom: 5px;
@@ -236,8 +253,8 @@
   }
 
   .row {
-    padding-bottom: 5px;
     margin-bottom: 5px;
+    padding-bottom: 5px;
   }
 
   h4 {
@@ -266,7 +283,7 @@
 
     &::after {
       color: #000;
-      content: " \203A ";
+      content: ' \203A ';
     }
   }
 }
@@ -314,7 +331,7 @@
     width: 100%;
 
     &::after {
-      content: "\203A";
+      content: '\203A';
     }
   }
 
@@ -366,8 +383,8 @@
   }
 
   img {
-    width: 100%;
     height: auto;
+    width: 100%;
   }
 
   .more-publications {
@@ -381,7 +398,7 @@
     width: 100%;
 
     &::after {
-      content: " \203A";
+      content: ' \203A';
     }
   }
 }
@@ -426,10 +443,10 @@
     @media (max-width: $screen-xs-max) {
       margin-left: 0;
       margin-right: 0;
+      -webkit-overflow-scrolling: touch;
       overflow-x: scroll;
       overflow-y: hidden;
       white-space: nowrap;
-      -webkit-overflow-scrolling: touch;
       width: 100%;
     }
 

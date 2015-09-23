@@ -1,10 +1,3 @@
-// @codekit-prepend "../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js";
-// @codekit-prepend "../bower_components/jquery.dotdotdot/src/js/jquery.dotdotdot.js";
-// @codekit-prepend "../bower_components/jquery-placeholder/jquery.placeholder.js";
-// @codekit-prepend "webcom-base.js";
-// @codekit-prepend "generic-base.js";
-
-
 // Define globals for JSHint validation:
 /* global console, ga, DocumentTouch */
 
@@ -499,155 +492,6 @@ var mobilePrimaryNavToggle = function($) {
 
 
 /*
- * Handle left/right nav arrow button clicks on .horizontal-scroll boxes
- */
-var horizontalScrolls = function($) {
-  $('.horizontal-scroll-container').each(function() {
-    var $container      = $(this);
-    var $btnLeft        = $container.find('.horizontal-scroll-toggle.left');
-    var $btnRight       = $container.find('.horizontal-scroll-toggle.right');
-    var $scrollBox      = $container.find('.horizontal-scroll');
-    var $scrollBoxItems = $scrollBox.find('.horizontal-scroll-item');
-
-    // x-overflowing div width only calculates apparent window width.
-    // Need to calculate the combined widths of all child items
-    // to get the value that we need.
-    function getItemListWidth() {
-      var width = 0;
-      $scrollBoxItems.each(function() {
-        width += $(this).outerWidth(true) + 4; // Add 4px to accomodate for inline-block gaping
-      });
-      return width;
-    }
-
-    var toggleDisabledClasses = function() {
-      var visibleItemListWidth = getItemListWidth();
-      var scrollRight = $scrollBox.width() + $scrollBox.scrollLeft();
-
-      // left icon
-      if ($scrollBox.scrollLeft() === 0) {
-        $btnLeft.addClass('disabled');
-      }
-      else {
-        $btnLeft.removeClass('disabled');
-      }
-
-      // right icon
-      if (visibleItemListWidth < $scrollBox.width() || scrollRight >= visibleItemListWidth) {
-        $btnRight.addClass('disabled');
-      }
-      else {
-        $btnRight.removeClass('disabled');
-      }
-    };
-
-    var doScroll = function(e) {
-      e.preventDefault();
-
-      var $btn            = $(this);
-      var newScrollVal    = 0;
-      var curScrollVal    = $scrollBox.scrollLeft();
-      var itemListWidth   = getItemListWidth() + $scrollBox.width();
-
-      // Get the number of pixels to scroll the itemList
-      if ($btn.hasClass('right')) {
-        newScrollVal = curScrollVal + $scrollBox.width();
-        newScrollVal = (newScrollVal > itemListWidth - $scrollBox.width()) ? itemListWidth - $scrollBox.width() : newScrollVal;
-      }
-      else if ($btn.hasClass('left')) {
-        newScrollVal = curScrollVal - $scrollBox.width();
-        newScrollVal = (newScrollVal < 0) ? 0 : newScrollVal;
-      }
-
-      // Animate scrolling
-      if (curScrollVal !== newScrollVal) {
-        $scrollBox
-          .animate({
-            scrollLeft: newScrollVal
-          }, 400);
-      }
-
-      setTimeout(toggleDisabledClasses, 400);
-    };
-
-
-    toggleDisabledClasses();
-    $(window).on('resize', toggleDisabledClasses);
-
-    $btnLeft
-      .add($btnRight)
-      .on('click', doScroll);
-  });
-};
-
-
-/*
- * Handle home page feature carousel
- */
-var homepagefeatureSlider = function($) {
-  var $featuresWrap = $('.feature-photos');
-  var $features = $featuresWrap.find('.feature-photo');
-  var timer;
-
-  var activateNewSlide = function() {
-    var $activeSlide = $features.filter('.active');
-    var $newSlide = null;
-
-    if ($activeSlide.is(':last-child') || $activeSlide.next().hasClass('feature-photo') === false) {
-      $newSlide = $features.filter(':first-child');
-    }
-    else {
-      $newSlide = $activeSlide.next();
-    }
-
-    $newSlide.fadeIn('slow', function() {
-      $(this).addClass('active');
-    });
-    $activeSlide.fadeOut('slow', function() {
-      $(this).removeClass('active');
-    });
-  };
-
-  var setViewportHeight = function() {
-    var maxHeight = Math.max.apply(null, $('.feature-photo' ).map(function() {
-      return $(this).height();
-    }).get() );
-
-    $featuresWrap.height(maxHeight);
-  };
-
-  var startTimer = function() {
-    timer = setInterval(activateNewSlide, 7000);
-  };
-
-  var unsetTimer = function() {
-    timer = clearInterval(timer);
-  };
-
-  if ($('#body-home').length && $features.length > 1) {
-    // Apply necessary styles for slideshow functionality
-    $features.addClass('js-feature-photo');
-
-    // .feature-photos must be absolutely positioned to transition
-    // properly.  Manually set the parent container's height to accommodate
-    $(window).on('load resize', setViewportHeight);
-
-    // Set transitions for each slide
-    startTimer();
-    $features.hover(
-      function() {
-        unsetTimer();
-      },
-      function() {
-        unsetTimer();
-        startTimer();
-      }
-    );
-  }
-};
-
-
-/*
  * Make sure embedded videos are responsive.  Also fixes youtube z-index issues
  */
 var responsiveVideos = function($) {
@@ -710,7 +554,9 @@ var showSubMenu = function ($) {
 
 
 if (typeof jQuery !== 'undefined'){
-  jQuery(document).ready(function($) {
+  jQuery(document).ready(function ($) {
+    var $centerpieceCarousel = $('#centerpiece-carousel');
+
     Webcom.handleExternalLinks($);
     Webcom.loadMoreSearchResults($);
 
@@ -729,8 +575,9 @@ if (typeof jQuery !== 'undefined'){
     primaryNavSubmenuColSizing($);
     primaryNavBgToggle($);
     mobilePrimaryNavToggle($);
-    horizontalScrolls($);
-    homepagefeatureSlider($);
+    if ($(document).width() > 768 && $centerpieceCarousel.find('.item').length > 1) {
+      $centerpieceCarousel.carousel().carousel('cycle');
+    }
     responsiveVideos($);
     splitFooterMenu($);
     showSubMenu($);

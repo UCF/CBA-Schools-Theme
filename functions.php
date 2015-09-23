@@ -749,7 +749,7 @@ function display_home_centerpieces() {
 
 	?>
 
-	<div id="centerpiece-carousel" class="carousel<?php echo ( $count > 1 ) ? ' slide' : ''; ?> centerpiece" data-ride="carousel">
+	<div id="centerpiece-carousel" class="centerpiece slide">
 		<?php if ( $count > 1 ) : ?>
 		<ol class="carousel-indicators">
 		<?php foreach( $posts as $idx=>$post ) : ?>
@@ -763,7 +763,7 @@ function display_home_centerpieces() {
 		<?php foreach ( $posts as $idx=>$post ) : ?>
 			<div class="item<?php echo ( $idx == 0 ) ? ' active' : ''; ?>">
 				<img src="<?php echo $post->image; ?>" alt="">
-				<div class="carousel-cta">
+				<div class="carousel-cta row">
 					<h3><?php echo $post->cta_title; ?></h3>
 					<p class="pull-left"><?php echo $post->cta_content; ?></p>
 					<a href="<?php echo $post->cta_button_link; ?>" class="btn btn-lg btn-cta pull-right">
