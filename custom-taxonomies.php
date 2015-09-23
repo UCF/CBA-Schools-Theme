@@ -111,6 +111,22 @@ class OrganizationalGroups extends CustomTaxonomy
 		$hierarchical = True;
 }
 
+class Cohorts extends CustomTaxonomy {
+	public
+		$name               = 'cohorts',
+		$general_name       = 'Cohorts',
+		$singular_name      = 'Cohort',
+		$search_items       = 'Search Cohorts',
+		$popular_items      = 'Popular Cohorts',
+		$all_items          = 'All Cohorts',
+		$parent_item        = 'Parent Cohort',
+		$parent_item_colon  = 'Parent Cohort:',
+		$edit_item          = 'Edit Cohort',
+		$update_item        = 'Update Cohort',
+		$add_new_item       = 'Add New Cohort',
+		$new_item_name      = 'New Cohort',
+		$hierarchical       = True;
+}
 
 /**
  * Describes schools and/or departments

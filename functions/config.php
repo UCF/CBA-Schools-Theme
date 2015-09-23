@@ -105,12 +105,14 @@ Config::$custom_post_types = array(
 	'Page',
 	'Post',
 	'Spotlight',
-	'Publication'
+	'Publication',
+	'Person',
 );
 
 Config::$custom_taxonomies = array(
 	'OrganizationalGroups',
 	'Departments',
+	'Cohorts',
 );
 
 Config::$body_classes = array();

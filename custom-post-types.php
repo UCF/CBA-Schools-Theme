@@ -317,6 +317,115 @@ class Page extends CustomPostType {
 	}
 }
 
+class Person extends CustomPostType {
+	public
+		$name           = 'person',
+		$plural_name    = 'People',
+		$singular_name  = 'Person',
+		$add_new_item   = 'Add New Person',
+		$edit_item      = 'Edit Person',
+		$new_item       = 'New Person',
+		$public         = True,
+		$use_editor     = True,
+		$use_thumbnails = True,
+		$use_order      = True,
+		$use_title      = True,
+		$use_metabox    = True,
+		$taxonomies     = array('cohorts');
+
+	public function fields() {
+		$prefix = $this->options( 'name' ).'_';
+		return array(
+			array(
+				'name' => 'Hometown',
+				'desc' => 'The hometown of the student',
+				'id'   => $prefix.'hometown',
+				'type' => 'text'
+			),
+			array(
+				'name' => 'Undergraduate Institution',
+				'desc' => 'The student\'s undergraduate institution',
+				'id'   => $prefix.'undergrad_institution',
+				'type' => 'text'
+			),
+			array(
+				'name' => 'Undergraduate Degree',
+				'desc' => 'The student\'s undergraduate degree',
+				'id'   => $prefix.'undergrad_degree',
+				'type' => 'text'
+			),
+			array(
+				'name' => 'PostGraduate Degree',
+				'desc' => '',
+				'id'   => $prefix.'postgrad_degree',
+				'type' => 'text'
+			),
+			array(
+				'name' => 'Assistantships and Interships',
+				'desc' => 'The student\'s past internships and assistantships',
+				'id'   => $prefix.'internships',
+				'type' => 'text'
+			),
+			array(
+				'name' => 'Community Outreach',
+				'desc' => '',
+				'id'   => $prefix.'outreach',
+				'type' => 'text'
+			),
+			array(
+				'name' => 'Career Aspirations',
+				'desc' => '',
+				'id'   => $prefix.'career',
+				'type' => 'text'
+			)
+		);
+	}
+
+	public function toHTML( $object ) {
+		$thumbnail  = get_the_post_thumbnail( $object->ID, 'thumbnail', array( 'class' => 'img-responsive img-rounded' ) );
+
+		ob_start();
+
+		?>
+		<div class="col-sm-4">
+			<a href="<?php echo get_permalink( $object->ID );?>">
+				<div class="thumbnail person">
+				<?php echo $thumbnail; ?>
+				<div class="caption">
+					<h3><?php echo $object->post_title; ?></h3>
+				</div>
+				</div>
+			</a>
+		</div>
+		<?php
+
+		return ob_get_clean();
+	}
+
+	public function objectsToHTML( $objects, $css_classes ) {
+		if ( count( $objects ) < 1 ) { return ''; }
+
+		$class = get_custom_post_type($objects[0]->post_type);
+		$class = new $class;
+
+		ob_start();
+
+		?>
+		<div class="row person-list">
+		<?php 
+			$person = new Person();
+			foreach( $objects as $object ) {
+				echo $person::toHTML( $object );
+			}
+		?>
+		</div>
+		<?php
+
+		return ob_get_clean();
+	}
+
+}
+
 class Post extends CustomPostType {
 	public
 		$name           = 'post',

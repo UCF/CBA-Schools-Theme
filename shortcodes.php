@@ -13,49 +13,30 @@ function sc_search_form() {
 }
 add_shortcode('search_form', 'sc_search_form');
 
+/**
+ * Person Picture List
+ * 
+ * @return string
+ * @author Jim Barnes
+ **/
+function sc_person_picture_list( $attr ) {
+	extract( shortcode_atts(
+		array(
+			'limit' => -1,
+			'cohort' => '',
+		), $attr ) 
+	);
 
-function sc_person_picture_list($atts) {
-	$categories     = ($atts['categories']) ? $atts['categories'] : null;
-	$org_group      = ($atts['org_group']) ? $atts['org_group'] : null;
-	$limit          = ($atts['posts_per_page']) ? (intval($atts['posts_per_page'])) : -1;
-	$join           = ($atts['join']) ? $atts['join'] : 'or';
+	$args = array(
+		'post_type' => 'person',
+		'posts_per_page' => $attr['limit'],
+	);
 
-	$term           = get_term_by( 'name', $org_group, 'org_groups' );
-	$term_desc      = term_description( $term->term_id, 'org_groups' );
+	$posts = get_posts( $args );
 
-	$people         = sc_object_list(
-						array(
-							'post_type' => 'person',
-							'posts_per_page' => $limit,
-							'join' => $join,
-							'categories' => $categories,
-							'org_groups' => $term->slug,
-							'orderby' => 'meta_value',
-							'order' => 'ASC',
-							'meta_key' => 'person_orderby_name',
-						),
-						array(
-							'objects_only' => True,
-						));
+	$person = new Person();
 
-	ob_start();
-	if ( $org_group ):
-	?>
-		<div class="row">
-			<div class="col-md-12 person-picture-list-heading">
-				<h2 class="org-group-title"><?php echo $org_group; ?></h2>
-				<?php if ( $term_desc ): ?><div class="org-group-desc"><?php echo $term_desc; ?></div><?php endif; ?>
-			</div>
-		</div>
-	<?php
-	endif;
-
-	$count = 0;
-	if ($people):
-		echo Person::objectsToHTML( $people, 'person-picture-list' );
-	endif;
-
-	return ob_get_clean();
+	return $person::objectsToHTML( $posts, '' );
 }
 add_shortcode( 'person-picture-list', 'sc_person_picture_list' );
 
