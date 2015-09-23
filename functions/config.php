@@ -193,6 +193,13 @@ function define_customizer_sections( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_section(
+		THEME_CUSTOMIZER_PREFIX.'people',
+		array(
+			'title'       => 'People Settings',
+			'description' => 'Defaults for People'
+		)
+	);
+	$wp_customize->add_section(
 		THEME_CUSTOMIZER_PREFIX.'parentmenu',
 		array(
 			'title'       => 'Parent Site',
@@ -252,6 +259,8 @@ function define_customizer_fields( $wp_customize ) {
 
 	$centerpiece_arr = array();
 
+	$centerpiece_arr[''] = '----------------';
+
 	foreach( $centerpieces as $centerpiece ) {
 		$centerpiece_arr[$centerpiece->ID] = $centerpiece->post_title;
 	}
@@ -274,6 +283,8 @@ function define_customizer_fields( $wp_customize ) {
 
 	$spotlight_arr = array();
 
+	$spotlight_arr[''] = '----------------';
+
 	foreach( $spotlights as $spotlight ) {
 		$spotlight_arr[$spotlight->ID] = $spotlight->post_title;
 	}
@@ -295,6 +306,8 @@ function define_customizer_fields( $wp_customize ) {
 	$publications = get_posts( array( 'post_type' => 'publication' ) );
 
 	$publication_arr = array();
+
+	$publication_arr[''] = '----------------';
 
 	foreach( $publications as $publication ) {
 		$publication_arr[$publication->ID] = $publication->post_title;
@@ -673,6 +686,44 @@ function define_customizer_fields( $wp_customize ) {
 			'label'       => 'Parent Site Menu URL',
 			'description' => 'The url of the page on the parent site where the header menu is located.',
 			'section'     => THEME_CUSTOMIZER_PREFIX.'parentmenu'
+		)
+	);
+
+	$wp_customize->add_setting(
+		'people_default_image'
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control( $wp_customize, 'people_default_image',
+			array(
+			    'label'    => 'People Default Image',
+			    'section'  => THEME_CUSTOMIZER_PREFIX.'people',
+			)
+		)
+	);
+
+	$cohorts = get_terms( array( 'cohorts' ) );
+
+	$cohort_arr = array();
+
+	$cohort_arr[''] = '----------------';
+
+	foreach( $cohorts as $cohort ) {
+		$cohort_arr[$cohort->term_id] = $cohort->name;
+	}
+
+	$wp_customize->add_setting(
+		'people_default_cohort'
+	);
+
+	$wp_customize->add_control(
+		'people_default_cohort',
+		array(
+			'type'        => 'select',
+			'label'       => 'Default Cohort',
+			'description' => 'The cohort that will be displayed on the Meet the Cohort page.',
+			'section'     => THEME_CUSTOMIZER_PREFIX.'people',
+			'choices'     => $cohort_arr
 		)
 	);
 
