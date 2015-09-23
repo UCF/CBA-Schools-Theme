@@ -50,8 +50,8 @@ body {
   margin-bottom: 0;
   margin-left: auto;
   margin-right: auto;
-  width: $container-lg; // Must use fixed width here to make IE center properly
   position: relative; // Keep this relative so we don't have to depend on the ucf blackbar existing for positioning
+  width: $container-lg; // Must use fixed width here to make IE center properly
   z-index: 999;
 
   // Accommodate for IE's lack of max-width support with centered fixed position elems
@@ -377,10 +377,10 @@ body {
 
           &.active {
             // Can't use extend/include here :(
+            -ms-transform: rotate(-180deg); // IE9 only
+            -o-transform: rotate(-180deg);
             -webkit-transform: rotate(-180deg);
-                -ms-transform: rotate(-180deg); // IE9 only
-                 -o-transform: rotate(-180deg);
-                    transform: rotate(-180deg);
+            transform: rotate(-180deg);
           }
         }
       }
@@ -553,8 +553,8 @@ main {
   position: relative;
 
   #side-menu {
-    text-transform: uppercase;
     margin-bottom: 20px;
+    text-transform: uppercase;
 
     li {
       margin: 0;
@@ -577,12 +577,12 @@ main {
       font-weight: 700;
 
       span::after {
-          content: "\203A";
-          font-size: 17px;
-          font-weight: 700;
-          line-height: 17px;
-          position: absolute;
-          right: 10px;
+        content: '\203A';
+        font-size: 17px;
+        font-weight: 700;
+        line-height: 17px;
+        position: absolute;
+        right: 10px;
       }
 
       &:hover {

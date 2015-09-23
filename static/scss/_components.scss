@@ -75,9 +75,9 @@
   background: $ucf-gold;
   border-radius: 0;
   box-shadow: 0 4px 4px #000;
+  color: #fff;
   font-family: $font-family-cta;
   font-weight: 700;
-  color: #fff;
   width: 100%;
 }
 
@@ -158,10 +158,10 @@
 .aascb-logo {
   background-image: url('../img/aacsb_reverse.png');
   display: block;
+  height: 78px;
   overflow: hidden;
   text-indent: 150%;
   white-space: nowrap;
-  height: 78px;
   width: 78px;
 }
 
@@ -250,6 +250,7 @@
 .left-col {
   @extend .col-md-7;
 }
+
 .right-col {
   @extend .col-md-5;
   padding-left: $grid-gutter-width * 2;
@@ -664,8 +665,8 @@ img.alignright {
 
   .rss-feed-item-image {
     float: left;
-    margin-top: 5px;
     margin-bottom: 6px;
     margin-right: 12px;
+    margin-top: 5px;
   }
 }
