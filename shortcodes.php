@@ -20,16 +20,22 @@ add_shortcode('search_form', 'sc_search_form');
  * @author Jim Barnes
  **/
 function sc_person_picture_list( $attr ) {
-	extract( shortcode_atts(
-		array(
+	$attr = shortcode_atts( array(
 			'limit' => -1,
-			'cohort' => '',
-		), $attr ) 
+			'cohort' => get_theme_mod_or_default( 'people_default_cohort'),
+		), $attr 
 	);
 
 	$args = array(
 		'post_type' => 'person',
 		'posts_per_page' => $attr['limit'],
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'cohorts',
+				'field'    => 'id',
+				'terms'    => $attr['cohort']
+			)
+		)
 	);
 
 	$posts = get_posts( $args );
@@ -808,10 +814,10 @@ function sc_spotlight( $attr, $content='' ) {
 add_shortcode( 'spotlight', 'sc_spotlight' );
 
 function sc_publication( $attr, $content='' ) {
-	extract( shortcode_atts( array(
+	$attr = shortcode_atts( array(
 			'id' => ''
 		), $attr
-	) );
+	);
 
 	if ( $attr['id'] ) {
 

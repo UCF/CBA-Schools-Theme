@@ -726,6 +726,10 @@ function append_person_metadata( $post ) {
 	$post->outreach            = get_post_meta( $post->ID, 'person_outreach', TRUE );
 	$post->career              = get_post_meta( $post->ID, 'person_career', TRUE );
 
+	if ( ! $post->thumbnail ) {
+		$post->thumbnail = '<img src="'. get_theme_mod_or_default( 'people_default_image', '' ) .'" height="150" width="150" class="img-responsive img-rounded">';
+	}
+
 	return $posts;
 }
 
