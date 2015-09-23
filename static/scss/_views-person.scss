@@ -5,12 +5,22 @@
 }
 
 .person-list {
-
   a:hover {
     text-decoration: none;
   }
 
   h3 {
     text-align: center;
+  }
+
+  @media (min-width: $screen-md-min) {
+    .modal {
+      top: 60px;
+
+      h2 {
+        margin: 0;
+        text-align: center;
+      }
+    }
   }
 }
