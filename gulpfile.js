@@ -23,6 +23,7 @@ var config = {
   phpPath: './',
   bowerDir: './static/bower_components',
   sync: config.sync,
+  target: config.target,
 };
 
 
@@ -46,7 +47,9 @@ gulp.task('bower', function() {
 // Process .scss files in /static/scss/
 gulp.task('css', function() {
   return gulp.src(config.sassPath + '/*.scss')
-    .pipe(scsslint())
+    .pipe(scsslint({
+      'config': 'scss-lint-config.yml',
+    }))
     .pipe(sass().on('error', sass.logError))
     .pipe(minifyCss({compatibility: 'ie8'}))
     .pipe(rename('style.min.css'))
@@ -78,8 +81,8 @@ gulp.task('js', function() {
       gulp.src(minified)
         .pipe(concat('script.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest(config.jsPath));
-
+        .pipe(gulp.dest(config.jsPath))
+        .pipe(browserSync.stream());
     });
 });
 
@@ -89,16 +92,14 @@ gulp.task('watch', function() {
   if (config.sync) {
     browserSync.init({
         proxy: {
-          target: "localhost/devos"
+          target: config.target
         }
     });
   }
-  gulp.watch(config.jsPath + '/*.js', ['js']).on('change', reload);
-  gulp.watch(config.phpPath + '/*.php').on('change', reload);
-  gulp.watch(config.phpPath + '/*.php');
 
+  gulp.watch(config.phpPath + '/*.php');
   gulp.watch(config.sassPath + '/*.scss', ['css']);
-  gulp.watch(config.jsPath + '/*.js', ['js']);
+  gulp.watch([config.jsPath + '/*.js', '!' + config.jsPath + '/*.min.js'], ['js']);
 });
 
 

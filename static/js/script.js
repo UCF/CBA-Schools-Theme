@@ -582,4 +582,6 @@ if (typeof jQuery !== 'undefined'){
     splitFooterMenu($);
     showSubMenu($);
   });
-}else{console.log('jQuery dependency failed to load');}
+} else {
+  console.log('jQuery dependency failed to load');
+}
