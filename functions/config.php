@@ -340,6 +340,19 @@ function define_customizer_fields( $wp_customize ) {
 		)
 	);
 
+	$wp_customize->add_setting(
+		'home_page_video_caption'
+	);
+
+	$wp_customize->add_control(
+		'home_page_video_caption',
+		array(
+			'type'       => 'textarea',
+			'label'      => 'Home Page Video Caption (HTML)',
+			'section'    => THEME_CUSTOMIZER_PREFIX.'homefeatures'
+		)
+	);
+
 	// Footer Settings
 	$wp_customize->add_setting(
 		'footer_feature_title'
