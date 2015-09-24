@@ -395,10 +395,39 @@ function define_customizer_fields( $wp_customize ) {
 		)
 	);
 
+	$wp_customize->add_setting(
+		'footer_feature_cta_top'
+	);
+
+	$wp_customize->add_control(
+		'footer_feature_cta_top',
+		array(
+			'type'        => 'text',
+			'label'       => 'Footer Feature Call to Action Top',
+			'description' => 'Adjust Feature Call to Action top position.',
+			'section'     => THEME_CUSTOMIZER_PREFIX.'footer'
+		)
+	);
+
+	$wp_customize->add_setting(
+		'footer_feature_cta_left'
+	);
+
+	$wp_customize->add_control(
+		'footer_feature_cta_left',
+		array(
+			'type'        => 'text',
+			'label'       => 'Footer Feature Call to Action Left',
+			'description' => 'Adjust Feature Call to Action left position.',
+			'section'     => THEME_CUSTOMIZER_PREFIX.'footer'
+		)
+	);
+
 	// Analytics
 	$wp_customize->add_setting(
 		'gw_verify'
 	);
+	
 	$wp_customize->add_control(
 		'gw_verify',
 		array(

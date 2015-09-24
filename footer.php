@@ -38,7 +38,9 @@
 					<div id="footer-feature" class="col-sm-6">
 						<h3><?php echo get_theme_mod_or_default( 'footer_feature_title' ); ?></h3>
 						<?php echo display_footer_feature_image(); ?>
-						<div class="cta"><?php echo display_footer_feature_cta(); ?></div>
+						<div class="cta" style="top: <?php echo get_theme_mod_or_default( 'footer_feature_cta_top' ); ?>; left: <?php echo get_theme_mod_or_default( 'footer_feature_cta_left' ); ?>">
+							<?php echo display_footer_feature_cta(); ?>
+						</div>
 					</div>
 				</div>
 				<div class="row footer-bottom">
