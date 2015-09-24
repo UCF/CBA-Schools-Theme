@@ -524,7 +524,7 @@ var responsiveVideos = function($) {
 var splitFooterMenu = function ($) {
   var $primaryFooter = $('.primary-footer'),
     $subMenuItems = $primaryFooter.find('.sub-menu > li'),
-    middlePoint = Math.ceil($subMenuItems.length / 2),
+    middlePoint = Math.ceil($subMenuItems.length / 2) + 1,
     middleElement;
 
   if (middlePoint) {
