@@ -259,7 +259,7 @@ function define_customizer_fields( $wp_customize ) {
 
 	$centerpiece_arr = array();
 
-	$centerpiece_arr[''] = '----------------';
+	$centerpiece_arr[''] = ' -- Select a Value -- ';
 
 	foreach( $centerpieces as $centerpiece ) {
 		$centerpiece_arr[$centerpiece->ID] = $centerpiece->post_title;
@@ -283,7 +283,7 @@ function define_customizer_fields( $wp_customize ) {
 
 	$spotlight_arr = array();
 
-	$spotlight_arr[''] = '----------------';
+	$spotlight_arr[''] = ' -- Select a Value -- ';
 
 	foreach( $spotlights as $spotlight ) {
 		$spotlight_arr[$spotlight->ID] = $spotlight->post_title;
@@ -307,7 +307,7 @@ function define_customizer_fields( $wp_customize ) {
 
 	$publication_arr = array();
 
-	$publication_arr[''] = '----------------';
+	$publication_arr[''] = ' -- Select a Value -- ';
 
 	foreach( $publications as $publication ) {
 		$publication_arr[$publication->ID] = $publication->post_title;

@@ -42,7 +42,7 @@ function sc_person_picture_list( $attr ) {
 
 	$person = new Person();
 
-	return $person::objectsToHTML( $posts, '' );
+	return $person::objectsToHTML( $posts, 'person-list' );
 }
 add_shortcode( 'person-picture-list', 'sc_person_picture_list' );
 
