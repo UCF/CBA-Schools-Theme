@@ -88,9 +88,8 @@ function display_site_social($alt=false, $classes=null) {
  * Get Facebook Posts
  **/
 function get_facebook_posts() {
-	$access_token = "";
-	$url = "https://graph.facebook.com/v2.4/me/posts?access_token="
-		.$access_token."&fields=link%2Cpicture%2Cmessage%2Ccreated_time&format=json&limit=3&method=get&pretty=1&suppress_http_code=1";
+	// Example: https://graph.facebook.com/v2.4/me/posts?access_token=[ACCESS_CODE]&fields=link%2Cpicture%2Cmessage%2Ccreated_time&format=json&limit=3&method=get&pretty=0&suppress_http_code=1
+	$url = get_theme_mod_or_default( 'facebook_api_url' );
 	ob_start();
 
 	$json = file_get_contents( $url );
