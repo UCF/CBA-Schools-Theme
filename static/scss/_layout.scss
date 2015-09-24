@@ -628,16 +628,16 @@ main {
     .row {
       margin: 20px 0;
 
+      a {
+        color: #000;
+      }
+
       h1,
       .h1 {
         font-style: italic;
         letter-spacing: -.04em;
         line-height: 1;
         margin-top: 0;
-
-        a {
-          color: #000;
-        }
 
         @media (max-width: $screen-sm-max) {
           font-size: $font-size-h1-xs;
@@ -652,6 +652,10 @@ main {
       .school-contact-info {
         font-weight: 700;
         text-align: right;
+
+        a {
+          text-decoration: underline;
+        }
 
         @media (max-width: $screen-xs-max) {
           margin-top: 25px;
@@ -765,14 +769,14 @@ main {
     }
   }
 
+  a {
+    color: #fff;
+  }
+
   .menu {
     @include unstyled-list();
     margin-bottom: 0;
     margin-top: 0;
-
-    a {
-      color: #fff;
-    }
 
     > li {
       font-size: 13px;
