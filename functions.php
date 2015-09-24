@@ -798,7 +798,6 @@ function display_home_centerpieces() {
 }
 
 function get_parent_site_header() {
-	global $theme_options;
 
 	$url = get_theme_mod_or_default( 'parent_site_menu_url' );
 
