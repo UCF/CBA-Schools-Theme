@@ -525,7 +525,7 @@ class Spotlight extends CustomPostType {
 
 		$taxonomies     = array();
 
-	public function Fields() {
+	public function fields() {
 		$prefix = $this->options( 'name' ).'_';
 		return array(
 			array(
