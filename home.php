@@ -33,6 +33,14 @@
 			<div class="row">
 				<div class="col-sm-8">
 					<?php echo get_embed_html( get_theme_mod_or_default( 'home_page_video_url' ) ); ?>
+					<?php
+						$video_caption = get_theme_mod_or_default( 'home_page_video_caption' );
+						if ( $video_caption ) :
+					?>
+						<p class="video-caption"><?php echo wptexturize( $video_caption ); ?></p>
+					<?php 
+						endif;
+					?>
 				</div>
 				<div class="col-sm-4">
 					<?php
