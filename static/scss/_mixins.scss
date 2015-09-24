@@ -169,3 +169,8 @@
     background-size: 100% 500px;
   }
 }
+
+@mixin zoom( $factor ) {
+  zoom: $factor;
+  @include scale( $factor );
+}

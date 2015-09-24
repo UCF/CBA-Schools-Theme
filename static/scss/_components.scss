@@ -5,6 +5,7 @@
 
 %btn-social {
   @include sprite();
+  @include zoom(.9);
   display: inline-block;
   height: 35px;
   margin-bottom: 5px;
