@@ -451,7 +451,7 @@ class Person extends CustomPostType {
 		return ob_get_clean();
 	}
 
-	public function objectsToHTML( $objects, $css_classes ) {
+	public function objectsToHTML( $objects, $css_classes='' ) {
 		if ( count( $objects ) < 1 ) { return ''; }
 
 		$class = get_custom_post_type($objects[0]->post_type);
@@ -460,7 +460,7 @@ class Person extends CustomPostType {
 		ob_start();
 
 		?>
-		<div class="row person-list">
+		<div class="row <?php echo $class->name; ?><?php if ( $css_classes ) { echo ' ' . $css_classes; } ?>">
 		<?php 
 			$person = new Person();
 			foreach( $objects as $object ) {
