@@ -92,7 +92,15 @@ function get_facebook_posts() {
 	$url = get_theme_mod_or_default( 'facebook_api_url' );
 	ob_start();
 
-	$json = file_get_contents( $url );
+	$opts = array(
+		'http' => array(
+			'timeout' => 15,
+		)
+	);
+
+	$context = stream_context_create( $opts );
+
+	$json = file_get_contents( $url, false, $context );
 	$obj = json_decode( $json );
 	ob_start();
 
