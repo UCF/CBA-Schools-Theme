@@ -22,9 +22,12 @@
 			<section class="home-page-banner">
 				<?php
 					$image = get_theme_mod_or_default( 'home_page_banner' );
+					$link = get_theme_mod_or_default( 'home_page_banner_link' );
 					if ( $image ) :
 				?>
+				<?php if ( $link ) { echo '<a href="' . $link . '">'; } ?>
 				<img src="<?php echo $image; ?>" alt="home page banner" class="img-responsive">
+				<?php if ( $link ) { echo '</a>'; } ?>
 				<?php endif; ?>
 			</section>
 			<section class="feature-photos">

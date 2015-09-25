@@ -255,6 +255,19 @@ function define_customizer_fields( $wp_customize ) {
 		)
 	);
 
+	$wp_customize->add_setting(
+		'home_page_banner_link'
+	);
+
+	$wp_customize->add_control(
+		'home_page_banner_link',
+		array(
+			'type'         => 'url',
+			'label'        => 'Home Page Banner Link',
+			'section'      => THEME_CUSTOMIZER_PREFIX.'homefeatures'
+		)
+	);
+
 	$centerpieces = get_posts( array( 'post_type' => 'centerpiece' ) );
 
 	$centerpiece_arr = array();
@@ -858,7 +871,7 @@ Config::$styles = array(
 Config::$scripts = array(
 	array('admin' => True, 'src' => THEME_COMPONENTS_URL.'/chosen/chosen.jquery.min.js',),
 	array('admin' => True, 'src' => THEME_JS_ADMIN_URL.'/admin.js',),
-	array('name' => 'ucfhb-script', 'src' => '//universityheader.ucf.edu/bar/js/university-header.js',),
+	array('name' => 'ucfhb-script', 'src' => '//universityheader.ucf.edu/bar/js/university-header.js?use-1200-breakpoint=1',),
 	array('name' => 'theme-script', 'src' => THEME_JS_URL.'/script.min.js',),
 );
 

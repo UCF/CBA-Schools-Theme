@@ -24,7 +24,6 @@
 						</nav>
 					</div>
 					<div class="col-sm-2 col-line-left">
-						<h3>Contact</h3>
 						<div class="organization-name"><?php echo get_theme_mod_or_default( 'organization_name' ); ?></div>
 						<?php echo display_contact_address(); ?>
 						<p>
