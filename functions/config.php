@@ -417,7 +417,7 @@ function define_customizer_fields( $wp_customize ) {
 		array(
 			'type'        => 'text',
 			'label'       => 'Footer Feature Call to Action Top',
-			'description' => 'Adjust Feature Call to Action top position.',
+			'description' => 'Adjust Feature Call to Action top position. Example: 20% or 250px (Percentage values will scale best)',
 			'section'     => THEME_CUSTOMIZER_PREFIX.'footer'
 		)
 	);
@@ -431,7 +431,7 @@ function define_customizer_fields( $wp_customize ) {
 		array(
 			'type'        => 'text',
 			'label'       => 'Footer Feature Call to Action Left',
-			'description' => 'Adjust Feature Call to Action left position.',
+			'description' => 'Adjust Feature Call to Action left position. Example: 20% or 250px (Percentage values will scale best)',
 			'section'     => THEME_CUSTOMIZER_PREFIX.'footer'
 		)
 	);
@@ -440,7 +440,7 @@ function define_customizer_fields( $wp_customize ) {
 	$wp_customize->add_setting(
 		'gw_verify'
 	);
-	
+
 	$wp_customize->add_control(
 		'gw_verify',
 		array(
