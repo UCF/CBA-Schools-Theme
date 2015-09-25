@@ -45,7 +45,9 @@
 				<div class="row footer-bottom">
 					<div class="col-sm-3 col-lg-2">
 						<section class="program-name primary-footer-section">
-							<?php echo get_bloginfo( 'name' ); ?>
+							<a href="<?php echo get_bloginfo( 'url' ); ?>">
+								<?php echo get_bloginfo( 'name' ); ?>
+							</a>
 						</section>
 					</div>
 					<div class="col-sm-9 col-lg-10">
