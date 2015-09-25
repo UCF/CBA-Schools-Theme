@@ -255,6 +255,19 @@ function define_customizer_fields( $wp_customize ) {
 		)
 	);
 
+	$wp_customize->add_setting(
+		'home_page_banner_link'
+	);
+
+	$wp_customize->add_control(
+		'home_page_banner_link',
+		array(
+			'type'         => 'url',
+			'label'        => 'Home Page Banner Link',
+			'section'      => THEME_CUSTOMIZER_PREFIX.'homefeatures'
+		)
+	);
+
 	$centerpieces = get_posts( array( 'post_type' => 'centerpiece' ) );
 
 	$centerpiece_arr = array();
