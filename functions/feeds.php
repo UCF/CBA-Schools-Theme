@@ -208,8 +208,7 @@ function display_events( $header=null, $start, $limit, $url=null ) {
 
 
 function display_news( $header=null, $photos=false, $start=null, $limit=null, $tag=null ) {
-	$options       = get_option( THEME_OPTIONS_NAME );
-	$default_count = $options['news_max_items'] ? $options['news_max_items'] : 8;
+	$default_count = get_theme_mod_or_default('news_max_items') ? get_theme_mod_or_default('news_max_items') : 3;
 	$start         = $start ? $start : 0;
 	$limit         = $limit ? $limit : $default_count;
 	$news          = get_news( $start, $limit, $tag );
@@ -255,10 +254,11 @@ function display_news( $header=null, $photos=false, $start=null, $limit=null, $t
 					$image = check_remote_file($image_small) !== false ? $image_small : $image;
 				}
 			?>
-			<li class="col-md-3 col-sm-4 col-xs-6">
+			<li>
 				<div class="news-story">
 					<a href="<?php echo $item->get_link(); ?>" class="ignore-external news-link ga-event-link" data-ga-category="News and Posts Links" data-ga-label="<?php echo $item->get_title(); ?>">
-						<img class="news-photo hidden-xs thumbnail alignleft" src="<?php echo $image; ?>" alt="Thumbnail for <?php echo $item->get_title(); ?>" title="Thumbnail for <?php echo $item->get_title(); ?>">
+						<img class="news-photo hidden-sm alignleft" src="<?php echo $image; ?>" alt="Thumbnail for <?php echo $item->get_title(); ?>" title="Thumbnail for <?php echo $item->get_title(); ?>">
+						<p class="news-date"><?php echo $item->get_date('M j Y'); ?></p>
 						<h3 class="news-title">
 								<?php echo $item->get_title(); ?>
 						</h3>
@@ -267,6 +267,12 @@ function display_news( $header=null, $photos=false, $start=null, $limit=null, $t
 			</li>
 			<?php endforeach; ?>
 		</ul>
+		<?php echo $feed_url = get_theme_mod_or_default( 'news_link' ); ?>
+		<div class="clearfix">
+			<a class="more-news pull-right" href="<?php echo $feed_url; ?>">
+				Read More <span class="fa fa-chevron-right"></span>
+			</a>
+		</div>
 
 		<?php else: ?>
 		<ul class="news-list row">
@@ -357,15 +363,14 @@ function get_events( $start=null, $limit=null, $url=null ) {
 
 
 function get_news( $start=null, $limit=null, $tag=null ) {
-	$options = get_option( THEME_OPTIONS_NAME );
-	$url     = $options['news_url'];
+	$url     = get_theme_mod_or_default('news_url');
 	if ( !$url ) {
 		return;
 	}
 
 	if ( $tag ) {
 		// Get the root today.ucf.edu url to make it easier to manipulate
-		$url = parse_url( $options['news_url'], PHP_URL_SCHEME ). '://' .parse_url( $options['news_url'], PHP_URL_HOST );
+		$url = parse_url( $url, PHP_URL_SCHEME ). '://' .parse_url( $url, PHP_URL_HOST );
 
 		$tag = sanitize_title( $tag );
 		$url .= '/topic/' . $tag;

@@ -483,19 +483,22 @@
 
 .feature-news {
   margin-top: 15px;
+  margin-bottom: 15px;
 
   @media (max-width: $screen-xs-max) {
     margin-top: $grid-gutter-width / 2;
   }
 
   .feature-news-heading {
-    color: $coba-green-dark;
-    font-family: $font-family-slab-serif;
-    font-size: 42px;
-    font-weight: normal;
+    border-bottom: 1px solid $school-blue;
+    color: $school-blue;
+    font-family: $font-family-sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 0;
 
     @media (max-width: $screen-xs-max) {
-      font-size: 36px;
+      font-size: 18px;
       margin-top: 0;
     }
 
@@ -514,51 +517,23 @@
     @include unstyled-list();
 
     .news-story {
-      @include color-block($coba-offwhite, 2px, 2px, 0, 0, darken($coba-offwhite, 5%));
+      border-bottom: 1px solid $school-blue;
       display: inline-block;
       font-family: $font-family-sans-serif-alt;
       font-size: 16px;
       font-weight: normal;
-      height: 90px;
       line-height: 1.2;
-      margin-bottom: $grid-gutter-width / 2;
-      margin-top: $grid-gutter-width / 2;
-      overflow: hidden;
-      padding: 10px;
-      position: relative;
+      margin-bottom: $grid-gutter-width / 4;
+      margin-top: $grid-gutter-width / 4;
+      padding: 10px 0;
+      width: 100%;
+    }
 
-      &:after {
-        border-color: transparent transparent $coba-green-dark;
-        border-style: solid;
-        border-width: 0 0 12px 12px;
-        bottom: -2px;
-        content: '';
-        display: block;
-        height: 12px;
-        position: absolute;
-        right: 0;
-        width: 12px;
-
-        @include body-prefix('.ie8') {
-          bottom: 0;
-          right: ($grid-gutter-width / 2);
-        }
-      }
-
-      &:hover:after,
-      &:focus:after,
-      &:active:after {
-        @include transition(all .15s ease-in-out);
-        bottom: 0;
-        right: 0;
-      }
-
-      @media (max-width: $screen-xs-max) {
-        // Only display the first 4 news items @ mobile size
-        &:nth-child(n+5) {
-          display: none;
-        }
-      }
+    .news-date {
+      color: $school-blue;
+      font-family: $font-family-sans-serif;
+      font-weight: 700;
+      margin-bottom: 6px;
     }
 
     .news-title {
@@ -566,13 +541,7 @@
       font-size: 12px;
       font-style: normal;
       margin-left: 0;
-      overflow: hidden;
       text-decoration: none;
-
-      @include body-prefix('.ie8') {
-        border-bottom: 2px solid darken($coba-offwhite, 5%);
-        border-right: 2px solid darken($coba-offwhite, 5%);
-      }
 
       @media (max-width: $screen-xs-max) {
         font-size: 13px;
