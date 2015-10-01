@@ -20,6 +20,7 @@
 					</div>
 					<div class="col-sm-2 invisible">
 						<nav id="primary-subfooter-nav-2" class="primary-subfooter-nav">
+							<?php // menu is populated with JavaScript ?>
 							<ul class="menu"></ul>
 						</nav>
 					</div>

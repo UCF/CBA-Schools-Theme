@@ -226,7 +226,7 @@ Config::$settings_defaults = array(
 	'news_max_items'        => 'http://today.ucf.edu/feed/',
 	'enable_google'         => 1,
 	'search_per_page'       => 10,
-	'cloud_typography'      => '//cloud.typography.com/730568/675644/css/fonts.css', // TODO: update to use PROD css key
+	'cloud_typography'      => '//cloud.typography.com/730568/675644/css/fonts.css',
 	'organization_name'     => 'College of Business Administration',
 	'organization_address'  => 'University of Central Florida
 College of Business Administration

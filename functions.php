@@ -191,7 +191,7 @@ function display_footer_feature_image() {
 	if ( !empty( $image ) ) {
 		ob_start();
 	?>
-	<img src="<?php echo $image; ?>" width="100%">
+	<img src="<?php echo $image; ?>">
 	<?php
 		return ob_get_clean();
 	}
@@ -714,7 +714,9 @@ function append_centerpiece_metadata( $post ) {
 
 	$post->image = wp_get_attachment_url( get_post_meta( $post->ID, 'centerpiece_image', TRUE ) );
 	$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ) );
-	$post->thumbnail = $thumbnail[0];
+	if( is_array( $thumbnail ) ) {
+		$post->thumbnail = $thumbnail[0];
+	}
 	$post->cta_title = get_post_meta( $post->ID, 'centerpiece_cta_title', TRUE );
 	$post->cta_content = get_post_meta( $post->ID, 'centerpiece_cta_content', TRUE );
 	$post->cta_button_link = get_post_meta( $post->ID, 'centerpiece_cta_button_link', TRUE );

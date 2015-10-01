@@ -807,6 +807,10 @@ main {
     min-height: 100px;
     position: relative;
 
+    img {
+       width: 100%;
+    }
+
     .cta {
       background-color: #fff;
       border-bottom: 2px solid $ucf-gold;
