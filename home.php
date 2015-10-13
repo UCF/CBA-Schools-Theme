@@ -41,7 +41,7 @@
 						if ( $video_caption ) :
 					?>
 						<p class="video-caption"><?php echo wptexturize( $video_caption ); ?></p>
-					<?php 
+					<?php
 						endif;
 					?>
 				</div>
@@ -69,8 +69,14 @@
 			?>
 			</div>
 			<section class="feature-news">
-				<h2 class="feature-news-heading">News</h2>
-				<?php echo display_news(null, true); ?>
+				<?php
+					$twitter_feed = get_theme_mod_or_default( 'twitter_timeline_widget' );
+					if ( $twitter_feed ) :
+				?>
+					<?php echo wptexturize( $twitter_feed ); ?>
+				<?php
+					endif;
+				?>
 			</section>
 			<section>
 				<?php

@@ -722,6 +722,18 @@ function define_customizer_fields( $wp_customize ) {
 			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
 		)
 	);
+	$wp_customize->add_setting(
+		'twitter_timeline_widget'
+	);
+	$wp_customize->add_control(
+		'twitter_timeline_widget',
+		array(
+			'type'        => 'textarea',
+			'label'       => 'Twitter TImeline Widget',
+			'description' => 'HTML code for Twitter timeline widget.',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
+		)
+	);
 	// Web Fonts
 	$wp_customize->add_setting(
 		'cloud_typography_key',
