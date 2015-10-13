@@ -730,7 +730,7 @@ function define_customizer_fields( $wp_customize ) {
 		array(
 			'type'        => 'textarea',
 			'label'       => 'Twitter TImeline Widget',
-			'description' => 'HTML code for Twitter timeline widget.',
+			'description' => 'HTML code for Twitter timeline widget.<br>Twitter Timeline Widget Generator: <a href="https://twitter.com/settings/widgets/new/user" target="_blank">https://twitter.com/settings/widgets/new/user</a>',
 			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
 		)
 	);
