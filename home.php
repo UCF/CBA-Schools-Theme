@@ -68,6 +68,11 @@
 				);
 			?>
 			</div>
+			<section id="facebook">
+				<h3>DeVos on FACEBOOK</h3>
+				<?php echo do_shortcode( '[facebook_posts]' ); ?>
+				<a href="<?php echo get_theme_mod_or_default( 'facebook_url' ) ?>" class="all-posts">View More</a>
+			</section>
 			<section class="feature-news">
 				<?php
 					$twitter_feed = get_theme_mod_or_default( 'twitter_timeline_widget' );

@@ -88,7 +88,7 @@ function display_site_social($alt=false, $classes=null) {
  * Get Facebook Posts
  **/
 function get_facebook_posts() {
-	// Example: https://graph.facebook.com/v2.4/me/posts?access_token=[ACCESS_CODE]&fields=link%2Cpicture%2Cmessage%2Ccreated_time&format=json&limit=3&method=get&pretty=0&suppress_http_code=1
+	// Example: https://graph.facebook.com/v2.5/devosprogram/feed?access_token=[ACCESS_CODE]&limit=3&fields=link%2Cpicture%2Cmessage%2Ccreated_time
 	$url = get_theme_mod_or_default( 'facebook_api_url' );
 	ob_start();
 
