@@ -729,8 +729,8 @@ function define_customizer_fields( $wp_customize ) {
 		'twitter_timeline_widget',
 		array(
 			'type'        => 'textarea',
-			'label'       => 'Twitter TImeline Widget',
-			'description' => 'HTML code for Twitter timeline widget.<br>Twitter Timeline Widget Generator: <a href="https://twitter.com/settings/widgets/new/user" target="_blank">https://twitter.com/settings/widgets/new/user</a>',
+			'label'       => 'Twitter Timeline Widget',
+			'description' => 'HTML code for Twitter timeline widget.<br>Twitter Timeline Widget Generator: <a href="https://twitter.com/settings/widgets/new/search" target="_blank">https://twitter.com/settings/widgets/new/user</a><br>search query: from:UCFDeVos exclude:nativeretweets<br>Link color: #74A1C8<br>Height should match carousel e.g. 440',
 			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
 		)
 	);
