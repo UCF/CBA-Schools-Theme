@@ -542,25 +542,23 @@ class Spotlight extends CustomPostType {
 		$additional_content = get_post_meta( $object->ID, 'spotlight_additional_content', TRUE );
 		ob_start();
 	?>
-		<div class="spotlight">
-			<h3><?php echo $object->post_title; ?></h3>
-			<div class="row">
-				<div class="col-md-6">
-					<?php echo get_the_post_thumbnail( $object->ID ); ?>
-				</div>
-				<div class="col-md-6">
-					<p class="main"><?php echo $object->post_excerpt; ?></p>
-					<a href="<?php echo get_permalink( $object->ID );?>" class="learn-more">
-						Learn More
-					</a>
-				</div>
+		<h3><?php echo $object->post_title; ?></h3>
+		<div class="row">
+			<div class="col-md-6">
+				<?php echo get_the_post_thumbnail( $object->ID ); ?>
 			</div>
-			<?php if ( $additional_content ) : ?>
-				<div class="spotlight-additional-content">
-					<?php echo $additional_content; ?>
-				</div>
-			<?php endif; ?>
+			<div class="col-md-6">
+				<p class="main"><?php echo $object->post_excerpt; ?></p>
+				<a href="<?php echo get_permalink( $object->ID );?>" class="learn-more">
+					Learn More
+				</a>
+			</div>
 		</div>
+		<?php if ( $additional_content ) : ?>
+			<div class="spotlight-additional-content">
+				<?php echo $additional_content; ?>
+			</div>
+		<?php endif; ?>
 	<?php
 		return ob_get_clean();
 	}

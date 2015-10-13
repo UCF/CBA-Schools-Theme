@@ -68,22 +68,30 @@
 				);
 			?>
 			</div>
-			<section id="facebook">
-				<h3>DeVos on FACEBOOK</h3>
-				<?php echo do_shortcode( '[facebook_posts]' ); ?>
-				<a href="<?php echo get_theme_mod_or_default( 'facebook_url' ) ?>" class="all-posts">View More</a>
-			</section>
-			<section class="feature-news">
-				<?php
-					$twitter_feed = get_theme_mod_or_default( 'twitter_timeline_widget' );
-					if ( $twitter_feed ) :
-				?>
-					<?php echo wptexturize( $twitter_feed ); ?>
-				<?php
-					endif;
-				?>
-			</section>
-			<section>
+			<?php if( get_theme_mod_or_default( 'facebook_api_toggle' ) ): ?>
+				<section id="facebook">
+					<h3>DeVos on FACEBOOK</h3>
+					<?php echo do_shortcode( '[facebook_posts]' ); ?>
+					<a href="<?php echo get_theme_mod_or_default( 'facebook_url' ) ?>" class="all-posts">View More</a>
+				</section>
+			<?php
+				endif;
+			?>
+			<?php if( get_theme_mod_or_default( 'twitter_api_toggle' ) ): ?>
+				<section class="twitter-feed">
+					<?php
+						$twitter_feed = get_theme_mod_or_default( 'twitter_timeline_widget' );
+						if ( $twitter_feed ) :
+					?>
+						<?php echo wptexturize( $twitter_feed ); ?>
+					<?php
+						endif;
+					?>
+				</section>
+			<?php
+				endif;
+			?>
+			<section class="spotlight">
 				<?php
 					echo do_shortcode( '[spotlight id="' . get_theme_mod_or_default( 'home_page_spotlight' ) . '"]' );
 				?>

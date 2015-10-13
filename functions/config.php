@@ -699,6 +699,18 @@ function define_customizer_fields( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_setting(
+		'facebook_api_toggle'
+	);
+	$wp_customize->add_control(
+		'facebook_api_toggle',
+		array(
+			'type'        => 'checkbox',
+			'label'       => 'Display Facebook Feed',
+			'description' => 'Display Facebook Feed on the home page',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
+		)
+	);
+	$wp_customize->add_setting(
 		'facebook_api_url'
 	);
 	$wp_customize->add_control(
@@ -707,6 +719,18 @@ function define_customizer_fields( $wp_customize ) {
 			'type'        => 'url',
 			'label'       => 'Facebook API URL',
 			'description' => 'URL used to connect to the Facebook API includng the access token. Example: <em>https://graph.facebook.com/...</em>',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
+		)
+	);
+	$wp_customize->add_setting(
+		'twitter_api_toggle'
+	);
+	$wp_customize->add_control(
+		'twitter_api_toggle',
+		array(
+			'type'        => 'checkbox',
+			'label'       => 'Display Twitter Feed',
+			'description' => 'Display Twitter Feed on the home page',
 			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
 		)
 	);
