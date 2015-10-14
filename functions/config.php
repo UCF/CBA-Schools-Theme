@@ -699,7 +699,10 @@ function define_customizer_fields( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_setting(
-		'facebook_api_toggle'
+		'facebook_api_toggle',
+		array(
+			'default'     => 1,
+		)
 	);
 	$wp_customize->add_control(
 		'facebook_api_toggle',
@@ -723,7 +726,10 @@ function define_customizer_fields( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_setting(
-		'twitter_api_toggle'
+		'twitter_api_toggle',
+		array(
+			'default'     => 1,
+		)
 	);
 	$wp_customize->add_control(
 		'twitter_api_toggle',

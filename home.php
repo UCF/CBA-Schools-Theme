@@ -68,25 +68,24 @@
 				);
 			?>
 			</div>
-			<?php if( get_theme_mod_or_default( 'facebook_api_toggle' ) ): ?>
+			<?php
+				$facebook_url = get_theme_mod( 'facebook_url' );
+				if( get_theme_mod_or_default( 'facebook_api_toggle' ) && $facebook_url ):
+			?>
 				<section id="facebook">
-					<h3>DeVos on FACEBOOK</h3>
+					<h3>DeVos on <span class="text-uppercase">Facebook</span></h3>
 					<?php echo do_shortcode( '[facebook_posts]' ); ?>
-					<a href="<?php echo get_theme_mod_or_default( 'facebook_url' ) ?>" class="all-posts">View More</a>
+					<a href="<?php echo $facebook ?>" class="all-posts">View More</a>
 				</section>
 			<?php
 				endif;
 			?>
-			<?php if( get_theme_mod_or_default( 'twitter_api_toggle' ) ): ?>
+			<?php
+				$twitter_timeline_widget = get_theme_mod( 'twitter_timeline_widget' );
+				if( get_theme_mod_or_default( 'twitter_api_toggle' ) && $twitter_timeline_widget ):
+			?>
 				<section class="twitter-feed">
-					<?php
-						$twitter_feed = get_theme_mod_or_default( 'twitter_timeline_widget' );
-						if ( $twitter_feed ) :
-					?>
-						<?php echo wptexturize( $twitter_feed ); ?>
-					<?php
-						endif;
-					?>
+					<?php echo wptexturize( $twitter_timeline_widget ); ?>
 				</section>
 			<?php
 				endif;
