@@ -90,11 +90,18 @@
 			<?php
 				endif;
 			?>
-			<section class="spotlight">
-				<?php
-					echo do_shortcode( '[spotlight id="' . get_theme_mod_or_default( 'home_page_spotlight' ) . '"]' );
-				?>
-			</section>
+			<?php
+				$spotlight = get_theme_mod( 'home_page_spotlight' );
+				if( !empty( $spotlight ) ):
+			?>
+				<section class="spotlight">
+					<?php
+						echo do_shortcode( '[spotlight id="' . $spotlight . '"]' );
+					?>
+				</section>
+			<?php
+				endif;
+			?>
 		</div>
 	</div>
 </div>
