@@ -33,50 +33,62 @@ add_action( 'admin_menu', 'hide_admin_links' );
 /**
  * Display COBA social buttons (non-post-specific)
  **/
-function display_site_social($alt=false, $classes=null) {
+function display_site_social($color='', $classes=null) {
+
 	$googleplus_url = get_theme_mod_or_default( 'googleplus_url' );
 	$linkedin_url   = get_theme_mod_or_default( 'linkedin_url' );
 	$twitter_url    = get_theme_mod_or_default( 'twitter_url' );
 	$facebook_url   = get_theme_mod_or_default( 'facebook_url' );
 	$instagram_url  = get_theme_mod_or_default( 'instagram_url' );
 	$youtube_url    = get_theme_mod_or_default( 'youtube_url' );
+	$wordpress_url  = get_theme_mod_or_default( 'wordpress_url' );
 
-	$googleplus_class = 'btn-googleplus';
-	$linkedin_class   = 'btn-linkedin';
-	$twitter_class    = 'btn-twitter';
-	$facebook_class   = 'btn-facebook';
-	$instagram_class  = 'btn-instagram';
-	$youtube_class    = 'btn-youtube';
-
-	if ( $alt == true ) {
-		$googleplus_class = $googleplus_class.'-alt';
-		$linkedin_class   = $linkedin_class.'-alt';
-		$twitter_class    = $twitter_class.'-alt';
-		$facebook_class   = $facebook_class.'-alt';
-		$instagram_class  = $instagram_class.'-alt';
-		$youtube_class    = $youtube_class.'-alt';
-	}
+	$googleplus_class = 'fa fa-google-plus-square fa-2x ' . $color;
+	$linkedin_class   = 'fa fa-linkedin-square fa-2x ' . $color;
+	$twitter_class    = 'fa fa-twitter-square fa-2x ' . $color;
+	$facebook_class   = 'fa fa-facebook-square fa-2x ' . $color;
+	$instagram_class  = 'fa fa-instagram fa-2x ' . $color;
+	$youtube_class    = 'fa fa-youtube-square fa-2x ' . $color;
+	$wordpress_class  = 'fa fa-wordpress fa-2x ' . $color;
 
 	ob_start();
 ?>
 <div class="social <?php if ($classes) : echo $classes; endif; ?>">
 	<?php if ( $googleplus_url ) : ?>
-	<a class="<?php echo $googleplus_class; ?> ga-event-link" target="_blank" href="<?php echo $googleplus_url; ?>">Follow us on Google+</a>
+	<a class="ga-event-link" target="_blank" href="<?php echo $googleplus_url; ?>">
+		<i class="<?php echo $googleplus_class; ?>"></i>
+		<span class="sr-only">Follow us on Google+</span>
+	</a>
 	<?php endif; ?>
 	<?php if ( $linkedin_url ) : ?>
-	<a class="<?php echo $linkedin_class; ?> ga-event-link" target="_blank" href="<?php echo $linkedin_url; ?>">View our LinkedIn page</a>
+	<a class="ga-event-link" target="_blank" href="<?php echo $linkedin_url; ?>">
+		<i class="<?php echo $linkedin_class; ?>"></i>
+		<span class="sr-only">View our LinkedIn page</span></a>
 	<?php endif; ?>
 	<?php if ( $twitter_url ) : ?>
-	<a class="<?php echo $twitter_class; ?> ga-event-link" target="_blank" href="<?php echo $twitter_url; ?>">Follow us on Twitter</a>
+	<a class="ga-event-link" target="_blank" href="<?php echo $twitter_url; ?>">
+		<i class="<?php echo $twitter_class; ?>"></i>
+		<span class="sr-only">Follow us on Twitter</span></a>
 	<?php endif; ?>
 	<?php if ( $facebook_url ) : ?>
-	<a class="<?php echo $facebook_class; ?> ga-event-link" target="_blank" href="<?php echo $facebook_url; ?>">Like us on Facebook</a>
+	<a class="ga-event-link" target="_blank" href="<?php echo $facebook_url; ?>">
+		<i class="<?php echo $facebook_class; ?>"></i>
+		<span class="sr-only">Like us on Facebook</span></a>
 	<?php endif; ?>
 	<?php if ( $instagram_url ) : ?>
-	<a class="<?php echo $instagram_class; ?> ga-event-link" target="_blank" href="<?php echo $instagram_url; ?>">Find us on Instagram</a>
+	<a class="ga-event-link" target="_blank" href="<?php echo $instagram_url; ?>">
+		<i class="<?php echo $instagram_class; ?>"></i>
+		<span class="sr-only">Find us on Instagram</span></a>
 	<?php endif; ?>
 	<?php if ( $youtube_url ) : ?>
-	<a class="<?php echo $youtube_class; ?> ga-event-link" target="_blank" href="<?php echo $youtube_url; ?>">Follow us on YouTube</a>
+	<a class="ga-event-link" target="_blank" href="<?php echo $youtube_url; ?>">
+		<i class="<?php echo $youtube_class; ?>"></i>
+		<span class="sr-only">Follow us on YouTube</span></a>
+	<?php endif; ?>
+	<?php if ( $wordpress_url ) : ?>
+	<a class="ga-event-link" target="_blank" href="<?php echo $wordpress_url; ?>">
+		<i class="<?php echo $wordpress_class; ?>"></i>
+		<span class="sr-only">Follow us on our WordPress Blog</span></a>
 	<?php endif; ?>
 </div>
 <?php
@@ -478,7 +490,7 @@ class Social_Icons_Widget extends WP_Widget {
 	 * Front end display code.
 	 */
 	public function widget( $args, $instance ) {
-		echo display_site_social(false, 'hidden-xs');
+		echo display_site_social('', 'hidden-xs');
 	}
 }
 

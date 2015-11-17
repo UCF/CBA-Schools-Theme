@@ -54,7 +54,7 @@
 					<div class="col-sm-9 col-lg-10">
 						<section class="primary-footer-section" id="primary-footer-section-4">
 							<?php if ( !function_exists( 'dynamic_sidebar' ) or !dynamic_sidebar( 'Footer - Column Four' ) ) : ?>
-								<?php echo display_site_social(false, 'hidden-xs'); ?>
+								<?php echo display_site_social('white', 'hidden-xs'); ?>
 							<?php endif; ?>
 						</section>
 					</div>

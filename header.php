@@ -66,7 +66,7 @@
 							Phone: <?php echo display_phone( 'contact_phone' ); ?><br>
 							Email: <?php echo display_email( 'contact_email' ); ?></br>
 							<?php if ( !function_exists( 'dynamic_sidebar' ) or !dynamic_sidebar( 'Footer - Column Four' ) ) : ?>
-								<?php echo display_site_social(false, 'hidden-xs'); ?>
+								<?php echo display_site_social('', 'hidden-xs'); ?>
 							<?php endif; ?>
 					</div>
 				</div>

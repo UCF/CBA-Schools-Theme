@@ -687,6 +687,66 @@ function define_customizer_fields( $wp_customize ) {
 
 	// Social Media
 	$wp_customize->add_setting(
+		'instagram_url'
+	);
+	$wp_customize->add_control(
+		'instagram_url',
+		array(
+			'type'        => 'url',
+			'label'       => 'Instagram URL',
+			'description' => 'URL to the Instagram page you would like to direct visitors to.  Example: <em>https://www.instagram.com/UCF</em>',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
+		)
+	);
+	$wp_customize->add_setting(
+		'linkedin_url'
+	);
+	$wp_customize->add_control(
+		'linkedin_url',
+		array(
+			'type'        => 'url',
+			'label'       => 'LinkedIn URL',
+			'description' => 'URL to the LinkedIn page you would like to direct visitors to.  Example: <em>https://www.linkedin.com/UCF</em>',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
+		)
+	);
+	$wp_customize->add_setting(
+		'youtube_url'
+	);
+	$wp_customize->add_control(
+		'youtube_url',
+		array(
+			'type'        => 'url',
+			'label'       => 'YouTube URL',
+			'description' => 'URL to the YouTube page you would like to direct visitors to.  Example: <em>https://www.youtube.com/UCF</em>',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
+		)
+	);
+	$wp_customize->add_setting(
+		'googleplus_url'
+	);
+	$wp_customize->add_control(
+		'googleplus_url',
+		array(
+			'type'        => 'url',
+			'label'       => 'Google+ URL',
+			'description' => 'URL to the Google+ page you would like to direct visitors to.  Example: <em>https://plus.google.com/UCF</em>',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
+		)
+	);
+	$wp_customize->add_setting(
+		'wordpress_url'
+	);
+	$wp_customize->add_control(
+		'wordpress_url',
+		array(
+			'type'        => 'url',
+			'label'       => 'Wordpress Blog URL',
+			'description' => 'URL to the Wordpress page you would like to direct visitors to.  Example: <em>https://www.wordpress.com/UCF</em>',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'social'
+		)
+	);
+	$wp_customize->add_setting(
 		'facebook_url'
 	);
 	$wp_customize->add_control(
