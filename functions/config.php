@@ -88,7 +88,7 @@ define('THEME_CSS_URL', THEME_STATIC_URL.'/css');
 define('THEME_CSS_ADMIN_URL', THEME_STATIC_URL.'/css/admin');
 define('THEME_JOBS_DIR', THEME_DIR.'/jobs');
 define('THEME_CUSTOMIZER_PREFIX', 'cbachild_');
-define('GA_ACCOUNT', get_theme_mod_or_default( 'gw_account' ) );
+define('GA_ACCOUNT', get_theme_mod_or_default( 'ga_account' ) );
 define('CB_UID', get_theme_mod_or_default( 'cb_uid' ) );
 define('CB_DOMAIN', get_theme_mod_or_default( 'cb_domain' ) );
 
@@ -451,10 +451,10 @@ function define_customizer_fields( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_setting(
-		'gw_account'
+		'ga_account'
 	);
 	$wp_customize->add_control(
-		'gw_account',
+		'ga_account',
 		array(
 			'type'        => 'text',
 			'label'       => 'Google Analytics Account',
