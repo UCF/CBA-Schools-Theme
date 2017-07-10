@@ -818,21 +818,47 @@ function display_home_centerpieces() {
 	return ob_get_clean();
 }
 
-function get_parent_site_header() {
 
-	$url = get_theme_mod_or_default( 'parent_site_menu_url' );
+function get_remote_menu_feed( ) {
+	global $wp_customize;
+	$customizing    = isset( $wp_customize );
+	$feed_url       = get_theme_mod_or_default( 'parent_site_menu_url' ); // "http://localhost/business/wp-json/ucf-rest-menus/v1/menus/203";
+	$transient_name = 'business_menu_json';
+	$result         = get_transient( $transient_name );
+	if ( empty( $result ) || $customizing ) {
+		$response = wp_remote_get( $feed_url, array( 'timeout' => 15 ) );
+		if ( is_array( $response ) ) {
+			$result = json_decode( wp_remote_retrieve_body( $response ) );
+		}
+		else {
+			$result = false;
+		}
+		if ( ! $customizing ) {
+			set_transient( $transient_name, $result, (60 * 60 * 24) );
+		}
+	}
+	return $result;
+}
 
-	$opts = array(
-		'http' => array(
-			'timeout' => 15,
-		)
-	);
+function get_nav_links() {
+	$menu_items = get_remote_menu_feed()->items;
+	$nav_links = "";
 
-	$context = stream_context_create( $opts );
+	// var_dump($menu_items);
 
-	$data = file_get_contents($url, false, $context);
+	foreach( $menu_items as $index=>$item ) {
+		if( $item->parent === 0 ) {
+			if($index > 0 ) {
+				$nav_links .= '</li></ul></li>';
 
-	echo $data;
+			}
+			$nav_links .= '<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' . $item->title . '<span class="caret"></span></a><ul class="dropdown-menu">';
+		} else {
+			$nav_links .= '<li><a href="' . $item->url . '">' . $item->title . '</a></li>';
+		}
+	}
+
+	return $nav_links;
 }
 
 ?>

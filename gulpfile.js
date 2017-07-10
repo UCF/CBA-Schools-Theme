@@ -80,8 +80,7 @@ gulp.task('js', function() {
       gulp.src(minified)
         .pipe(concat('script.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest(config.jsPath))
-        .pipe(browserSync.stream());
+        .pipe(gulp.dest(config.jsPath));
     });
 });
 
@@ -96,9 +95,9 @@ gulp.task('watch', function() {
     });
   }
 
-  gulp.watch(config.phpPath + '/*.php');
   gulp.watch(config.sassPath + '/*.scss', ['css']);
-  gulp.watch([config.jsPath + '/*.js', '!' + config.jsPath + '/*.min.js'], ['js']);
+  gulp.watch([config.jsPath + '/*.js', '!' + config.jsPath + '/*.min.js'], ['js']).on('change', browserSync.reload);
+  gulp.watch('**/*.php').on("change", browserSync.reload);
 });
 
 

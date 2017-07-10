@@ -1,81 +1,33 @@
 body {
+  position: relative;
+
   @include font-smoothing();
   @include body-bg-img();
-  position: relative;
 }
 
 
 // Pulldown menu bg
 #primary-nav-menu-pulldown {
-  @include transition(height .5s cubic-bezier(.215, .61, .355, 1));
-  @include unset-affix-xs();
-  background-color: $header-menu-item-bgcolor;
-  display: block;
-  height: 0;
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 999;
-
-  @include body-prefix('.touch-device') {
-    position: absolute;
-  }
-
-  &.active {
-    top: $ucfhb-height; // Overridden by .affix styles when affixing activates
-
-    + .primary-header .nav-name-col .social {
-      @include transition(opacity .3s ease-in-out);
-      @include transition-delay(.1s);
-      height: auto;
-      opacity: 1;
-    }
-  }
-
-  &.affix-top {
-    position: absolute;
-  }
-
-  &.affix {
-    top: 0;
-  }
+  background-color: white;
 }
 
 
 // Header
-.primary-header {
-  @include clearfix();
-  @include unset-affix-xs(absolute);
-  margin-bottom: 0;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative; // Keep this relative so we don't have to depend on the ucf blackbar existing for positioning
-  width: $container-lg; // Must use fixed width here to make IE center properly
-  z-index: 999;
+.navbar {
+  background-color: $gray;
+  border: 0;
+  border-radius: 0;
 
-  // Accommodate for IE's lack of max-width support with centered fixed position elems
-  @media (max-width: $container-lg) {
-    width: 100%;
-  }
+  .navbar-header {
 
-  &.affix {
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
+    .site-title {
+      color: $white;
+      margin: 0;
+      padding-top: 5px;
+    }
 
-    // Eliminate jump effect after header is affixed
-    + main {
-      margin-top: $md-header-menu-height;
-
-      @media (max-width: $screen-sm-max) {
-        margin-top: $sm-site-title-height + $sm-header-menu-height;
-      }
-
-      @media (max-width: $screen-xs-max) {
-        margin-top: 0;
-      }
+    .dropdown-toggle {
+      color: $white !important;
     }
   }
 }
@@ -105,11 +57,12 @@ body {
     top: $md-site-title-height + 15px;
 
     @media (max-width: $screen-sm-max) {
-      @include transition(none);
       height: auto;
       opacity: 1;
       right: 10px;
       top: -4px;
+
+      @include transition(none);
     }
 
     @media (max-width: $screen-xs-max) {
@@ -119,79 +72,7 @@ body {
 }
 
 .site-title {
-  @include color-block-blur($site-title-bgcolor);
-  display: block;
   font-family: $font-family-cta;
-  font-size: 36px;
-  height: $md-site-title-height;
-  margin-bottom: 0;
-  margin-top: 0;
-  text-align: center;
-
-  @include body-prefix('.ie8') {
-    // Make up for lack of box-shadow in ie8
-    border-bottom: 3px solid $site-title-bgcolor-dark;
-  }
-
-  @media (max-width: $screen-sm-max) {
-    border-bottom: 3px solid $site-title-bgcolor-dark;
-    box-shadow: 0 0 0 0 transparent;
-    font-size: 30px;
-    height: $sm-site-title-height;
-    text-align: left;
-
-    &:hover,
-    &:active,
-    &:focus {
-      box-shadow: 0 0 0 0 transparent;
-    }
-  }
-
-  @media (max-width: $screen-xs-max) {
-    border-bottom: 0 solid transparent;
-    font-size: 24px;
-    height: $xs-site-title-height;
-    line-height: $xs-site-title-height;
-    text-align: center;
-  }
-
-  a {
-    color: #fff;
-    display: block;
-    padding: 10px 20px 0;
-
-    @media (max-width: $screen-sm-max) {
-      display: inline-block;
-    }
-
-    @media (max-width: $screen-xs-max) {
-      line-height: .9;
-      padding: 5px 0;
-      width: 100%;
-    }
-
-    &:hover,
-    &:active,
-    &:focus {
-      text-decoration: none;
-    }
-  }
-
-  .alt {
-    @include no-font-smoothing();
-    display: block;
-    font-size: 12px;
-    font-weight: normal;
-    text-transform: uppercase;
-
-    @media (max-width: $screen-sm-max) {
-      display: inline;
-    }
-
-    @media (max-width: $screen-xs-max) {
-      display: none;
-    }
-  }
 }
 
 .nav-menu-col {
@@ -213,344 +94,20 @@ body {
 
 #header-menu-mobile-toggle {
   background-color: $header-menu-item-bgcolor;
-  color: #fff;
-  display: none;
-  font-family: $font-family-serif;
-  font-size: 21px;
-  height: $xs-header-menu-height;
-  line-height: $xs-header-menu-height;
-  text-align: center;
-  width: 100%;
-
-  &:hover,
-  &.active {
-    background-color: $gray-light;
-  }
-
-  &:hover,
-  &:active,
-  &:focus,
-  &.active {
-    text-decoration: none;
-  }
-
-  @media (max-width: $screen-xs-max) {
-    display: block;
-  }
 }
 
 #header-menu {
-  @include unstyled-list();
-  @include horizontal-list(-2px);
-  @include transition(max-height .5s cubic-bezier(.215, .61, .355, 1));
-  display: table-row;
   font-family: $font-family-sans-serif-alt;
-  margin-bottom: 0;
-  text-align: right;
-
-  @media (max-width: $screen-sm-max) {
-    text-align: center;
-  }
-
-  @media (max-width: $screen-xs-max) {
-    height: 0;
-    left: 0;
-    overflow: hidden;
-    position: absolute;
-    right: 0;
-    top: $xs-site-title-height;
-    width: 100%;
-
-    &.mobile-active {
-      background-color: $header-menu-item-bgcolor;
-      height: auto;
-      overflow: visible;
-    }
-  }
-
-  > li {
-    border-right: 2px solid $header-menu-item-bgcolor-dark; // simulate gap btwn link items
-    display: table-cell;
-    min-width: 10%; // don't allow really tiny link items
-    text-align: left;
-    vertical-align: top;
-
-    @include body-prefix('.ie8') {
-      // Make up for lack of box-shadow in ie8
-      border-bottom: 3px solid $header-menu-item-bgcolor-dark;
-    }
-
-    @media (max-width: $screen-xs-max) {
-      border-right: 0 solid transparent;
-      display: block;
-      margin-right: 0;
-      width: 100%;
-    }
-
-    > a {
-      @include no-font-smoothing();
-      @include color-block-blur($header-menu-item-bgcolor, 0, 3px, 0, 0, $header-menu-item-bgcolor-dark);
-      color: #fff;
-      display: table;
-      font-family: $font-family-serif;
-      font-size: 15.5px;
-      height: $md-header-menu-height;
-      line-height: 1.1;
-      padding: 0;
-      position: relative;
-      width: 100%;
-
-      @media (max-width: $screen-xs-max) {
-        box-shadow: 0 0 0 transparent;
-        height: auto;
-        padding: 0;
-      }
-
-      > span:first-child {
-        display: table-cell;
-        padding-left: 9px; // padding left, right should match border-left,right in :before
-        padding-right: 9px;
-        vertical-align: middle;
-
-        @media (max-width: $screen-xs-max) {
-          padding: 12px;
-        }
-
-        &:before {
-          // Cover up excess box shadow bleed on link items.
-          // Remove for ie8, which doesn't support box shadows anyway.
-          @include body-prefix('.ie8') {
-            display: none;
-          }
-
-          border-left: 9px solid $header-menu-item-bgcolor;
-          border-right: 9px solid $header-menu-item-bgcolor;
-          bottom: 0;
-          content: '';
-          display: block;
-          left: 0;
-          position: absolute;
-          right: 0;
-          top: 0;
-          z-index: 1001;
-
-          @media (max-width: $screen-xs-max) {
-            display: none;
-          }
-        }
-      }
-
-      .primary-nav-expand-icon {
-        @include transition(all .2s ease-in-out);
-        bottom: 20px;
-        color: $header-menu-item-bgcolor-dark;
-        font-size: 20px;
-        position: absolute;
-        right: 5px;
-        z-index: 1002;
-
-        @media (max-width: $screen-xs-max) {
-          bottom: 2px;
-          color: #fff;
-          float: right;
-          font-size: 12px;
-          padding: 12px 8px;
-          position: absolute;
-          text-align: center;
-          width: 50px;
-
-          &:after {
-            background-color: $header-menu-item-bgcolor-dark;
-            border-radius: 100%;
-            bottom: 0;
-            content: '';
-            display: block;
-            height: 26px;
-            left: 0;
-            margin: auto;
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 26px;
-            z-index: -1;
-          }
-
-          &.active {
-            // Can't use extend/include here :(
-            -ms-transform: rotate(-180deg); // IE9 only
-            -o-transform: rotate(-180deg);
-            -webkit-transform: rotate(-180deg);
-            transform: rotate(-180deg);
-          }
-        }
-      }
-    }
-
-    > a:hover,
-    > a:active,
-    > a:focus,
-    > a.active {
-      background-color: $gray-light;
-      text-decoration: none;
-
-      @media (max-width: $screen-xs-max) {
-        box-shadow: 0 0 0 0 transparent;
-      }
-
-      > span:first-child:before {
-        // Simulate link hover color for box shadow bleed coverup.
-        border-left: 8px solid $gray-light;
-        border-right: 8px solid $gray-light;
-      }
-    }
-
-    &.menu-item-has-children > a > span:first-child {
-      padding-right: 20px;
-    }
-
-    // First-level submenus (groups of .sub-menu-col-'s)
-    > .sub-menu {
-      @include transition(opacity .3s ease-in-out);
-      @include transition-delay(.1s);
-      @include unstyled-list();
-      display: block;
-      font-size: 16px;
-      height: 0;
-      margin-right: 32px;
-      margin-top: 10px;
-      opacity: 0;
-      overflow: hidden;
-      position: absolute;
-      right: 0;
-      z-index: 1001;
-
-      @media (max-width: $screen-sm-max) {
-        left: 0;
-        margin-left: auto;
-        margin-right: auto;
-        right: 0;
-      }
-
-      @media (max-width: $screen-xs-max) {
-        background-color: $gray-light-alt;
-        font-size: 12.5px;
-        font-weight: bold;
-        margin: 0;
-        opacity: 1;
-        position: static;
-        width: 100% !important;
-      }
-
-      &.active {
-        height: auto;
-        opacity: 1;
-      }
-
-      // Child nav list items
-      li {
-        margin-top: 15px;
-
-        @media (max-width: $screen-xs-max) {
-          border-bottom: 1px solid $gray-light;
-          margin-top: 0;
-        }
-
-        // Second-level submenus
-        > .sub-menu {
-          @include unstyled-list();
-          font-size: 14px;
-          padding-left: 25px;
-          position: relative;
-
-          @media (max-width: $screen-xs-max) {
-            font-size: 12.5px;
-            padding-left: 0;
-          }
-
-          // Grandchild nav list items
-          li {
-            margin-top: 10px;
-
-            @media (max-width: $screen-xs-max) {
-              border-bottom: 0 solid transparent;
-              border-top: 1px solid $gray-light;
-              margin-top: 0;
-            }
-          }
-
-          a {
-            @media (max-width: $screen-xs-max) {
-              padding: 10px 10px 10px 50px;
-            }
-          }
-        }
-      }
-
-      a {
-        color: #fff;
-
-        &:after {
-          @extend .fa;
-          @extend .fa-chevron-right:before;
-          display: none;
-          float: right;
-          font-size: 12px;
-          padding: 3px 0;
-        }
-
-        @media (max-width: $screen-xs-max) {
-          display: block;
-          padding: 10px 10px 10px 30px;
-
-          &:after {
-            display: block;
-          }
-
-          &:hover,
-          &:active,
-          &:focus {
-            background-color: $gray-light;
-            text-decoration: none;
-          }
-        }
-      }
-    }
-
-    .sub-menu-col-1,
-    .sub-menu-col-2,
-    .sub-menu-col-3 {
-      @include unstyled-list();
-      display: inline-block;
-      vertical-align: top;
-      width: 33.333%;
-
-      &:empty {
-        display: none;
-      }
-
-      @media (max-width: $screen-xs-max) {
-        width: 100%;
-      }
-    }
-
-    .sub-menu-col-2,
-    .sub-menu-col-3 {
-      padding-left: 20px;
-
-      @media (max-width: $screen-xs-max) {
-        padding-left: 0;
-      }
-    }
-  }
 }
 
 
 // Main, body content, sidebars
 main {
-  @include main-gradient-overlay();
   min-height: 250px;
   padding-bottom: 40px;
   position: relative;
+
+  @include main-gradient-overlay();
 
   #side-menu {
     margin-bottom: 20px;
@@ -662,19 +219,19 @@ main {
           margin-top: 25px;
           text-align: center;
         }
-
       }
     }
-
   }
 }
 
 .article-sidebar-wrap {
+
   .side-menu-title {
     font-size: 18px;
     margin-top: 0;
 
     &:first-child {
+
       @media (max-width: $screen-sm-max) {
         border-top: 3px solid $gray-lighter;
         margin-top: 35px;
@@ -683,6 +240,7 @@ main {
     }
 
     + .side-menu {
+
       @media (max-width: $screen-sm-max) {
         border-top: 0 solid transparent;
         margin-top: 0;
@@ -696,9 +254,10 @@ main {
   }
 
   .side-menu {
-    @include unstyled-list();
     font-size: 16px;
     margin-bottom: 35px;
+
+    @include unstyled-list();
 
     // If no .side-menu-title is available above this list,
     // apply border/padding from .side-menu-title to .side-menu
@@ -726,10 +285,11 @@ main {
     }
 
     .sub-menu {
-      @include unstyled-list();
       margin-bottom: 15px;
       margin-top: 10px;
       padding-left: $grid-gutter-width;
+
+      @include unstyled-list();
     }
   }
 }
@@ -775,9 +335,10 @@ main {
   }
 
   .menu {
-    @include unstyled-list();
     margin-bottom: 0;
     margin-top: 0;
+
+    @include unstyled-list();
 
     > li {
       font-size: 13px;
@@ -795,7 +356,6 @@ main {
           text-transform: none;
         }
       }
-
     }
   }
 
@@ -808,7 +368,7 @@ main {
     position: relative;
 
     img {
-       width: 100%;
+      width: 100%;
     }
 
     .cta {
@@ -841,7 +401,6 @@ main {
       font-weight: 900;
     }
   }
-
 }
 
 .primary-subfooter-nav,

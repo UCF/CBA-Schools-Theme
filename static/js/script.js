@@ -573,7 +573,7 @@ var initCarousel = function($) {
 
 if (typeof jQuery !== 'undefined'){
   jQuery(document).ready(function ($) {
-    
+
 
     Webcom.handleExternalLinks($);
     Webcom.loadMoreSearchResults($);
@@ -588,11 +588,11 @@ if (typeof jQuery !== 'undefined'){
     stripEmptyPtags($);
     gaEventTracking($);
     handleEllipses($);
-    primaryHeaderAffix($);
-    addPrimaryNavChevrons($);
-    primaryNavSubmenuColSizing($);
-    primaryNavBgToggle($);
-    mobilePrimaryNavToggle($);
+    // primaryHeaderAffix($);
+    // addPrimaryNavChevrons($);
+    // primaryNavSubmenuColSizing($);
+    // primaryNavBgToggle($);
+    // mobilePrimaryNavToggle($);
     initCarousel($);
     responsiveVideos($);
     splitFooterMenu($);
