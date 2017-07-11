@@ -104,9 +104,14 @@ body {
     color: $white !important;
     font-size: 12px;
     font-weight: 700;
-    padding-bottom: 24px;
-    padding-top: 24px;
+    padding-bottom: 16px;
+    padding-top: 16px;
     text-transform: uppercase;
+
+    @media (min-width: $screen-md-min) {
+      padding-bottom: 24px;
+      padding-top: 24px;
+    }
 
     .caret {
       color: $gray-light;
