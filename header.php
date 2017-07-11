@@ -63,7 +63,7 @@
 							<?php if ( is_home() ) : ?>
 								<h1 class="site-title"><?php echo get_bloginfo( 'name' ); ?></h1>
 							<?php else: ?>
-								<span class="h1"><a href="<?php echo bloginfo( 'url' ); ?>" class="site-title"><?php echo get_bloginfo( 'name' ); ?></a></span>
+								<div class="h1 site-title"><a href="<?php echo bloginfo( 'url' ); ?>"><?php echo get_bloginfo( 'name' ); ?></a></div>
 							<?php endif; ?>
 						</div>
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

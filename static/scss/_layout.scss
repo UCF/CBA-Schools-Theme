@@ -22,14 +22,25 @@ body {
 
     .site-title {
       color: $white;
-      font-size: 20px;
+      font-family: $font-family-cta;
+      font-size: 16px;
       font-weight: 600;
       margin: 0;
       padding-left: 15px;
-      padding-top: 15px;
+      padding-top: 16px;
+
+      a {
+        color: $white;
+
+        &:hover {
+          color: $gray-lighter;
+          text-decoration: none;
+        }
+      }
 
       @media (min-width: $screen-md-min) {
-        padding-top: 11px;
+        max-width: 180px;
+        padding-top: 14px;
       }
     }
   }
@@ -91,7 +102,10 @@ body {
 
   .dropdown-toggle {
     color: $white !important;
+    font-size: 12px;
     font-weight: 700;
+    padding-bottom: 24px;
+    padding-top: 24px;
     text-transform: uppercase;
 
     .caret {
@@ -149,10 +163,6 @@ body {
       display: none;
     }
   }
-}
-
-.site-title {
-  font-family: $font-family-cta;
 }
 
 .nav-menu-col {
