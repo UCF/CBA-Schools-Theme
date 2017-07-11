@@ -93,7 +93,7 @@ body {
     .dropdown-menu a:hover {
       background-color: $gray-dark !important;
 
-      @media (min-width: $screen-md-min) {
+      @media (min-width: $screen-sm-min) {
         background-color: $gray-lightest !important;
       }
     }
@@ -122,7 +122,7 @@ body {
     color: $white !important;
     font-weight: 600;
 
-    @media (min-width: $screen-md-min) {
+    @media (min-width: $screen-sm-min) {
       color: $black !important;
       font-weight: 400;
       padding-bottom: 5px;
