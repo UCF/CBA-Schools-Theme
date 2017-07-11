@@ -844,8 +844,6 @@ function get_nav_links() {
 	$menu_items = get_remote_menu_feed()->items;
 	$nav_links = "";
 
-	// var_dump($menu_items);
-
 	foreach( $menu_items as $index=>$item ) {
 		if( $item->parent === 0 ) {
 			if($index > 0 ) {
