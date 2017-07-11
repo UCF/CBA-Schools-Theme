@@ -822,7 +822,7 @@ function display_home_centerpieces() {
 function get_remote_menu_feed( ) {
 	global $wp_customize;
 	$customizing    = isset( $wp_customize );
-	$feed_url       = get_theme_mod_or_default( 'parent_site_menu_url' ); // "http://localhost/business/wp-json/ucf-rest-menus/v1/menus/203";
+	$feed_url       = get_theme_mod_or_default( 'parent_site_menu_url' );
 	$transient_name = 'business_menu_json';
 	$result         = get_transient( $transient_name );
 	if ( empty( $result ) || $customizing ) {
