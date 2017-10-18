@@ -49,8 +49,34 @@
 
 	</head>
 	<body ontouchstart class="<?php echo body_classes(); ?>" <?php if ( is_home() ): ?>id="body-home"<?php endif; ?>>
-		<?php get_parent_site_header(); ?>
+		<header>
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<div class="container">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<?php if ( is_home() ) : ?>
+								<h1 class="site-title"><?php echo get_bloginfo( 'name' ); ?></h1>
+							<?php else: ?>
+								<div class="h1 site-title"><a href="<?php echo bloginfo( 'url' ); ?>"><?php echo get_bloginfo( 'name' ); ?></a></div>
+							<?php endif; ?>
+						</div>
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav">
+								<?php echo get_nav_links(); ?>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</header>
 		<main>
+
 			<div class="school-header container">
 				<div class="row">
 					<div class="col-sm-6 col-lg-4">

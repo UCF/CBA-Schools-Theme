@@ -1,56 +1,66 @@
 // Custom variables
 
-$ucfhb-height:               50px;
-$non-grid-max-width:         1200px; // absolute max width for "full-screen" elements
-$today-thumb-width:          66px; // width of UCF Today article thumbnails, used in [news-list] shortcode
-$event-date-width:           54px; // width of day/month/year block in event list items
+$ucfhb-height: 50px;
+$non-grid-max-width: 1200px; // absolute max width for "full-screen" elements
+$today-thumb-width: 66px; // width of UCF Today article thumbnails, used in [news-list] shortcode
+$event-date-width: 54px; // width of day/month/year block in event list items
 
 $font-family-sans-serif-alt: 'Montserrat', sans-serif !default;
-$font-family-cta:            'Roboto', sans-serif !default;
-$font-family-slab-serif:     'Rokkitt', serif;
+$font-family-cta: 'Roboto', sans-serif !default;
+$font-family-slab-serif: 'Rokkitt', serif;
 
-$gray-light-alt:             #999;
-$ucf-gold:                   #ffc904;
-$coba-green:                 #7fcd50;
-$coba-green-dark:            #54972c;
-$coba-green-faded:           #7f9f6b;
-$coba-offwhite:              #fafafa;
-$coba-pink-light:            #ffcdff;
-$coba-pink:                  #df1c52;
-$coba-gray:                  #165c7d;
-$school-gray-line:           #5c5c5c;
-$school-light-gray:          #5e5e5e;
-$school-dark-gray:           #313131;
-$school-light-blue:          #9fc8e8;
-$school-blue:                #74a1c8;
+$white: #fff;
+$black: #000;
+$gray-darkest: #292b2c;
+$gray-darker: #404040;
+$gray-dark: #7a7a7a;
+$gray: #767676;
+$gray-light: #ccc;
+$gray-lighter: #eceeef;
+$gray-lightest: #f7f7f9;
 
-$site-title-bgcolor:            $ucf-gold;
-$site-title-bgcolor-dark:       darken($ucf-gold, 12%);
-$header-menu-item-bgcolor:      $coba-gray;
+$gray-light-alt: #999;
+$ucf-gold: #ffc904;
+$coba-green: #7fcd50;
+$coba-green-dark: #54972c;
+$coba-green-faded: #7f9f6b;
+$coba-offwhite: #fafafa;
+$coba-pink-light: #ffcdff;
+$coba-pink: #df1c52;
+$coba-gray: #165c7d;
+$school-gray-line: #5c5c5c;
+$school-light-gray: #5e5e5e;
+$school-dark-gray: #313131;
+$school-light-blue: #9fc8e8;
+$school-blue: #74a1c8;
+
+$site-title-bgcolor: $ucf-gold;
+$site-title-bgcolor-dark: darken($ucf-gold, 12%);
+$header-menu-item-bgcolor: $coba-gray;
 $header-menu-item-bgcolor-dark: darken($coba-gray, 12%);
 
-$md-header-menu-height:         80px;
-$sm-header-menu-height:         $md-header-menu-height;
-$xs-header-menu-height:         50px;
-$md-site-title-height:          $md-header-menu-height;
-$sm-site-title-height:          52px;
-$xs-site-title-height:          $xs-header-menu-height;
+$md-header-menu-height: 80px;
+$sm-header-menu-height: $md-header-menu-height;
+$xs-header-menu-height: 50px;
+$md-site-title-height: $md-header-menu-height;
+$sm-site-title-height: 52px;
+$xs-site-title-height: $xs-header-menu-height;
 
-$font-size-h1:                  30px;
-$font-size-h1-xs:               24px;
+$font-size-h1: 30px;
+$font-size-h1-xs: 24px;
 
 
 // Bootstrap overrides
-$font-family-sans-serif:     'Open Sans', sans-serif !default;
-$font-family-base:           $font-family-sans-serif !default;
+$font-family-sans-serif: 'Open Sans', sans-serif !default;
+$font-family-base: $font-family-sans-serif !default;
 
-$text-color:                 #000 !default;
+$text-color: #000 !default;
 
-$brand-primary:              #74a1c8; // link color
+$brand-primary: #74a1c8; // link color
 
-$headings-font-weight:       800 !default;
+$headings-font-weight: 800 !default;
 
-$grid-gutter-width:          20px !default;
+$grid-gutter-width: 20px !default;
 
-$icon-font-path:             '../fonts/bootstrap/';
-$fa-font-path:               '../fonts/font-awesome/';
+$icon-font-path: '../fonts/bootstrap/';
+$fa-font-path: '../fonts/font-awesome/';
