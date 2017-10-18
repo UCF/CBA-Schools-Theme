@@ -38,9 +38,9 @@ body {
         }
       }
 
-      @media (min-width: $screen-md-min) {
-        max-width: 180px;
-        padding-top: 14px;
+      @media (min-width: $screen-sm-min) {
+        // max-width: 180px;
+        padding-top: 25px;
       }
     }
   }
@@ -223,7 +223,7 @@ main {
       }
     }
 
-    > .menu-item > a {
+     > .menu-item > a {
       background-color: $school-dark-gray;
       border-bottom: 1px solid $school-light-gray;
       font-weight: 700;
@@ -334,7 +334,7 @@ main {
       }
     }
 
-    + .side-menu {
+     + .side-menu {
 
       @media (max-width: $screen-sm-max) {
         border-top: 0 solid transparent;
@@ -435,7 +435,7 @@ main {
 
     @include unstyled-list();
 
-    > li {
+     > li {
       font-size: 13px;
       font-weight: bold;
       margin-bottom: 18px;
