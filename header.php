@@ -60,7 +60,7 @@
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
-							<div class="h1 site-title"><a href="http://business.ucf.edu">College of Business</a></div>
+							<div class="h1 site-title"><a href="//business.ucf.edu">College of Business</a></div>
 						</div>
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav">
