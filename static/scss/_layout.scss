@@ -22,8 +22,8 @@ body {
 
     .site-title {
       color: $white;
-      font-family: $font-family-cta;
-      font-size: 16px;
+      font-family: $font-family-sans-serif-alt;
+      font-size: 17px;
       font-weight: 600;
       margin: 0;
       padding-left: 15px;
@@ -38,9 +38,9 @@ body {
         }
       }
 
-      @media (min-width: $screen-md-min) {
-        max-width: 180px;
-        padding-top: 14px;
+      @media (min-width: $screen-sm-min) {
+        // max-width: 180px;
+        padding-top: 25px;
       }
     }
   }
@@ -51,6 +51,7 @@ body {
   }
 
   .navbar-nav {
+    font-family: $font-family-sans-serif-alt;
 
     @media (min-width: $screen-md-min) {
       float: right;
@@ -102,7 +103,7 @@ body {
 
   .dropdown-toggle {
     color: $white !important;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
     padding-bottom: 16px;
     padding-top: 16px;
@@ -124,7 +125,7 @@ body {
 
     @media (min-width: $screen-sm-min) {
       color: $black !important;
-      font-weight: 400;
+      font-weight: 100;
       padding-bottom: 5px;
       padding-top: 5px;
     }
@@ -223,7 +224,7 @@ main {
       }
     }
 
-    > .menu-item > a {
+     > .menu-item > a {
       background-color: $school-dark-gray;
       border-bottom: 1px solid $school-light-gray;
       font-weight: 700;
@@ -334,7 +335,7 @@ main {
       }
     }
 
-    + .side-menu {
+     + .side-menu {
 
       @media (max-width: $screen-sm-max) {
         border-top: 0 solid transparent;
@@ -435,7 +436,7 @@ main {
 
     @include unstyled-list();
 
-    > li {
+     > li {
       font-size: 13px;
       font-weight: bold;
       margin-bottom: 18px;
