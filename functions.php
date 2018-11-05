@@ -845,14 +845,21 @@ function get_nav_links() {
 	$nav_links = "";
 
 	foreach( $menu_items as $index=>$item ) {
-		if( $item->parent === 0 ) {
-			if($index > 0 ) {
-				$nav_links .= '</li></ul></li>';
+		if($index > 0 ) {
+			$nav_links .= '</li></ul></li>';
+		}
 
-			}
+		if( ! empty ( $item->children ) ) {
+
 			$nav_links .= '<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' . $item->title . '<span class="caret"></span></a><ul class="dropdown-menu">';
+
+
+			foreach( $item->children as $index=>$item ) {
+				$nav_links .= '<li><a href="' . $item->url . '">' . $item->title . '</a></li>';
+			}
+
 		} else {
-			$nav_links .= '<li><a href="' . $item->url . '">' . $item->title . '</a></li>';
+			$nav_links .= '<li class="dropdown"><a href="' . $item->url . '" class="dropdown-toggle">' . $item->title . '</a>';
 		}
 	}
 
