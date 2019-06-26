@@ -105,14 +105,10 @@ function get_facebook_posts() {
 	ob_start();
 
 	$opts = array(
-		'http' => array(
-			'timeout' => 15,
-		)
+		'timeout' => 15,
 	);
 
-	$context = stream_context_create( $opts );
-
-	$json = file_get_contents( $url, false, $context );
+	$json = wp_remote_retrieve_body( wp_remote_get( $url, $opts ) );
 	$obj = json_decode( $json );
 	ob_start();
 
