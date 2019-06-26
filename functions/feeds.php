@@ -66,7 +66,7 @@ class FeedManager{
 
 		if ($content === False){
 			$content = wp_remote_retrieve_body( wp_remote_get( $url ) );
-			if ( is_wp_error( $content ) ) {
+			if ( empty( $content ) ) {
 				$failed  = True;
 				$content = null;
 				error_log('FeedManager failed to fetch data using url of '.$url);
