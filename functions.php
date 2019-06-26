@@ -108,7 +108,7 @@ function get_facebook_posts() {
 		'timeout' => 15,
 	);
 
-	$json = wp_remote_get( $url, $opts );
+	$json = wp_remote_retrieve_body( wp_remote_get( $url, $opts ) );
 	$obj = json_decode( $json );
 	ob_start();
 
